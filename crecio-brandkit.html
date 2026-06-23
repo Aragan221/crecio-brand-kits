@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Kit — crecıó</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#0D0D0D;color:#FFFFFF;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:#7C3AED;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,0.1);padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:20px;font-weight:800;color:#7C3AED;letter-spacing:-0.5px}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}
+.nav-links a{font-size:13px;font-weight:600;color:#71717A;transition:color .2s}
+.nav-links a:hover{color:#7C3AED}
+
+/* SECTIONS */
+section{padding:100px 32px;max-width:1200px;margin:0 auto}
+section:first-of-type{padding-top:140px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7C3AED;margin-bottom:16px}
+.section-title{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-1px;margin-bottom:24px;text-transform:lowercase}
+.section-desc{font-size:16px;color:#71717A;max-width:600px;margin-bottom:48px}
+.divider{border:none;border-top:1px solid rgba(124,58,237,0.15);margin:0 auto;max-width:1200px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:140px 32px 100px}
+.hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-logo{font-size:clamp(64px,12vw,120px);font-weight:800;color:#7C3AED;letter-spacing:-3px;margin-bottom:16px}
+.hero-tagline{font-size:clamp(16px,2.5vw,22px);font-weight:600;color:#FFFFFF;margin-bottom:12px}
+.hero-sub{font-size:14px;color:#71717A;max-width:500px}
+.hero-badge{margin-top:40px;padding:10px 24px;border:1px solid rgba(124,58,237,0.3);border-radius:100px;font-size:12px;font-weight:600;color:#A855F7;letter-spacing:1px}
+
+/* MOODBOARD */
+.mood-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.mood-card{background:#1a1a1a;border:1px solid rgba(124,58,237,0.1);border-radius:12px;padding:48px 24px;text-align:center;min-height:200px;display:flex;flex-direction:column;justify-content:center;transition:border-color .3s}
+.mood-card:hover{border-color:rgba(124,58,237,0.4)}
+.mood-card .mood-icon{font-size:32px;margin-bottom:16px;color:#7C3AED}
+.mood-card h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.mood-card p{font-size:12px;color:#71717A;line-height:1.5}
+
+/* LOGO */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.logo-box{border-radius:12px;padding:48px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;transition:transform .2s}
+.logo-box:hover{transform:scale(1.02)}
+.logo-box.dark{background:#0D0D0D;border:1px solid rgba(124,58,237,0.15)}
+.logo-box.light{background:#FFFFFF}
+.logo-box.violet{background:#7C3AED}
+.logo-mark{font-size:48px;font-weight:800;letter-spacing:-2px}
+.logo-mark.violet-text{color:#7C3AED}
+.logo-mark.white-text{color:#FFFFFF}
+.logo-mark.black-text{color:#0D0D0D}
+.logo-caption{font-size:11px;color:#71717A;margin-top:12px;letter-spacing:1px;text-transform:uppercase}
+.logo-box.light .logo-caption{color:#71717A}
+.logo-box.violet .logo-caption{color:rgba(255,255,255,0.7)}
+.logo-tagline{font-size:12px;font-weight:400;margin-top:8px;opacity:0.7}
+
+/* SUBMARCAS */
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.sub-card{background:#1a1a1a;border:1px solid rgba(124,58,237,0.1);border-radius:12px;padding:32px 24px;text-align:center;transition:border-color .3s}
+.sub-card:hover{border-color:#7C3AED}
+.sub-card h4{font-size:16px;font-weight:700;margin-bottom:8px}
+.sub-card p{font-size:12px;color:#71717A}
+
+/* PALETA */
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.color-card{border-radius:12px;overflow:hidden}
+.color-swatch{height:120px;display:flex;align-items:flex-end;padding:16px}
+.color-info{padding:16px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.05);border-top:none;border-radius:0 0 12px 12px}
+.color-info h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.color-info .hex{font-size:13px;font-family:monospace;color:#A855F7;margin-bottom:8px}
+.color-info p{font-size:12px;color:#71717A;line-height:1.4}
+
+/* TIPOGRAFIA */
+.type-samples{display:flex;flex-direction:column;gap:32px}
+.type-row{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.type-label{font-size:11px;font-weight:600;color:#7C3AED;letter-spacing:2px;text-transform:uppercase;min-width:100px}
+.type-meta{font-size:11px;color:#71717A;min-width:180px}
+.t-h1{font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-1px;text-transform:lowercase}
+.t-h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-0.5px}
+.t-h3{font-size:24px;font-weight:600}
+.t-body{font-size:16px;font-weight:400;color:#FFFFFF;line-height:1.6}
+.t-caption{font-size:13px;font-weight:400;color:#71717A}
+.t-cta{font-size:16px;font-weight:700;background:#7C3AED;color:#FFFFFF;padding:12px 28px;border-radius:8px;display:inline-block}
+
+/* ICONOS */
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:24px;text-align:center}
+.icon-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.icon-item svg{width:32px;height:32px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icon-item span{font-size:11px;color:#71717A}
+.pattern-demo{margin-top:48px;height:200px;border-radius:12px;background:#0D0D0D;position:relative;overflow:hidden;border:1px solid rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center}
+.pattern-demo::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,0.08) 0%,transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.pattern-demo span{font-size:14px;color:#71717A;position:relative;z-index:1}
+
+/* PLANTILLAS IG */
+.ig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.ig-mockup{border-radius:12px;overflow:hidden;border:1px solid rgba(124,58,237,0.1);background:#1a1a1a}
+.ig-mockup-screen{padding:32px 24px;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.ig-mockup-screen.dark-bg{background:#0D0D0D}
+.ig-mockup-label{font-size:11px;font-weight:600;color:#7C3AED;letter-spacing:1px;text-transform:uppercase;padding:12px 24px;border-top:1px solid rgba(124,58,237,0.1)}
+.ig-logo-small{font-size:14px;font-weight:800;color:#7C3AED;letter-spacing:-0.5px;position:absolute;top:16px;right:16px}
+.ig-hook{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-0.5px;line-height:1.2}
+.ig-hook .accent{color:#7C3AED}
+.ig-cta-btn{display:inline-block;padding:10px 20px;background:#7C3AED;border-radius:6px;font-size:13px;font-weight:700;color:#FFFFFF;margin-top:16px}
+.ig-slide-num{font-size:11px;color:#71717A;margin-top:auto}
+.highlights-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+.highlight-circle{width:72px;height:72px;border-radius:50%;background:rgba(124,58,237,0.15);border:2px solid #7C3AED;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.highlight-circle svg{width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.highlight-label{font-size:10px;color:#71717A;margin-top:8px;text-align:center}
+
+/* BUSINESS CARD */
+.card-container{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.biz-card{width:360px;max-width:100%;aspect-ratio:1.6/1;background:#0D0D0D;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s}
+.biz-card:hover{transform:scale(1.02)}
+.biz-card-logo{font-size:22px;font-weight:800;color:#7C3AED;letter-spacing:-1px}
+.biz-card-info{display:flex;flex-direction:column;gap:4px}
+.biz-card-name{font-size:15px;font-weight:700}
+.biz-card-detail{font-size:12px;color:#71717A}
+
+/* DO DONT */
+.dodont-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.dodont-card{border-radius:12px;padding:32px;border:1px solid rgba(124,58,237,0.1)}
+.dodont-card.do-card{background:rgba(124,58,237,0.05)}
+.dodont-card.dont-card{background:rgba(255,50,50,0.03);border-color:rgba(255,50,50,0.15)}
+.dodont-card h4{font-size:16px;font-weight:700;margin-bottom:16px}
+.dodont-card.do-card h4{color:#7C3AED}
+.dodont-card.dont-card h4{color:#ff5050}
+.dodont-card ul{list-style:none;padding:0}
+.dodont-card li{font-size:13px;color:#FFFFFF;padding:6px 0;padding-left:20px;position:relative;line-height:1.5}
+.dodont-card.do-card li::before{content:"¹3";position:absolute;left:0;color:#7C3AED;font-weight:700}
+.dodont-card.dont-card li::before{content:"¹7";position:absolute;left:0;color:#ff5050;font-weight:700}
+
+/* CASO EXITO */
+.case-mockup{max-width:500px;margin:0 auto;background:#0D0D0D;border:1px solid rgba(124,58,237,0.15);border-radius:12px;overflow:hidden}
+.case-header{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.case-avatar{width:36px;height:36px;border-radius:50%;background:#7C3AED;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800}
+.case-user{font-size:13px;font-weight:700}
+.case-body{padding:20px}
+.case-body h3{font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:16px}
+.case-body .accent{color:#7C3AED}
+.case-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.stat-box{background:#1a1a1a;border-radius:8px;padding:16px;text-align:center}
+.stat-box .num{font-size:24px;font-weight:800;color:#7C3AED}
+.stat-box .label{font-size:11px;color:#71717A;margin-top:4px}
+.case-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.05);font-size:12px;color:#71717A}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:12px 16px}
+  .nav-links{gap:12px}
+  section{padding:60px 16px}
+  .hero{padding:100px 16px 60px}
+  .logo-grid{grid-template-columns:1fr}
+  .palette-grid{grid-template-columns:1fr 1fr}
+  .ig-grid{grid-template-columns:1fr}
+  .type-row{flex-direction:column;gap:8px}
+}
+@media(max-width:480px){
+  .palette-grid{grid-template-columns:1fr}
+  .highlights-row{justify-content:center}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">crecıó</div>
+  <div class="nav-links">
+    <a href="#moodboard">Moodboard</a>
+    <a href="#logo">Logo</a>
+    <a href="#submarcas">Submarcas</a>
+    <a href="#paleta">Paleta</a>
+    <a href="#tipografia">Tipografia</a>
+    <a href="#iconos">Iconos</a>
+    <a href="#plantillas">Instagram</a>
+    <a href="#tarjeta">Tarjeta</a>
+    <a href="#guia">Guia</a>
+    <a href="#caso">Caso</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-logo">crecıó</div>
+  <p class="hero-tagline">convertimos tu conocimiento en clientes</p>
+  <p class="hero-sub">Brand Kit oficial. Marca personal + marketing digital + IA para profesionales independientes en Colombia.</p>
+  <div class="hero-badge">BRAND KIT 2025</div>
+</section>
+
+<hr class="divider">
+
+<!-- 1. MOODBOARD -->
+<section id="moodboard">
+  <span class="section-label">01 / Moodboard</span>
+  <h2 class="section-title">el universo visual de crecıó</h2>
+  <p class="section-desc">Tecnologia con calidez humana. Colombia real. Profesionales reales construyendo su marca con herramientas modernas.</p>
+  <div class="mood-grid">
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Laptop en cafe colombiano</h4>
+      <p>Profesional editando su contenido de Instagram en un cafe con luz natural calida. Pantalla muestra dashboard de metricas. Taza artesanal al lado.</p>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Consultorio moderno</h4>
+      <p>Psicologa o coach en su espacio de trabajo con planta, libros y laptop. Iluminacion suave con un sutil tono violeta ambiental. Profesional y acogedor.</p>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Manos creando contenido</h4>
+      <p>Close-up de manos sobre teclado o celular grabando un Reel. Anillos discretos, unas cuidadas. Fondo desenfocado con luces bokeh violeta.</p>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Dashboard de resultados</h4>
+      <p>Pantalla de computador mostrando crecimiento de seguidores y leads. Graficas ascendentes. Interfaz oscura con acentos violeta. Data real, no vanidad.</p>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Reunion virtual</h4>
+      <p>Split screen con cliente y equipo Crecio en videollamada. Sonrisas genuinas. Fondos reales (no virtuales). Sensacion de cercania y confianza.</p>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">•</div>
+      <h4>Ciudad colombiana de noche</h4>
+      <p>Skyline urbano con luces calidas y un sutil filtro que resalta tonos violeta. Medellin o Bogota. Modernidad latinoamericana. Ambicion accesible.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 2. LOGO -->
+<section id="logo">
+  <span class="section-label">02 / Logo</span>
+  <h2 class="section-title">identidad principal</h2>
+  <p class="section-desc">El logo usa Montserrat ExtraBold en minuscula. La i no lleva punto (ı). El acento en la o si va. Siempre en minuscula.</p>
+  <div class="logo-grid">
+    <div class="logo-box dark">
+      <span class="logo-mark violet-text">crecıó</span>
+      <span class="logo-caption">Principal / Violeta sobre negro</span>
+    </div>
+    <div class="logo-box dark">
+      <span class="logo-mark violet-text">crecıó</span>
+      <span class="logo-tagline" style="color:#FFFFFF;">convertimos tu conocimiento en clientes</span>
+      <span class="logo-caption">Stack con tagline</span>
+    </div>
+    <div class="logo-box dark">
+      <span class="logo-mark white-text">crecıó</span>
+      <span class="logo-caption">Monocromatica blanca sobre negro</span>
+    </div>
+    <div class="logo-box light">
+      <span class="logo-mark violet-text">crecıó</span>
+      <span class="logo-caption">Violeta sobre blanco</span>
+    </div>
+    <div class="logo-box violet">
+      <span class="logo-mark white-text">crecıó</span>
+      <span class="logo-caption">Blanca sobre violeta</span>
+    </div>
+    <div class="logo-box dark" style="justify-content:center;align-items:center;">
+      <span style="font-size:64px;font-weight:800;color:#7C3AED;letter-spacing:-2px;">c</span>
+      <span class="logo-caption">Isotipo / Inicial estilizada</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 3. SUBMARCAS -->
+<section id="submarcas">
+  <span class="section-label">03 / Submarcas</span>
+  <h2 class="section-title">productos y servicios</h2>
+  <p class="section-desc">Lockups para cada producto del ecosistema Crecio. Mantienen la identidad base con variacion en nombre.</p>
+  <div class="sub-grid">
+    <div class="sub-card">
+      <h4>Pack Optimizacion Estructural</h4>
+      <p>Servicio base de entrada. Setup completo de perfil + contenido inicial.</p>
+    </div>
+    <div class="sub-card">
+      <h4>Sistema Crecio</h4>
+      <p>Metodologia integral. Los 3 pilares trabajando en conjunto.</p>
+    </div>
+    <div class="sub-card">
+      <h4>Diagnostico Crecio</h4>
+      <p>Analisis de perfil automatizado. Primer punto de contacto.</p>
+    </div>
+    <div class="sub-card">
+      <h4>Fiscal Sin Estres</h4>
+      <p>Comunidad Telegram de Lorena. Submarca contable.</p>
+    </div>
+    <div class="sub-card">
+      <h4>Profesional Fit</h4>
+      <p>Caso Alejandro. Marca personal para entrenadores.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 4. PALETA DE COLOR -->
+<section id="paleta">
+  <span class="section-label">04 / Paleta de color</span>
+  <h2 class="section-title">colores con proposito</h2>
+  <p class="section-desc">Maximo 2 colores por pieza visual. El violeta es el acento: si esta en todos lados, pierde fuerza. Usarlo con bisturi.</p>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0D0D0D;border:1px solid rgba(255,255,255,0.1);border-radius:12px 12px 0 0;"></div>
+      <div class="color-info">
+        <h4>Negro Potencia</h4>
+        <div class="hex">#0D0D0D</div>
+        <p>Fondo base, seriedad, contraste. NUNCA texto negro sobre fondo claro (usar gris en su lugar).</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#7C3AED;border-radius:12px 12px 0 0;"></div>
+      <div class="color-info">
+        <h4>Violeta Crecio</h4>
+        <div class="hex">#7C3AED</div>
+        <p>EL color de marca. Titulos, CTAs, acentos, bordes hover. Usar con bisturi: solo donde importa.</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#A855F7;border-radius:12px 12px 0 0;"></div>
+      <div class="color-info">
+        <h4>Violeta Claro</h4>
+        <div class="hex">#A855F7</div>
+        <p>Detalles secundarios, degradados sutiles, iconos de apoyo, hovers.</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);border-radius:12px 12px 0 0;"></div>
+      <div class="color-info">
+        <h4>Blanco Puro</h4>
+        <div class="hex">#FFFFFF</div>
+        <p>Texto principal sobre fondos oscuros. Limpieza y legibilidad maxima.</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#71717A;border-radius:12px 12px 0 0;"></div>
+      <div class="color-info">
+        <h4>Gris Neutro</h4>
+        <div class="hex">#71717A</div>
+        <p>Textos secundarios, metadata, captions, subtitulos. Informacion de soporte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 5. TIPOGRAFIA -->
+<section id="tipografia">
+  <span class="section-label">05 / Tipografia</span>
+  <h2 class="section-title">montserrat, siempre</h2>
+  <p class="section-desc">Una sola familia tipografica. Sin excepciones. La fuerza esta en los pesos y el spacing negativo en titulos.</p>
+  <div class="type-samples">
+    <div class="type-row">
+      <span class="type-label">H1 Hero</span>
+      <span class="type-meta">48-64px / ExtraBold 800 / -1px</span>
+      <span class="t-h1">crecıó transforma</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H2 Seccion</span>
+      <span class="type-meta">32-40px / Bold 700 / -0.5px</span>
+      <span class="t-h2">tu marca merece ser vista</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H3 Subtitulo</span>
+      <span class="type-meta">24px / SemiBold 600</span>
+      <span class="t-h3">Estrategia de contenido personalizada</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body</span>
+      <span class="type-meta">16-18px / Regular 400 / 1.6 lh</span>
+      <span class="t-body">Creamos sistemas de contenido que convierten seguidores en clientes reales. Sin metricas de vanidad, sin promesas vacias.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Caption</span>
+      <span class="type-meta">13-14px / Regular 400 / Gris</span>
+      <span class="t-caption">Resultados medidos en clientes nuevos por mes, no en likes</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">CTA Button</span>
+      <span class="type-meta">16px / Bold 700 / Violeta</span>
+      <span class="t-cta">Quiero mi diagnostico gratis</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 6. ICONOS Y PATRONES -->
+<section id="iconos">
+  <span class="section-label">06 / Iconos y patrones</span>
+  <h2 class="section-title">iconografia lucide</h2>
+  <p class="section-desc">Iconos de linea (stroke, no fill). Grosor 1.5-2px. Color violeta o blanco segun fondo. NUNCA mezclar fill y stroke. NUNCA emojis en UI.</p>
+  <div class="icon-grid">
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Usuario</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span>Metricas</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span>Dashboard</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <span>Contenido</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span>Crecimiento</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Mensajes</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Tiempo</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Verificado</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>Imagen</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      <span>Video</span>
+    </div>
+  </div>
+  <div class="pattern-demo">
+    <span>Patron decorativo: glow radial violeta sutil como fondo (sin sobrecargar)</span>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 7. PLANTILLAS INSTAGRAM -->
+<section id="plantillas">
+  <span class="section-label">07 / Plantillas Instagram</span>
+  <h2 class="section-title">sistema de contenido visual</h2>
+  <p class="section-desc">Formatos definidos para feed, stories y carruseles. Consistencia visual en cada publicacion.</p>
+  <div class="ig-grid">
+    <!-- Post Feed -->
+    <div class="ig-mockup">
+      <div class="ig-mockup-screen dark-bg" style="aspect-ratio:4/5;">
+        <span class="ig-logo-small">crecıó</span>
+        <div style="margin-top:auto;">
+          <p class="ig-hook">tu perfil no vende<br>porque <span class="accent">nadie lo ve</span></p>
+          <p style="font-size:12px;color:#71717A;margin-top:12px;">Descubre por que los mejores profesionales invierten en su marca personal</p>
+        </div>
+      </div>
+      <div class="ig-mockup-label">Post Feed 1080x1350 (4:5)</div>
+    </div>
+    <!-- Story -->
+    <div class="ig-mockup">
+      <div class="ig-mockup-screen dark-bg" style="aspect-ratio:9/16;max-height:400px;">
+        <span class="ig-logo-small">crecıó</span>
+        <div style="margin:auto 0;text-align:center;">
+          <p style="font-size:18px;font-weight:800;letter-spacing:-0.5px;margin-bottom:16px;">tu diagnostico<br>de perfil esta listo</p>
+          <span class="ig-cta-btn">Ver mi resultado</span>
+        </div>
+        <p style="font-size:10px;color:#71717A;text-align:center;">Desliza hacia arriba</p>
+      </div>
+      <div class="ig-mockup-label">Story 1080x1920 (9:16)</div>
+    </div>
+    <!-- Carrusel -->
+    <div class="ig-mockup">
+      <div class="ig-mockup-screen dark-bg" style="aspect-ratio:4/5;">
+        <span class="ig-logo-small">crecıó</span>
+        <div style="margin-top:auto;">
+          <p class="ig-hook">3 errores que <span class="accent">matan</span> tu perfil profesional</p>
+          <p class="ig-slide-num" style="margin-top:16px;">1 / 7</p>
+        </div>
+      </div>
+      <div class="ig-mockup-label">Carrusel - Portada (hook)</div>
+    </div>
+    <!-- Carrusel slide interna -->
+    <div class="ig-mockup">
+      <div class="ig-mockup-screen dark-bg" style="aspect-ratio:4/5;">
+        <span class="ig-logo-small">crecıó</span>
+        <div style="margin:auto 0;">
+          <p style="font-size:11px;color:#7C3AED;font-weight:700;letter-spacing:1px;margin-bottom:8px;">ERROR #1</p>
+          <p style="font-size:18px;font-weight:700;letter-spacing:-0.3px;margin-bottom:12px;">Foto de perfil borrosa o desactualizada</p>
+          <p style="font-size:13px;color:#71717A;line-height:1.5;">Tu foto es lo primero que ven. Si no transmite profesionalismo, pierdes la atencion en 2 segundos.</p>
+        </div>
+        <p class="ig-slide-num">2 / 7</p>
+      </div>
+      <div class="ig-mockup-label">Carrusel - Slide educativa</div>
+    </div>
+  </div>
+
+  <!-- Highlight Covers -->
+  <h3 style="font-size:18px;font-weight:700;margin-top:48px;margin-bottom:24px;">Highlight Covers</h3>
+  <div class="highlights-row">
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <span class="highlight-label">Analizador</span>
+    </div>
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <span class="highlight-label">Diagnostico</span>
+    </div>
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <span class="highlight-label">Testimonios</span>
+    </div>
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <span class="highlight-label">Sistema</span>
+    </div>
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <span class="highlight-label">FAQ</span>
+    </div>
+    <div style="text-align:center;">
+      <div class="highlight-circle">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#7C3AED;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <span class="highlight-label">Contacto</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 8. TARJETA DE PRESENTACION -->
+<section id="tarjeta">
+  <span class="section-label">08 / Business Card</span>
+  <h2 class="section-title">tarjeta digital</h2>
+  <p class="section-desc">Minimalista, fondo negro, logo violeta. Solo informacion esencial. El violeta aparece unicamente en el logo y un borde sutil.</p>
+  <div class="card-container">
+    <div class="biz-card">
+      <div class="biz-card-logo">crecıó</div>
+      <div class="biz-card-info">
+        <span class="biz-card-name">Juan Manuel | Crecio</span>
+        <span class="biz-card-detail">@crecio.co</span>
+        <span class="biz-card-detail">+57 300 000 0000</span>
+        <span class="biz-card-detail">crecio.co/analizador</span>
+      </div>
+    </div>
+    <div class="biz-card" style="border-color:rgba(124,58,237,0.1);">
+      <div style="text-align:center;">
+        <span style="font-size:48px;font-weight:800;color:#7C3AED;letter-spacing:-2px;">c</span>
+      </div>
+      <div class="biz-card-info" style="text-align:center;">
+        <span class="biz-card-detail">convertimos tu conocimiento en clientes</span>
+        <span class="biz-card-detail" style="color:#7C3AED;">crecio.co</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 9. GUIA DE USO -->
+<section id="guia">
+  <span class="section-label">09 / Guia de uso</span>
+  <h2 class="section-title">do's and don'ts</h2>
+  <p class="section-desc">Reglas claras para mantener la consistencia de marca en cada pieza de comunicacion.</p>
+  <div class="dodont-grid">
+    <div class="dodont-card do-card">
+      <h4>SI hacer</h4>
+      <ul>
+        <li>Usar violeta solo para acentos y CTAs</li>
+        <li>Mantener mucho espacio negro (air)</li>
+        <li>Textos cortos y directos</li>
+        <li>Iconos Lucide de linea (stroke)</li>
+        <li>Fotos reales de profesionales colombianos</li>
+        <li>Sombras suaves (box-shadow violeta al 10% opacity)</li>
+        <li>Montserrat siempre, sin excepciones</li>
+        <li>Logo en minuscula, sin punto en la i</li>
+      </ul>
+    </div>
+    <div class="dodont-card dont-card">
+      <h4>NO hacer</h4>
+      <ul>
+        <li>Saturar con violeta (pierde fuerza)</li>
+        <li>Usar emojis en diseno o UI</li>
+        <li>Mezclar tipografias (solo Montserrat)</li>
+        <li>Texto pequeno sobre fondos complejos</li>
+        <li>Usar stock generico o fotos con marca de agua</li>
+        <li>Degradados agresivos o neon</li>
+        <li>Mas de 2 colores por pieza visual</li>
+        <li>Logo en mayuscula o con punto en la i</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<!-- 10. CASO DE EXITO -->
+<section id="caso">
+  <span class="section-label">10 / Aplicacion real</span>
+  <h2 class="section-title">post de caso de exito</h2>
+  <p class="section-desc">Mockup de un post real mostrando resultado de un cliente. Antes/despues con datos concretos.</p>
+  <div class="case-mockup">
+    <div class="case-header">
+      <div class="case-avatar">c</div>
+      <div>
+        <div class="case-user">crecio.co</div>
+        <div style="font-size:11px;color:#71717A;">Caso real - Resultados en 60 dias</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <h3>De 0 a <span class="accent">23 clientes</span> en 60 dias</h3>
+      <p style="font-size:13px;color:#71717A;line-height:1.5;">Lorena es contadora. Tenia el conocimiento pero nadie la encontraba. Con el Sistema Crecio, paso de depender del voz a voz a tener un flujo constante de leads calificados.</p>
+      <div class="case-stats">
+        <div class="stat-box">
+          <div class="num">0</div>
+          <div class="label">Seguidores activos antes</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">2.4K</div>
+          <div class="label">Seguidores en 60 dias</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">0</div>
+          <div class="label">Leads/mes antes</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">23</div>
+          <div class="label">Clientes nuevos/mes</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-footer">
+      Quieres resultados asi? Link en bio para tu diagnostico gratuito.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="text-align:center;padding:60px 32px 40px;border-top:1px solid rgba(124,58,237,0.1);">
+  <div style="font-size:32px;font-weight:800;color:#7C3AED;letter-spacing:-1px;margin-bottom:12px;">crecıó</div>
+  <p style="font-size:13px;color:#71717A;margin-bottom:8px;">convertimos tu conocimiento en clientes</p>
+  <p style="font-size:12px;color:#71717A;">Brand Kit 2025 / @crecio.co / Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
