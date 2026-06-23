@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorena | Brand Kit — Tu Contadora de Bolsillo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul: #0F2A4A;
+    --menta: #2DD4A7;
+    --crema: #FAFAF8;
+    --gris: #6B7280;
+    --gris-claro: #E5E7EB;
+    --menta-light: rgba(45,212,167,0.12);
+    --azul-light: rgba(15,42,74,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--crema);
+    color: var(--azul);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gris-claro);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-size: 1rem; font-weight: 700; color: var(--azul);
+    letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px;
+  }
+  .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--menta); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 500; color: var(--gris);
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--azul); }
+  @media (max-width: 680px) { .nav-links { display: none; } }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 5vw; }
+  .section-dark {
+    background: var(--azul);
+    color: var(--crema);
+  }
+  .section-dark .label { color: var(--menta); }
+  .section-dark p { color: rgba(250,250,248,0.72); }
+
+  .label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--menta);
+    margin-bottom: 16px; display: block;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
+    color: var(--azul);
+  }
+  h2 {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+  }
+  h3 {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600; letter-spacing: -0.02em;
+  }
+
+  .max-w { max-width: 1100px; margin: 0 auto; }
+  .max-w-sm { max-width: 640px; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 120px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-dot {
+    position: absolute; right: -10vw; top: 50%; transform: translateY(-50%);
+    width: 55vw; max-width: 700px; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,212,167,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--menta-light); border: 1px solid rgba(45,212,167,0.3);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 0.78rem; font-weight: 600; color: #1a9e7a;
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--menta); }
+  .hero-title span { color: var(--menta); }
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: var(--gris); margin-top: 24px; max-width: 520px; line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px;
+    padding-top: 40px; border-top: 1px solid var(--gris-claro);
+  }
+  .hero-meta-item { font-size: 0.8rem; color: var(--gris); display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-item strong { font-size: 1rem; font-weight: 700; color: var(--azul); }
+
+  /* ─── MOODBOARD ─── */
+  .moodboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 16px; border-radius: 20px; overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    .moodboard-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 220px); }
+    .mood-main { grid-column: 1/-1; grid-row: 1; }
+  }
+  .mood-main { grid-row: 1/3; }
+  .mood-card {
+    border-radius: 0; position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .mood-card-content {
+    width: 100%; padding: 20px;
+    background: linear-gradient(to top, rgba(15,42,74,0.75) 0%, transparent 100%);
+    color: white;
+  }
+  .mood-card-content p { font-size: 0.75rem; font-weight: 500; opacity: 0.85; }
+  .mood-card-content strong { font-size: 0.9rem; display: block; }
+  /* SVG illustration moods */
+  .mood-svg-bg { width: 100%; height: 100%; }
+
+  .moodboard-keywords {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  }
+  .kw-tag {
+    padding: 8px 18px; border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600;
+    background: var(--azul-light); color: var(--azul);
+  }
+  .kw-tag.accent { background: var(--menta-light); color: #1a9e7a; }
+
+  /* ─── LOGO ─── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 48px;
+  }
+  @media (max-width: 680px) { .logo-grid { grid-template-columns: 1fr; } }
+  .logo-card {
+    border-radius: 16px; padding: 40px 32px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px; text-align: center;
+  }
+  .logo-card.light { background: var(--crema); border: 1.5px solid var(--gris-claro); }
+  .logo-card.dark { background: var(--azul); }
+  .logo-card.mid { background: #1a3a5c; }
+  .logo-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gris); margin-top: 8px;
+  }
+  .logo-card.dark .logo-label, .logo-card.mid .logo-label { color: rgba(255,255,255,0.4); }
+  .logo-card.dark .logo-sublabel { color: rgba(255,255,255,0.6); }
+  .logo-sublabel { font-size: 0.75rem; color: var(--gris); }
+
+  /* ─── SUBMARCAS ─── */
+  .submarca-row {
+    display: flex; flex-wrap: wrap; gap: 20px; margin-top: 48px;
+  }
+  .submarca-card {
+    flex: 1; min-width: 240px;
+    border-radius: 16px; padding: 32px 28px;
+    border: 1.5px solid var(--gris-claro);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .submarca-card.featured { background: var(--menta-light); border-color: rgba(45,212,167,0.3); }
+  .submarca-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 100px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .badge-green { background: var(--menta); color: var(--azul); }
+  .badge-blue { background: var(--azul); color: white; }
+  .badge-outline { border: 1.5px solid var(--gris-claro); color: var(--gris); }
+  .submarca-name { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; color: var(--azul); }
+  .submarca-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.6; }
+
+  /* ─── PALETA ─── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr 0.8fr;
+    gap: 16px; margin-top: 48px;
+  }
+  @media (max-width: 768px) { .palette-grid { grid-template-columns: 1fr 1fr; } }
+  .swatch {
+    border-radius: 16px; overflow: hidden;
+  }
+  .swatch-color { height: 140px; }
+  .swatch-info { padding: 16px; background: white; border: 1px solid var(--gris-claro); border-top: none; border-radius: 0 0 16px 16px; }
+  .swatch-name { font-size: 0.82rem; font-weight: 700; color: var(--azul); }
+  .swatch-hex { font-size: 0.72rem; font-weight: 600; color: var(--gris); letter-spacing: 0.06em; margin: 2px 0 8px; }
+  .swatch-use { font-size: 0.7rem; color: var(--gris); line-height: 1.5; }
+  .swatch-emotion {
+    display: inline-block; margin-top: 8px;
+    padding: 3px 10px; border-radius: 100px;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--azul-light); color: var(--azul);
+  }
+
+  /* ─── TIPOGRAFÍA ─── */
+  .typo-scale { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+  .typo-row {
+    display: grid; grid-template-columns: 140px 1fr 120px;
+    align-items: baseline; gap: 24px;
+    padding: 28px 0; border-bottom: 1px solid var(--gris-claro);
+  }
+  .typo-row:last-child { border-bottom: none; }
+  .typo-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); }
+  .typo-spec { font-size: 0.72rem; color: var(--gris); text-align: right; line-height: 1.7; }
+  @media (max-width: 600px) {
+    .typo-row { grid-template-columns: 1fr; gap: 8px; }
+    .typo-spec { text-align: left; }
+  }
+  .typo-h1-demo { font-size: clamp(2.4rem,5vw,4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; color: var(--azul); }
+  .typo-h2-demo { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 700; letter-spacing: -0.03em; color: var(--azul); }
+  .typo-h3-demo { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; color: var(--azul); }
+  .typo-body-demo { font-size: 1rem; font-weight: 400; color: var(--gris); }
+  .typo-cap-demo { font-size: 0.78rem; font-weight: 500; color: var(--gris); letter-spacing: 0.01em; }
+  .typo-cta-demo {
+    display: inline-block; padding: 12px 24px; border-radius: 100px;
+    background: var(--menta); color: var(--azul);
+    font-size: 0.88rem; font-weight: 700; letter-spacing: 0.02em;
+  }
+
+  /* ─── ICONOS ─── */
+  .icons-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 20px; margin-top: 40px;
+  }
+  @media (max-width: 600px) { .icons-grid { grid-template-columns: repeat(3, 1fr); } }
+  .icon-card {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    padding: 24px 12px; border-radius: 12px;
+    border: 1.5px solid var(--gris-claro);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .icon-card:hover { border-color: var(--menta); background: var(--menta-light); }
+  .icon-name { font-size: 0.65rem; font-weight: 600; color: var(--gris); letter-spacing: 0.06em; text-transform: uppercase; text-align: center; }
+
+  .pattern-row { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+  .pattern-card {
+    flex: 1; min-width: 180px; height: 140px; border-radius: 14px; overflow: hidden;
+    border: 1.5px solid var(--gris-claro);
+  }
+
+  /* ─── INSTAGRAM ─── */
+  .ig-section-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 28px; margin-top: 48px;
+  }
+  .ig-wrapper { display: flex; flex-direction: column; gap: 12px; }
+  .ig-label-row {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ig-type { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); }
+  .ig-size { font-size: 0.65rem; color: var(--gris); }
+
+  /* Post feed — 4:5 ratio */
+  .ig-post {
+    width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
+    position: relative; display: flex; flex-direction: column;
+  }
+  /* Story — 9:16 */
+  .ig-story {
+    width: 100%; max-width: 220px; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden;
+    position: relative; margin: 0 auto;
+  }
+  /* Carrusel slide 4:5 */
+  .ig-carousel-wrap { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+  .ig-carousel-wrap::-webkit-scrollbar { height: 4px; }
+  .ig-carousel-wrap::-webkit-scrollbar-thumb { background: var(--gris-claro); border-radius: 4px; }
+  .ig-slide { flex-shrink: 0; width: 220px; aspect-ratio: 4/5; border-radius: 14px; overflow: hidden; position: relative; }
+
+  /* Highlight covers */
+  .highlight-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .highlight-cover {
+    width: 80px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .hl-circle {
+    width: 70px; height: 70px; border-radius: 50%; overflow: hidden;
+    border: 2.5px solid var(--menta); display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hl-name { font-size: 0.62rem; font-weight: 600; color: var(--azul); text-align: center; }
+
+  /* ─── BUSINESS CARD ─── */
+  .bcard-wrap { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 48px; align-items: flex-start; }
+  .bcard {
+    width: 380px; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15,42,74,0.15);
+  }
+  @media (max-width: 500px) { .bcard { width: 100%; } }
+  .bcard-front { background: var(--azul); padding: 40px 36px; }
+  .bcard-back { background: var(--crema); padding: 32px 36px; border: 1px solid var(--gris-claro); }
+
+  .bcard-name { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; color: white; line-height: 1; }
+  .bcard-role { font-size: 0.78rem; font-weight: 500; color: var(--menta); margin-top: 6px; letter-spacing: 0.04em; }
+  .bcard-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 24px 0; }
+  .bcard-tag { font-size: 0.72rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+  .bcard-tag strong { color: white; }
+
+  .bcard-back-items { display: flex; flex-direction: column; gap: 14px; }
+  .bcard-contact {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; color: var(--azul); font-weight: 500;
+  }
+  .bcard-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--azul-light);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .bcard-cta {
+    margin-top: 20px; padding: 12px 0; border-radius: 100px;
+    background: var(--menta); color: var(--azul);
+    font-size: 0.82rem; font-weight: 700; text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── GUÍA ─── */
+  .guia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  @media (max-width: 640px) { .guia-grid { grid-template-columns: 1fr; } }
+  .guia-card { border-radius: 16px; padding: 32px; }
+  .guia-card.si { background: rgba(45,212,167,0.08); border: 1.5px solid rgba(45,212,167,0.3); }
+  .guia-card.no { background: rgba(15,42,74,0.04); border: 1.5px solid var(--gris-claro); }
+  .guia-head {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1rem; font-weight: 700; color: var(--azul);
+    margin-bottom: 20px;
+  }
+  .guia-badge-si { background: var(--menta); color: var(--azul); padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 800; }
+  .guia-badge-no { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 800; }
+  .guia-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .guia-list li { font-size: 0.85rem; color: var(--gris); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .guia-list li::before { content: ''; flex-shrink: 0; }
+  .guia-icon { flex-shrink: 0; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--azul); padding: 60px 5vw;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px;
+  }
+  .footer-left p { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 6px; }
+  .footer-right { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+  /* ─── UTILS ─── */
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+  .tag-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .tag {
+    padding: 4px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 600;
+    border: 1px solid var(--gris-claro); color: var(--gris);
+  }
+  .divider { height: 1px; background: var(--gris-claro); margin: 64px 0; }
+  .section-header { display: flex; flex-direction: column; margin-bottom: 0; }
+  .section-header p { font-size: 1rem; color: var(--gris); margin-top: 12px; max-width: 520px; }
+  .section-dark .section-header p { color: rgba(250,250,248,0.6); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    Lorena<span style="font-weight:300;opacity:.5;">&nbsp;|&nbsp;</span>Brand Kit
+  </div>
+  <ul class="nav-links">
+    <li><a href="#moodboard">Moodboard</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#paleta">Paleta</a></li>
+    <li><a href="#tipografia">Tipo</a></li>
+    <li><a href="#iconos">Iconos</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#tarjeta">Tarjeta</a></li>
+    <li><a href="#guia">Guía</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════════ HERO -->
+<section id="hero">
+  <div class="hero-bg-dot"></div>
+  <div class="max-w hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Brand Kit Completo · 2025
+    </div>
+    <h1>Lorena<br><span>Tu Contadora<br>de Bolsillo.</span></h1>
+    <p class="hero-sub">Sistema Anti-Multas para independientes y freelancers colombianos. Documeto de identidad visual completo, listo para usar en todos los canales.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span>Marca</span><strong>Lorena Contadora</strong></div>
+      <div class="hero-meta-item"><span>Nicho</span><strong>Freelancers CO</strong></div>
+      <div class="hero-meta-item"><span>Posicionamiento</span><strong>Sistema Anti-Multas</strong></div>
+      <div class="hero-meta-item"><span>Tono</span><strong>Cercano · Claro · Confiable</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ MOODBOARD -->
+<section id="moodboard" class="section-dark">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">01 · Moodboard</span>
+      <h2 style="color:white;">La sensación que queremos<br>que sienta tu cliente.</h2>
+      <p>"Mi vida fiscal está bajo control y puedo enfocarme en lo mío."</p>
+    </div>
+
+    <div class="moodboard-grid mt-48">
+      <!-- Main big card -->
+      <div class="mood-card mood-main" style="border-radius:16px 0 0 16px; grid-row:1/3;">
+        <svg class="mood-svg-bg" viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="480" height="600" fill="#1a3a5c"/>
+          <!-- Warm ambient -->
+          <circle cx="300" cy="200" r="220" fill="rgba(45,212,167,0.07)"/>
+          <circle cx="100" cy="500" r="180" fill="rgba(255,200,100,0.06)"/>
+          <!-- Person silhouette working with laptop - stylized -->
+          <rect x="100" y="320" width="280" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+          <!-- Table surface -->
+          <rect x="80" y="324" width="320" height="180" rx="4" fill="rgba(15,42,74,0.6)"/>
+          <!-- Laptop body -->
+          <rect x="140" y="240" width="200" height="130" rx="8" fill="#0F2A4A"/>
+          <rect x="148" y="248" width="184" height="114" rx="4" fill="#1e4a7a"/>
+          <!-- Screen glow -->
+          <rect x="152" y="252" width="176" height="106" rx="3" fill="rgba(45,212,167,0.15)"/>
+          <!-- Screen content lines -->
+          <rect x="165" y="268" width="60" height="5" rx="2" fill="rgba(45,212,167,0.6)"/>
+          <rect x="165" y="280" width="100" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+          <rect x="165" y="291" width="80" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <rect x="165" y="305" width="120" height="28" rx="6" fill="rgba(45,212,167,0.25)"/>
+          <rect x="175" y="313" width="60" height="12" rx="3" fill="rgba(45,212,167,0.5)"/>
+          <!-- Laptop keyboard base -->
+          <rect x="130" y="370" width="220" height="14" rx="3" fill="#0a2040"/>
+          <!-- Coffee cup -->
+          <rect x="355" y="295" width="36" height="44" rx="8" fill="#1a3a5c"/>
+          <rect x="357" y="297" width="32" height="10" rx="2" fill="rgba(45,212,167,0.3)"/>
+          <path d="M391 310 Q402 310 402 320 Q402 330 391 330" stroke="rgba(45,212,167,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Small plant -->
+          <rect x="90" y="280" width="16" height="44" rx="3" fill="#0a2040"/>
+          <ellipse cx="98" cy="270" rx="22" ry="18" fill="rgba(45,212,167,0.3)"/>
+          <ellipse cx="86" cy="278" rx="14" ry="12" fill="rgba(45,212,167,0.2)"/>
+          <ellipse cx="112" cy="275" rx="14" ry="12" fill="rgba(45,212,167,0.2)"/>
+          <!-- Check badge floating -->
+          <circle cx="340" cy="180" r="28" fill="rgba(45,212,167,0.15)" stroke="rgba(45,212,167,0.4)" stroke-width="1.5"/>
+          <path d="M330 180 L337 187 L352 172" stroke="#2DD4A7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Floating pill: tranquilidad -->
+          <rect x="110" y="185" width="130" height="30" rx="15" fill="rgba(45,212,167,0.2)" stroke="rgba(45,212,167,0.4)" stroke-width="1"/>
+          <text x="175" y="205" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#2DD4A7" text-anchor="middle">✓ Sin ansiedad fiscal</text>
+        </svg>
+        <div class="mood-card-content">
+          <p>Freelancer · Bogotá</p>
+          <strong>Control total, desde el café</strong>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="mood-card">
+        <svg class="mood-svg-bg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="240" height="280" fill="#f0ebe3"/>
+          <circle cx="180" cy="40" r="80" fill="rgba(45,212,167,0.12)"/>
+          <!-- Phone with dashboard -->
+          <rect x="70" y="40" width="100" height="180" rx="14" fill="white" style="filter:drop-shadow(0 8px 20px rgba(15,42,74,0.15))"/>
+          <rect x="78" y="52" width="84" height="12" rx="3" fill="#2DD4A7" opacity=".8"/>
+          <rect x="78" y="70" width="60" height="7" rx="2" fill="#E5E7EB"/>
+          <rect x="78" y="82" width="84" height="40" rx="6" fill="rgba(15,42,74,0.06)"/>
+          <text x="120" y="107" font-family="Poppins,sans-serif" font-size="16" font-weight="800" fill="#0F2A4A" text-anchor="middle">$0</text>
+          <text x="120" y="118" font-family="Poppins,sans-serif" font-size="7" fill="#6B7280" text-anchor="middle">multas pendientes</text>
+          <rect x="78" y="128" width="38" height="28" rx="6" fill="rgba(45,212,167,0.15)"/>
+          <rect x="122" y="128" width="40" height="28" rx="6" fill="rgba(15,42,74,0.06)"/>
+          <rect x="78" y="162" width="84" height="6" rx="2" fill="#E5E7EB"/>
+          <rect x="78" y="162" width="60" height="6" rx="2" fill="#2DD4A7"/>
+          <rect x="78" y="174" width="84" height="22" rx="6" fill="#0F2A4A"/>
+          <text x="120" y="189" font-family="Poppins,sans-serif" font-size="8" font-weight="600" fill="#2DD4A7" text-anchor="middle">Ver resumen</text>
+        </svg>
+        <div class="mood-card-content">
+          <strong>Dashboard fiscal</strong>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="mood-card">
+        <svg class="mood-svg-bg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="240" height="280" fill="#0F2A4A"/>
+          <circle cx="60" cy="260" r="120" fill="rgba(45,212,167,0.06)"/>
+          <!-- Calendar with check marks -->
+          <rect x="40" y="60" width="160" height="160" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <rect x="40" y="60" width="160" height="36" rx="12" fill="rgba(45,212,167,0.2)"/>
+          <rect x="40" y="84" width="160" height="12" rx="0" fill="rgba(45,212,167,0.2)"/>
+          <text x="120" y="84" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#2DD4A7" text-anchor="middle">Agosto 2025</text>
+          <!-- Day dots -->
+          <circle cx="68" cy="120" r="10" fill="rgba(45,212,167,0.3)"/>
+          <path d="M63 120 L67 124 L74 116" stroke="#2DD4A7" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <circle cx="100" cy="120" r="10" fill="rgba(45,212,167,0.3)"/>
+          <path d="M95 120 L99 124 L106 116" stroke="#2DD4A7" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <circle cx="132" cy="120" r="10" fill="rgba(255,255,255,0.08)"/>
+          <text x="132" y="125" font-family="Poppins,sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">12</text>
+          <circle cx="164" cy="120" r="10" fill="rgba(255,255,255,0.08)"/>
+          <text x="164" y="125" font-family="Poppins,sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">13</text>
+          <!-- Alert row -->
+          <rect x="54" y="148" width="132" height="28" rx="6" fill="rgba(255,200,80,0.15)" stroke="rgba(255,200,80,0.3)" stroke-width="1"/>
+          <text x="120" y="167" font-family="Poppins,sans-serif" font-size="8.5" font-weight="600" fill="rgba(255,200,80,0.9)" text-anchor="middle">⚠ Declaración: 22 ago</text>
+          <rect x="54" y="184" width="132" height="22" rx="6" fill="rgba(45,212,167,0.15)"/>
+          <text x="120" y="199" font-family="Poppins,sans-serif" font-size="8" font-weight="600" fill="#2DD4A7" text-anchor="middle">✓ Lorena lo gestiona</text>
+        </svg>
+        <div class="mood-card-content">
+          <strong>Cero fechas olvidadas</strong>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="mood-card">
+        <svg class="mood-svg-bg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="240" height="280" fill="#f7f4ee"/>
+          <circle cx="200" cy="80" r="100" fill="rgba(45,212,167,0.1)"/>
+          <!-- Chat bubbles testimonial -->
+          <rect x="28" y="50" width="152" height="52" rx="14" rx_br="4" fill="white" style="filter:drop-shadow(0 4px 14px rgba(15,42,74,0.1))"/>
+          <text x="44" y="72" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">"Antes me daba pánico</text>
+          <text x="44" y="85" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">ver correos de la DIAN."</text>
+          <rect x="56" y="118" width="156" height="52" rx="14" fill="#0F2A4A"/>
+          <text x="72" y="140" font-family="Poppins,sans-serif" font-size="9" fill="rgba(255,255,255,0.85)">"Ahora Lorena maneja</text>
+          <text x="72" y="153" font-family="Poppins,sans-serif" font-size="9" fill="rgba(255,255,255,0.85)">todo y yo solo facturo."</text>
+          <rect x="28" y="186" width="130" height="28" rx="8" fill="rgba(45,212,167,0.15)" stroke="rgba(45,212,167,0.3)" stroke-width="1"/>
+          <text x="93" y="204" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#1a9e7a" text-anchor="middle">★★★★★  Sebastián V.</text>
+        </svg>
+        <div class="mood-card-content">
+          <strong>Testimonios reales</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="moodboard-keywords">
+      <span class="kw-tag accent">Tranquilidad</span>
+      <span class="kw-tag accent">Control</span>
+      <span class="kw-tag accent">Claridad</span>
+      <span class="kw-tag">Sin tecnicismos</span>
+      <span class="kw-tag">Profesional cercana</span>
+      <span class="kw-tag">Tonos cálidos</span>
+      <span class="kw-tag">Verde menta</span>
+      <span class="kw-tag">Espacio respiro</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ LOGO -->
+<section id="logo">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">02 · Logo Principal</span>
+      <h2>Identidad visual.<br>Confianza a primera vista.</h2>
+      <p>Símbolo: escudo protector con check integrado — "yo te cuido de la DIAN". Tres versiones para todos los contextos.</p>
+    </div>
+
+    <div class="logo-grid">
+      <!-- Full color horizontal -->
+      <div class="logo-card light">
+        <svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;">
+          <!-- Shield icon -->
+          <path d="M20 18 L20 52 Q20 68 36 75 Q52 68 52 52 L52 18 Z" fill="#0F2A4A" stroke="none"/>
+          <path d="M27 18 L27 50 Q27 62 36 67 Q45 62 45 50 L45 18 Z" fill="rgba(45,212,167,0.15)"/>
+          <path d="M29 36 L34 42 L44 30" stroke="#2DD4A7" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Wordmark -->
+          <text x="64" y="46" font-family="Poppins,sans-serif" font-size="28" font-weight="800" fill="#0F2A4A" letter-spacing="-1">Lorena</text>
+          <text x="64" y="64" font-family="Poppins,sans-serif" font-size="10" font-weight="500" fill="#6B7280" letter-spacing="0.5">Tu Contadora de Bolsillo</text>
+          <!-- Menta accent line -->
+          <rect x="64" y="68" width="80" height="2.5" rx="1.25" fill="#2DD4A7"/>
+        </svg>
+        <span class="logo-label">Full Color · Horizontal</span>
+        <span class="logo-sublabel">Uso principal</span>
+      </div>
+
+      <!-- Dark background version -->
+      <div class="logo-card dark">
+        <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:180px;">
+          <!-- Shield -->
+          <path d="M88 20 L88 60 Q88 80 110 88 Q132 80 132 60 L132 20 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(45,212,167,0.5)" stroke-width="1.5"/>
+          <path d="M98 42 L107 52 L124 36" stroke="#2DD4A7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Text below -->
+          <text x="110" y="108" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="white" text-anchor="middle" letter-spacing="-0.8">Lorena</text>
+          <text x="110" y="122" font-family="Poppins,sans-serif" font-size="9" font-weight="500" fill="rgba(255,255,255,0.55)" text-anchor="middle" letter-spacing="0.4">Tu Contadora de Bolsillo</text>
+        </svg>
+        <span class="logo-label" style="color:rgba(255,255,255,.35);">Full Color · Vertical</span>
+        <span class="logo-sublabel" style="color:rgba(255,255,255,.3);">Sobre fondo azul</span>
+      </div>
+
+      <!-- Isotipo solo -->
+      <div class="logo-card mid">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="width:88px;height:88px;">
+          <circle cx="60" cy="60" r="56" fill="rgba(45,212,167,0.12)" stroke="rgba(45,212,167,0.3)" stroke-width="1.5"/>
+          <path d="M38 32 L38 72 Q38 90 60 98 Q82 90 82 72 L82 32 Z" fill="#0F2A4A" stroke="none"/>
+          <path d="M47 32 L47 70 Q47 84 60 90 Q73 84 73 70 L73 32 Z" fill="rgba(45,212,167,0.12)"/>
+          <path d="M48 60 L57 70 L74 50" stroke="#2DD4A7" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-label" style="color:rgba(255,255,255,.35);">Isotipo Solo</span>
+        <span class="logo-sublabel" style="color:rgba(255,255,255,.3);">Favicon · App icon · WA</span>
+      </div>
+
+      <!-- Sistema Anti-Multas version -->
+      <div class="logo-card light" style="background:var(--menta-light); border-color:rgba(45,212,167,.35);">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;">
+          <path d="M18 16 L18 48 Q18 62 32 68 Q46 62 46 48 L46 16 Z" fill="#0F2A4A"/>
+          <path d="M27 32 L32 38 L40 28" stroke="#2DD4A7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="58" y="40" font-family="Poppins,sans-serif" font-size="18" font-weight="800" fill="#0F2A4A" letter-spacing="-0.5">Lorena</text>
+          <rect x="58" y="46" width="200" height="1.5" rx=".75" fill="rgba(15,42,74,0.15)"/>
+          <text x="58" y="64" font-family="Poppins,sans-serif" font-size="9.5" font-weight="700" fill="#0F2A4A" letter-spacing="2.5">SISTEMA ANTI-MULTAS</text>
+        </svg>
+        <span class="logo-label">Tagline Alternativo</span>
+        <span class="logo-sublabel">Redes sociales · Bio</span>
+      </div>
+
+      <!-- Monocromática clara -->
+      <div class="logo-card" style="background:#1a3a5c; grid-column:2/4;">
+        <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;justify-content:center;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" style="width:200px;">
+              <path d="M14 12 L14 46 Q14 58 26 64 Q38 58 38 46 L38 12 Z" fill="rgba(255,255,255,0.9)"/>
+              <path d="M22 28 L26.5 33 L34 24" stroke="#1a3a5c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="50" y="36" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="-0.8">Lorena</text>
+              <text x="50" y="52" font-family="Poppins,sans-serif" font-size="8.5" font-weight="500" fill="rgba(255,255,255,0.55)" letter-spacing="0.4">Tu Contadora de Bolsillo</text>
+            </svg>
+            <span style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);">Versión Blanca</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" style="width:200px;">
+              <path d="M14 12 L14 46 Q14 58 26 64 Q38 58 38 46 L38 12 Z" fill="rgba(15,42,74,0.6)"/>
+              <path d="M22 28 L26.5 33 L34 24" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="50" y="36" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="rgba(15,42,74,0.4)" letter-spacing="-0.8">Lorena</text>
+              <text x="50" y="52" font-family="Poppins,sans-serif" font-size="8.5" font-weight="500" fill="rgba(15,42,74,0.35)" letter-spacing="0.4">Tu Contadora de Bolsillo</text>
+            </svg>
+            <span style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);">Versión Outline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Construcción del logo -->
+    <div style="margin-top:48px; padding:36px; background:var(--azul-light); border-radius:16px; border:1px solid var(--gris-claro);">
+      <h3 style="margin-bottom:20px;">Espacio de protección</h3>
+      <p style="font-size:.85rem; color:var(--gris); line-height:1.7;">El área libre mínima alrededor del logo es equivalente a la altura de la letra <strong>"L"</strong> en cada lado. Nunca comprimas, estires ni recolores el logo fuera de las versiones aprobadas.</p>
+      <div class="tag-row">
+        <span class="tag">Tamaño mínimo: 120px web</span>
+        <span class="tag">32px app icon</span>
+        <span class="tag">No deformar</span>
+        <span class="tag">No añadir sombras</span>
+        <span class="tag">No cambiar colores</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ SUBMARCAS -->
+<section style="background:var(--azul-light); padding:80px 5vw;">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">02b · Submarcas & Lockups</span>
+      <h2>Cada producto,<br>su propia voz.</h2>
+    </div>
+    <div class="submarca-row">
+      <div class="submarca-card featured">
+        <span class="submarca-badge badge-green">⚡ Producto estrella</span>
+        <div class="submarca-name">Sistema Anti-Multas</div>
+        <p class="submarca-desc">El nombre de tu servicio principal. Va siempre junto al logo de Lorena, nunca solo. Usa Poppins 800 + el icono escudo.</p>
+        <svg viewBox="0 0 240 56" xmlns="http://www.w3.org/2000/svg" style="margin-top:8px;width:100%;max-width:240px;">
+          <path d="M10 8 L10 34 Q10 44 20 48 Q30 44 30 34 L30 8 Z" fill="#0F2A4A"/>
+          <path d="M16 21 L20 26 L26 18" stroke="#2DD4A7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="28" font-family="Poppins,sans-serif" font-size="16" font-weight="800" fill="#0F2A4A" letter-spacing="-0.4">Sistema</text>
+          <text x="42" y="44" font-family="Poppins,sans-serif" font-size="16" font-weight="800" fill="#2DD4A7" letter-spacing="-0.4">Anti-Multas™</text>
+        </svg>
+      </div>
+
+      <div class="submarca-card">
+        <span class="submarca-badge badge-blue">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22 11 13 2 9 22 2Z"/></svg>
+          Canal Telegram
+        </span>
+        <div class="submarca-name">Fiscal Sin Estrés</div>
+        <p class="submarca-desc">Nombre del canal de contenido gratuito. Tono más relajado y educativo. Icono: avión de papel o rayo estilizado en menta.</p>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:10px;">
+          <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="18" fill="#0F2A4A"/>
+            <path d="M28 10L6 18.5 13.5 21 16 28 20 22 26 26Z" stroke="#2DD4A7" stroke-width="1.8" fill="rgba(45,212,167,0.2)" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div style="font-size:.88rem;font-weight:700;color:var(--azul);">Fiscal Sin Estrés</div>
+            <div style="font-size:.72rem;color:var(--gris);">by Lorena</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="submarca-card">
+        <span class="submarca-badge badge-outline">📦 Producto</span>
+        <div class="submarca-name">Pack Tranquilidad</div>
+        <p class="submarca-desc">Nombre del paquete de entrada. Transmite el resultado emocional. Usa fondo crema + acento menta. Siempre en mayúscula inicial.</p>
+        <div style="margin-top:12px; padding:14px 18px; background:white; border-radius:10px; border:1.5px solid var(--gris-claro); display:flex; align-items:center; gap:12px;">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="rgba(45,212,167,0.15)"/>
+            <path d="M8 16 L13 21 L24 11" stroke="#2DD4A7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div style="font-size:.82rem;font-weight:800;color:var(--azul);">Pack Tranquilidad</div>
+            <div style="font-size:.68rem;color:var(--gris);">Sistema Anti-Multas · Lorena</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ PALETA -->
+<section id="paleta">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">03 · Paleta de Color</span>
+      <h2>Colores que inspiran<br>confianza, no aburrimiento.</h2>
+      <p>Cada color tiene un rol emocional específico. Seguirlo es la diferencia entre parecer una firma grande o una amiga experta.</p>
+    </div>
+
+    <div class="palette-grid">
+      <!-- Azul Confianza -->
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0F2A4A; display:flex;align-items:flex-end;padding:16px;">
+          <div style="display:flex;gap:8px;">
+            <div style="width:20px;height:20px;border-radius:50%;background:#2DD4A7;"></div>
+            <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+          </div>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Azul Confianza</div>
+          <div class="swatch-hex">#0F2A4A</div>
+          <div class="swatch-use">Fondos de contraste, texto principal, logo, fondos de secciones hero. El color que dice "soy seria, no aburrida".</div>
+          <span class="swatch-emotion">Autoridad · Seguridad</span>
+        </div>
+      </div>
+
+      <!-- Verde Menta -->
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2DD4A7; display:flex;align-items:flex-end;padding:16px;">
+          <span style="font-size:.7rem;font-weight:700;color:rgba(15,42,74,0.6);">Solo para CTAs</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde Menta</div>
+          <div class="swatch-hex">#2DD4A7</div>
+          <div class="swatch-use">Exclusivo para: botones CTA, iconos activos, subrayados, badges de éxito. <strong>Máximo 1 elemento por pieza.</strong></div>
+          <span class="swatch-emotion">Acción · Dinero · Frescura</span>
+        </div>
+      </div>
+
+      <!-- Blanco Crema -->
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FAFAF8; border:1px solid #E5E7EB; display:flex;align-items:flex-end;padding:16px;">
+          <span style="font-size:.7rem;font-weight:700;color:#C4C4C4;">Respiro</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blanco Crema</div>
+          <div class="swatch-hex">#FAFAF8</div>
+          <div class="swatch-use">Fondo principal. Más cálido que el blanco puro. Reduce fatiga visual. Para fondos de cards, slides y layouts generales.</div>
+          <span class="swatch-emotion">Respiro · Calidez</span>
+        </div>
+      </div>
+
+      <!-- Gris -->
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B7280; display:flex;align-items:flex-end;padding:16px;">
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris Neutro</div>
+          <div class="swatch-hex">#6B7280</div>
+          <div class="swatch-use">Texto de cuerpo, captions, metadatos. Nunca para títulos.</div>
+          <span class="swatch-emotion">Claridad · Legibilidad</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reglas de uso -->
+    <div style="margin-top:32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;">
+      <div style="padding:20px;border-radius:12px;background:rgba(45,212,167,.08);border:1px solid rgba(45,212,167,.25);">
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#1a9e7a;margin-bottom:8px;">Combinación A</div>
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <div style="width:24px;height:24px;border-radius:6px;background:#0F2A4A;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#FAFAF8;border:1px solid #E5E7EB;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#2DD4A7;"></div>
+        </div>
+        <div style="font-size:.78rem;color:var(--gris);">Azul fondo · Crema texto · Menta acento</div>
+      </div>
+      <div style="padding:20px;border-radius:12px;background:var(--azul-light);border:1px solid var(--gris-claro);">
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gris);margin-bottom:8px;">Combinación B</div>
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <div style="width:24px;height:24px;border-radius:6px;background:#FAFAF8;border:1px solid #E5E7EB;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#0F2A4A;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#2DD4A7;"></div>
+        </div>
+        <div style="font-size:.78rem;color:var(--gris);">Crema fondo · Azul texto · Menta CTA</div>
+      </div>
+      <div style="padding:20px;border-radius:12px;background:#fff;border:1.5px dashed #fca5a5;">
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#dc2626;margin-bottom:8px;">🚫 Nunca usar</div>
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <div style="width:24px;height:24px;border-radius:6px;background:#2DD4A7;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#2DD4A7;opacity:.6;"></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:#2DD4A7;opacity:.3;"></div>
+        </div>
+        <div style="font-size:.78rem;color:#dc2626;">Menta como fondo principal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ TIPOGRAFÍA -->
+<section id="tipografia" class="section-dark">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">04 · Tipografía</span>
+      <h2 style="color:white;">Una sola fuente.<br>Infinita claridad.</h2>
+      <p>Poppins en todos los roles. La variedad viene del peso y el tamaño, nunca de mezclar familias.</p>
+    </div>
+
+    <div class="typo-scale">
+      <div class="typo-row">
+        <span class="typo-tag">H1 Hero</span>
+        <span class="typo-h1-demo" style="color:white;">Factura sin miedo.</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 800<br>clamp(2.8–5.2rem)<br>tracking −0.04em</div>
+      </div>
+      <div class="typo-row" style="border-color:rgba(255,255,255,.08);">
+        <span class="typo-tag">H2 Sección</span>
+        <span class="typo-h2-demo" style="color:white;">Tu sistema ya está listo.</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 700<br>clamp(1.8–3rem)<br>tracking −0.03em</div>
+      </div>
+      <div class="typo-row" style="border-color:rgba(255,255,255,.08);">
+        <span class="typo-tag">H3 Subtítulo</span>
+        <span class="typo-h3-demo" style="color:rgba(255,255,255,.85);">Declaración de renta sin sustos</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 600<br>1.2–1.5rem<br>tracking −0.02em</div>
+      </div>
+      <div class="typo-row" style="border-color:rgba(255,255,255,.08);">
+        <span class="typo-tag">Body</span>
+        <span class="typo-body-demo" style="color:rgba(255,255,255,.6);">Te explicamos todo en español normal, sin jerga contable ni sustos innecesarios. Como debe ser.</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 400<br>1rem / 1.1rem<br>line-height 1.7</div>
+      </div>
+      <div class="typo-row" style="border-color:rgba(255,255,255,.08);">
+        <span class="typo-tag">Caption</span>
+        <span class="typo-cap-demo" style="color:rgba(255,255,255,.4);">Actualizado · Agosto 2025 · Sistema Anti-Multas</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 500<br>0.72–0.78rem<br>tracking +0.04em</div>
+      </div>
+      <div class="typo-row" style="border-color:rgba(255,255,255,.08);">
+        <span class="typo-tag">CTA Button</span>
+        <span class="typo-cta-demo">Haz el test gratis →</span>
+        <div class="typo-spec" style="color:rgba(255,255,255,.45);">Poppins 700<br>0.85–0.9rem<br>tracking +0.02em</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ ICONOS -->
+<section id="iconos">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">05 · Iconos & Patrones</span>
+      <h2>Línea limpia.<br>Mensaje directo.</h2>
+      <p>Estilo stroke 1.75px, sin relleno, radio igual a los elementos de UI. Siempre en azul #0F2A4A o menta #2DD4A7.</p>
+    </div>
+
+    <div class="icons-grid">
+      <!-- Calendar -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F2A4A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="3"/>
+          <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="8" cy="15" r=".8" fill="#0F2A4A"/><circle cx="12" cy="15" r=".8" fill="#0F2A4A"/><circle cx="16" cy="15" r=".8" fill="#0F2A4A"/>
+        </svg>
+        <span class="icon-name">Fechas límite</span>
+      </div>
+      <!-- Shield check -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2Z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span class="icon-name">Protección</span>
+      </div>
+      <!-- Check circle -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F2A4A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 12l3 3 5-6"/>
+        </svg>
+        <span class="icon-name">Completado</span>
+      </div>
+      <!-- Calculator -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F2A4A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2"/>
+          <rect x="7" y="5" width="10" height="4" rx="1"/>
+          <circle cx="8" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="16" cy="13" r="1"/>
+          <circle cx="8" cy="17" r="1"/><circle cx="12" cy="17" r="1"/>
+          <rect x="14" y="15.5" width="4" height="3" rx="1" fill="rgba(45,212,167,0.3)" stroke="#2DD4A7" stroke-width="1.75"/>
+        </svg>
+        <span class="icon-name">Calculadora</span>
+      </div>
+      <!-- Alert -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F2A4A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r=".8" fill="#0F2A4A"/>
+        </svg>
+        <span class="icon-name">Alerta DIAN</span>
+      </div>
+      <!-- Clock -->
+      <div class="icon-card">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F2A4A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span class="icon-name">Tiempo</span>
+      </div>
+    </div>
+
+    <!-- Patrones -->
+    <h3 style="margin-top:48px;margin-bottom:8px;">Patrones geométricos</h3>
+    <p style="font-size:.85rem;color:var(--gris);margin-bottom:24px;">Sutiles, estructurados — sugieren organización sin distraer.</p>
+    <div class="pattern-row">
+      <div class="pattern-card">
+        <svg width="100%" height="100%" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="140" fill="var(--crema)"/>
+          <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="#E5E7EB" stroke-width="1"/></pattern></defs>
+          <rect width="200" height="140" fill="url(#grid)"/>
+          <circle cx="60" cy="60" r="30" fill="none" stroke="rgba(45,212,167,0.25)" stroke-width="1.5"/>
+          <circle cx="140" cy="80" r="20" fill="none" stroke="rgba(15,42,74,0.1)" stroke-width="1.5"/>
+          <text x="100" y="126" font-family="Poppins,sans-serif" font-size="8" fill="#C0C0C0" text-anchor="middle" font-weight="500">Patrón Grid + Círculos</text>
+        </svg>
+      </div>
+      <div class="pattern-card">
+        <svg width="100%" height="100%" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="140" fill="#0F2A4A"/>
+          <defs><pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r="1.2" fill="rgba(45,212,167,0.15)"/></pattern></defs>
+          <rect width="200" height="140" fill="url(#dots)"/>
+          <text x="100" y="126" font-family="Poppins,sans-serif" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="middle" font-weight="500">Patrón Puntos · Fondo Azul</text>
+        </svg>
+      </div>
+      <div class="pattern-card">
+        <svg width="100%" height="100%" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="140" fill="var(--crema)"/>
+          <defs>
+            <pattern id="diag" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="10" x2="20" y2="10" stroke="rgba(15,42,74,0.06)" stroke-width="8"/>
+            </pattern>
+          </defs>
+          <rect width="200" height="140" fill="url(#diag)"/>
+          <text x="100" y="126" font-family="Poppins,sans-serif" font-size="8" fill="#C0C0C0" text-anchor="middle" font-weight="500">Patrón Rayado Sutil</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ INSTAGRAM -->
+<section id="instagram" class="section-dark">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">06 · Plantillas de Instagram</span>
+      <h2 style="color:white;">Contenido que para<br>el scroll.</h2>
+      <p>Cada formato tiene su regla de oro: un solo mensaje, máximo 2 colores, mucho espacio.</p>
+    </div>
+
+    <div class="ig-section-grid">
+
+      <!-- POST FEED -->
+      <div class="ig-wrapper">
+        <div class="ig-label-row">
+          <span class="ig-type">Post Feed</span>
+          <span class="ig-size">1080 × 1350 px</span>
+        </div>
+        <div class="ig-post">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="500" fill="#0F2A4A"/>
+            <!-- Dot pattern -->
+            <defs><pattern id="dp1" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(45,212,167,0.12)"/></pattern></defs>
+            <rect width="400" height="500" fill="url(#dp1)"/>
+            <!-- Eyebrow -->
+            <rect x="30" y="36" width="120" height="22" rx="11" fill="rgba(45,212,167,0.2)" stroke="rgba(45,212,167,0.4)" stroke-width="1"/>
+            <text x="90" y="51" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#2DD4A7" text-anchor="middle" letter-spacing="1">3 ERRORES</text>
+            <!-- Big number -->
+            <text x="200" y="200" font-family="Poppins,sans-serif" font-size="160" font-weight="900" fill="rgba(255,255,255,0.05)" text-anchor="middle" letter-spacing="-8">3</text>
+            <!-- Title -->
+            <text x="30" y="220" font-family="Poppins,sans-serif" font-size="30" font-weight="800" fill="white" letter-spacing="-1">Errores que te</text>
+            <text x="30" y="258" font-family="Poppins,sans-serif" font-size="30" font-weight="800" fill="white" letter-spacing="-1">traen carta</text>
+            <text x="30" y="296" font-family="Poppins,sans-serif" font-size="30" font-weight="800" fill="#2DD4A7" letter-spacing="-1">de la DIAN.</text>
+            <!-- Divider -->
+            <rect x="30" y="316" width="60" height="3" rx="1.5" fill="#2DD4A7"/>
+            <!-- Subtitle -->
+            <text x="30" y="340" font-family="Poppins,sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Y cómo evitarlos antes de que lleguen.</text>
+            <!-- CTA strip -->
+            <rect x="0" y="440" width="400" height="60" fill="rgba(45,212,167,0.15)"/>
+            <text x="200" y="476" font-family="Poppins,sans-serif" font-size="12" font-weight="700" fill="#2DD4A7" text-anchor="middle">Desliza → te cuento todo  |  @lorenacontadora</text>
+            <!-- Shield watermark -->
+            <path d="M340 60 L340 90 Q340 102 352 107 Q364 102 364 90 L364 60 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(45,212,167,0.25)" stroke-width="1.5"/>
+            <path d="M347 80 L351.5 85 L358 77" stroke="rgba(45,212,167,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p style="font-size:.72rem;color:rgba(250,250,248,.5);line-height:1.6;">Post educativo formato carrusel. Fondo azul oscuro, número grande ghosted, título en dos líneas. CTA siempre en verde menta al final.</p>
+      </div>
+
+      <!-- STORY -->
+      <div class="ig-wrapper">
+        <div class="ig-label-row">
+          <span class="ig-type">Story</span>
+          <span class="ig-size">1080 × 1920 px</span>
+        </div>
+        <div class="ig-story">
+          <svg viewBox="0 0 270 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+            <rect width="270" height="480" fill="#0F2A4A"/>
+            <defs><pattern id="dp2" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r=".8" fill="rgba(45,212,167,0.1)"/></pattern></defs>
+            <rect width="270" height="480" fill="url(#dp2)"/>
+            <!-- Alert badge top -->
+            <rect x="30" y="60" width="210" height="36" rx="10" fill="rgba(255,200,80,0.15)" stroke="rgba(255,200,80,0.4)" stroke-width="1.5"/>
+            <text x="135" y="83" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="rgba(255,200,80,0.9)" text-anchor="middle">⚠  Vence en 5 días</text>
+            <!-- Big text -->
+            <text x="30" y="160" font-family="Poppins,sans-serif" font-size="34" font-weight="800" fill="white" letter-spacing="-1">¿Ya hiciste</text>
+            <text x="30" y="198" font-family="Poppins,sans-serif" font-size="34" font-weight="800" fill="white" letter-spacing="-1">tu retención</text>
+            <text x="30" y="236" font-family="Poppins,sans-serif" font-size="34" font-weight="800" fill="#2DD4A7" letter-spacing="-1">en la fuente?</text>
+            <!-- Sub -->
+            <text x="30" y="268" font-family="Poppins,sans-serif" font-size="12" fill="rgba(255,255,255,0.55)" font-style="italic">El 85% de freelancers lo olvida.</text>
+            <!-- Check illustration -->
+            <circle cx="135" cy="345" r="48" fill="rgba(45,212,167,0.12)" stroke="rgba(45,212,167,0.3)" stroke-width="1.5"/>
+            <path d="M115 345 L130 360 L158 330" stroke="#2DD4A7" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- CTA button -->
+            <rect x="30" y="410" width="210" height="44" rx="22" fill="#2DD4A7"/>
+            <text x="135" y="437" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#0F2A4A" text-anchor="middle">Haz el test gratis →</text>
+          </svg>
+        </div>
+        <p style="font-size:.72rem;color:rgba(250,250,248,.5);line-height:1.6;">Story alerta + CTA. Siempre con urgencia arriba, pregunta al centro, y botón menta al fondo.</p>
+      </div>
+
+      <!-- CARRUSEL PORTADA -->
+      <div class="ig-wrapper" style="grid-column: 1/-1;">
+        <div class="ig-label-row">
+          <span class="ig-type">Carrusel — 4 slides</span>
+          <span class="ig-size">Desliza →</span>
+        </div>
+        <div class="ig-carousel-wrap">
+          <!-- Slide 1 portada -->
+          <div class="ig-slide">
+            <svg viewBox="0 0 220 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="275" fill="#0F2A4A"/>
+              <defs><pattern id="dp3" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r=".7" fill="rgba(45,212,167,0.1)"/></pattern></defs>
+              <rect width="220" height="275" fill="url(#dp3)"/>
+              <!-- Slide number -->
+              <text x="20" y="36" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="rgba(45,212,167,0.6)" letter-spacing="2">01 / 04</text>
+              <text x="20" y="100" font-family="Poppins,sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="-1.5">¿Qué es</text>
+              <text x="20" y="132" font-family="Poppins,sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="-1.5">el RUT y</text>
+              <text x="20" y="164" font-family="Poppins,sans-serif" font-size="32" font-weight="900" fill="#2DD4A7" letter-spacing="-1.5">para qué</text>
+              <text x="20" y="196" font-family="Poppins,sans-serif" font-size="32" font-weight="900" fill="#2DD4A7" letter-spacing="-1.5">sirve?</text>
+              <rect x="20" y="214" width="50" height="3" rx="1.5" fill="#2DD4A7"/>
+              <text x="20" y="238" font-family="Poppins,sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">La guía que nadie te dio</text>
+              <text x="20" y="260" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.3)">@lorenacontadora</text>
+            </svg>
+          </div>
+          <!-- Slide 2 -->
+          <div class="ig-slide">
+            <svg viewBox="0 0 220 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="275" fill="#FAFAF8"/>
+              <text x="20" y="36" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="rgba(15,42,74,0.3)" letter-spacing="2">02 / 04</text>
+              <text x="20" y="72" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#0F2A4A">RUT = tu cédula fiscal</text>
+              <rect x="20" y="82" width="40" height="2.5" rx="1.25" fill="#2DD4A7"/>
+              <text x="20" y="108" font-family="Poppins,sans-serif" font-size="10.5" fill="#6B7280">Es el documento que</text>
+              <text x="20" y="124" font-family="Poppins,sans-serif" font-size="10.5" fill="#6B7280">identifica a cada persona</text>
+              <text x="20" y="140" font-family="Poppins,sans-serif" font-size="10.5" fill="#6B7280">o empresa ante la DIAN.</text>
+              <!-- Icon -->
+              <rect x="140" y="90" width="60" height="68" rx="8" fill="rgba(15,42,74,0.06)" stroke="var(--gris-claro)" stroke-width="1"/>
+              <rect x="150" y="100" width="40" height="6" rx="2" fill="rgba(15,42,74,0.15)"/>
+              <rect x="150" y="112" width="30" height="5" rx="2" fill="rgba(15,42,74,0.1)"/>
+              <rect x="150" y="123" width="35" height="5" rx="2" fill="rgba(15,42,74,0.1)"/>
+              <circle cx="170" cy="145" r="8" fill="rgba(45,212,167,0.2)" stroke="rgba(45,212,167,.5)" stroke-width="1"/>
+              <path d="M165 145 L168.5 148.5 L176 140" stroke="#2DD4A7" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <rect x="20" y="168" width="180" height="34" rx="8" fill="rgba(45,212,167,0.1)" stroke="rgba(45,212,167,0.25)" stroke-width="1"/>
+              <text x="110" y="187" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#1a9e7a" text-anchor="middle">Sin RUT activo = sin facturar</text>
+              <text x="20" y="250" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">Desliza para ver cómo activarlo →</text>
+            </svg>
+          </div>
+          <!-- Slide 3 -->
+          <div class="ig-slide">
+            <svg viewBox="0 0 220 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="275" fill="#0F2A4A"/>
+              <text x="20" y="36" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="rgba(45,212,167,0.5)" letter-spacing="2">03 / 04</text>
+              <text x="20" y="68" font-family="Poppins,sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="-.5">3 cosas que</text>
+              <text x="20" y="86" font-family="Poppins,sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="-.5">necesitas saber</text>
+              <rect x="20" y="98" width="40" height="2" rx="1" fill="#2DD4A7"/>
+              <!-- Items -->
+              <rect x="20" y="112" width="180" height="34" rx="6" fill="rgba(255,255,255,0.06)"/>
+              <circle cx="38" cy="129" r="8" fill="rgba(45,212,167,0.2)"/>
+              <text x="38" y="133" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#2DD4A7" text-anchor="middle">1</text>
+              <text x="56" y="124" font-family="Poppins,sans-serif" font-size="9.5" fill="rgba(255,255,255,.85)">Se tramita gratis en la DIAN</text>
+              <text x="56" y="137" font-family="Poppins,sans-serif" font-size="8.5" fill="rgba(255,255,255,.45)">muisca.dian.gov.co</text>
+
+              <rect x="20" y="152" width="180" height="34" rx="6" fill="rgba(255,255,255,0.06)"/>
+              <circle cx="38" cy="169" r="8" fill="rgba(45,212,167,0.2)"/>
+              <text x="38" y="173" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#2DD4A7" text-anchor="middle">2</text>
+              <text x="56" y="164" font-family="Poppins,sans-serif" font-size="9.5" fill="rgba(255,255,255,.85)">Necesitas cédula + correo</text>
+              <text x="56" y="177" font-family="Poppins,sans-serif" font-size="8.5" fill="rgba(255,255,255,.45)">Listo en 20 minutos</text>
+
+              <rect x="20" y="192" width="180" height="34" rx="6" fill="rgba(255,255,255,0.06)"/>
+              <circle cx="38" cy="209" r="8" fill="rgba(45,212,167,0.2)"/>
+              <text x="38" y="213" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#2DD4A7" text-anchor="middle">3</text>
+              <text x="56" y="204" font-family="Poppins,sans-serif" font-size="9.5" fill="rgba(255,255,255,.85)">Actualízalo si cambias actividad</text>
+              <text x="56" y="217" font-family="Poppins,sans-serif" font-size="8.5" fill="rgba(255,255,255,.45)">Cada vez que cambies de ramo</text>
+
+              <text x="20" y="260" font-family="Poppins,sans-serif" font-size="9" fill="rgba(255,255,255,.3)">→ Último slide: Lorena te lo gestiona</text>
+            </svg>
+          </div>
+          <!-- Slide 4 CTA -->
+          <div class="ig-slide">
+            <svg viewBox="0 0 220 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="275" fill="#FAFAF8"/>
+              <text x="20" y="36" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="rgba(15,42,74,0.3)" letter-spacing="2">04 / 04</text>
+              <!-- Shield big -->
+              <path d="M70 70 L70 130 Q70 155 110 165 Q150 155 150 130 L150 70 Z" fill="rgba(15,42,74,0.06)" stroke="rgba(45,212,167,.35)" stroke-width="2"/>
+              <path d="M92 110 L104 122 L130 96" stroke="#2DD4A7" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="110" y="192" font-family="Poppins,sans-serif" font-size="15" font-weight="800" fill="#0F2A4A" text-anchor="middle" letter-spacing="-.5">¿Quieres que yo</text>
+              <text x="110" y="210" font-family="Poppins,sans-serif" font-size="15" font-weight="800" fill="#0F2A4A" text-anchor="middle" letter-spacing="-.5">lo gestione todo?</text>
+              <rect x="20" y="226" width="180" height="34" rx="17" fill="#2DD4A7"/>
+              <text x="110" y="247" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#0F2A4A" text-anchor="middle">Haz el test gratis → Link bio</text>
+              <text x="110" y="270" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280" text-anchor="middle">@lorenacontadora</text>
+            </svg>
+          </div>
+        </div>
+        <p style="font-size:.72rem;color:rgba(250,250,248,.5);line-height:1.6;margin-top:8px;">Carrusel educativo: portada impactante azul → slides crema información → slide final CTA. Numeración siempre visible arriba izquierda.</p>
+      </div>
+
+      <!-- HIGHLIGHT COVERS -->
+      <div class="ig-wrapper" style="grid-column: 1/-1;">
+        <div class="ig-label-row">
+          <span class="ig-type">Highlight Covers</span>
+          <span class="ig-size">6 categorías</span>
+        </div>
+        <div class="highlight-row">
+          <!-- 1 Test Gratis -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <circle cx="35" cy="32" r="14" fill="none" stroke="#2DD4A7" stroke-width="1.75"/>
+                <path d="M29 32 L34 37 L42 26" stroke="#2DD4A7" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="35" y="54" font-family="Poppins,sans-serif" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="middle">TEST</text>
+              </svg>
+            </div>
+            <span class="hl-name">Test Gratis</span>
+          </div>
+          <!-- 2 Mi Sistema -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <path d="M24 18 L24 46 Q24 56 35 60 Q46 56 46 46 L46 18 Z" fill="rgba(45,212,167,0.15)" stroke="#2DD4A7" stroke-width="1.75"/>
+                <path d="M29 36 L33.5 41 L42 32" stroke="#2DD4A7" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="hl-name">Mi Sistema</span>
+          </div>
+          <!-- 3 Testimonios -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <path d="M16 28 Q16 20 24 20 L38 20 Q46 20 46 28 L46 38 Q46 44 40 45 L32 55 L30 45 Q16 44 16 38 Z" fill="rgba(45,212,167,0.15)" stroke="#2DD4A7" stroke-width="1.75"/>
+                <text x="31" y="36" font-family="Poppins,sans-serif" font-size="14" fill="#2DD4A7" text-anchor="middle">"</text>
+              </svg>
+            </div>
+            <span class="hl-name">Testimonios</span>
+          </div>
+          <!-- 4 FAQ -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <circle cx="35" cy="30" r="14" fill="none" stroke="#2DD4A7" stroke-width="1.75"/>
+                <text x="35" y="35" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#2DD4A7" text-anchor="middle">?</text>
+                <circle cx="35" cy="52" r="2" fill="#2DD4A7"/>
+              </svg>
+            </div>
+            <span class="hl-name">FAQ</span>
+          </div>
+          <!-- 5 Telegram -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <path d="M55 18L10 36 22 41 26 55 34 44 48 54Z" stroke="#2DD4A7" stroke-width="1.75" fill="rgba(45,212,167,0.15)" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="hl-name">Telegram</span>
+          </div>
+          <!-- 6 Trabaja Conmigo -->
+          <div class="highlight-cover">
+            <div class="hl-circle">
+              <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect width="70" height="70" fill="#0F2A4A"/>
+                <circle cx="35" cy="26" r="10" fill="none" stroke="#2DD4A7" stroke-width="1.75"/>
+                <path d="M17 58 Q17 44 35 44 Q53 44 53 58" stroke="#2DD4A7" stroke-width="1.75" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="hl-name">Trabaja Conmigo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ TARJETA -->
+<section id="tarjeta">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">07 · Tarjeta Digital</span>
+      <h2>Primera impresión.<br>Perfecta y permanente.</h2>
+      <p>Diseño minimal que comunica posicionamiento en 3 segundos. Frente y reverso.</p>
+    </div>
+
+    <div class="bcard-wrap">
+      <!-- Front -->
+      <div class="bcard">
+        <div class="bcard-front">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px;">Tu Contadora de Bolsillo</div>
+              <div class="bcard-name">Lorena</div>
+              <div class="bcard-role">Contadora · Sistema Anti-Multas</div>
+            </div>
+            <svg width="48" height="52" viewBox="0 0 48 52" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6 L4 36 Q4 48 24 52 Q44 48 44 36 L44 6 Z" fill="rgba(45,212,167,0.15)" stroke="rgba(45,212,167,0.45)" stroke-width="1.5"/>
+              <path d="M14 26 L21 33 L36 18" stroke="#2DD4A7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="bcard-divider"></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.6;">
+            <span style="color:rgba(255,255,255,.8);font-weight:600;">Freelancers & Independientes colombianos</span><br>
+            Factura más. Teme menos. Duerme bien.
+          </div>
+        </div>
+      </div>
+
+      <!-- Back -->
+      <div class="bcard">
+        <div class="bcard-back">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-bottom:20px;">Contáctame</div>
+          <div class="bcard-back-items">
+            <div class="bcard-contact">
+              <div class="bcard-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.43 7.49 19.79 19.79 0 01.36 4.87 2 2 0 012.33 2h3A2 2 0 017.3 3.72c.194.63.462 1.24.8 1.81a2 2 0 01-.45 2.11L6.5 8.09a16 16 0 006.41 6.41l.55-1.15a2 2 0 012.11-.45c.57.338 1.18.606 1.81.8A2 2 0 0119.28 15h.64a2 2 0 012 1.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:.65rem;color:var(--gris);font-weight:500;">WhatsApp</div>
+                <div style="font-size:.85rem;color:var(--azul);font-weight:600;">+57 300 000 0000</div>
+              </div>
+            </div>
+            <div class="bcard-contact">
+              <div class="bcard-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="#2DD4A7"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:.65rem;color:var(--gris);font-weight:500;">Instagram</div>
+                <div style="font-size:.85rem;color:var(--azul);font-weight:600;">@lorenacontadora</div>
+              </div>
+            </div>
+            <div class="bcard-contact">
+              <div class="bcard-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:.65rem;color:var(--gris);font-weight:500;">Test de Riesgo</div>
+                <div style="font-size:.85rem;color:var(--azul);font-weight:600;">lorena.co/test-gratis</div>
+              </div>
+            </div>
+          </div>
+          <div class="bcard-cta">Haz tu test gratuito →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ GUÍA -->
+<section id="guia" class="section-dark">
+  <div class="max-w">
+    <div class="section-header">
+      <span class="label">08 · Guía de Uso</span>
+      <h2 style="color:white;">La diferencia entre<br>verse bien y verse correcto.</h2>
+      <p>Estas reglas no limitan tu creatividad. La definen.</p>
+    </div>
+
+    <div class="guia-grid">
+      <div class="guia-card si">
+        <div class="guia-head">
+          <span class="guia-badge-si">✓ SÍ</span>
+          Buenas prácticas
+        </div>
+        <ul class="guia-list">
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Usar verde menta <strong>solo para CTAs</strong>, acentos y elementos de acción. Máximo 1 por pieza.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Mantener <strong>abundante espacio negativo</strong>. Si parece que falta contenido, es que está bien.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Textos <strong>cortos y directos</strong>. Una sola idea por pieza. Como le hablarías a una amiga.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Usar siempre <strong>iconos de línea stroke</strong> estilo Lucide/Feather, nunca iconos de relleno.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Alternar entre fondo <strong>azul oscuro y crema</strong> para crear contraste entre secciones.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4A7" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            </span>
+            Siempre incluir el <strong>isotipo o lockup de Lorena</strong> en todo material de comunicación.
+          </li>
+        </ul>
+      </div>
+
+      <div class="guia-card no">
+        <div class="guia-head">
+          <span class="guia-badge-no">✕ NO</span>
+          Errores comunes
+        </div>
+        <ul class="guia-list">
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            Usar <strong>más de 2 colores por pieza</strong>. Azul + crema + menta (solo acento) = máximo permitido.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            <strong>Saturar con texto</strong>. Nunca más de 3 bloques de información por slide. Respira.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            Usar <strong>fotos de stock genéricas</strong> (mujer con saco beige mirando cámara). Prefiere ilustración.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            <strong>Mezclar tipografías</strong>. Solo Poppins, variando peso. Nunca añadir otra familia.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            Usar <strong>verde menta como fondo principal</strong>. Es un acento, no una paleta completa.
+          </li>
+          <li>
+            <span class="guia-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            </span>
+            Usar <strong>lenguaje de la DIAN</strong> o tecnicismos. Siempre traduce a español normal de amiga.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Checklist rápido -->
+    <div style="margin-top:32px; padding:32px; border-radius:16px; border:1.5px solid rgba(45,212,167,0.25); background:rgba(45,212,167,0.05);">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--menta);margin-bottom:16px;">Checklist antes de publicar</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿Un solo mensaje principal?
+        </div>
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿El CTA está en verde menta?
+        </div>
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿Tiene suficiente espacio negativo?
+        </div>
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿El logo está visible?
+        </div>
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿El texto está en español normal?
+        </div>
+        <div style="font-size:.82rem;color:rgba(250,250,248,.7);display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--menta);flex-shrink:0;">✓</span> ¿Hay un solo punto de entrada (CTA)?
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="32" height="34" viewBox="0 0 32 34" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 4 L2 24 Q2 32 16 34 Q30 32 30 24 L30 4 Z" fill="rgba(45,212,167,0.15)" stroke="rgba(45,212,167,0.4)" stroke-width="1.5"/>
+        <path d="M10 18 L14.5 23 L23 13" stroke="#2DD4A7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-size:1.1rem;font-weight:800;color:white;letter-spacing:-.02em;">Lorena</span>
+      <span style="font-size:.78rem;font-weight:400;color:rgba(255,255,255,.35);padding-left:6px;border-left:1px solid rgba(255,255,255,.1);">Brand Kit 2025</span>
+    </div>
+    <p>Sistema Anti-Multas · Tu Contadora de Bolsillo</p>
+  </div>
+  <div class="footer-right">
+    Documento de uso interno · Confidencial<br>
+    Todos los activos de marca son propiedad de Lorena Contadora
+  </div>
+</footer>
+
+</body>
+</html>
