@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Logo Creció · Componente reutilizable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     LOGO CRECIÓ — componente reutilizable
+     Clave de marca:
+       • Todo en violeta #7C3AED
+       • La "i" NO lleva punto -> se usa el carácter "ı" (U+0131)
+       • El acento de la "ó" sí va
+       • Fuente Montserrat, peso 800 (ExtraBold), minúscula
+     Uso: copia .crecio-logo + el <span> donde lo necesites.
+     Cambia el color con --logo-color y el tamaño con --logo-size.
+  ========================================================= */
+  .crecio-logo {
+    --logo-color: #7C3AED;   /* color de marca por defecto */
+    --logo-size: 64px;        /* tamaño base */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: var(--logo-size);
+    line-height: 1;
+    color: var(--logo-color);
+    letter-spacing: -1px;     /* compacta las letras como en el logo */
+    display: inline-block;
+    user-select: none;
+  }
+
+  /* ---------- Demos (no son parte del componente) ---------- */
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Montserrat', sans-serif; background: #1a1a1a; }
+  .demo { display: flex; flex-direction: column; gap: 2px; }
+  .tile { display: flex; align-items: center; justify-content: center; padding: 70px 20px; }
+  .t-dark   { background: #0D0D0D; }
+  .t-white  { background: #FFFFFF; }
+  .t-violet { background: #7C3AED; }
+  .caption { color:#888; font-size:13px; text-align:center; padding:10px; background:#1a1a1a; }
+</style>
+</head>
+<body>
+  <div class="demo">
+
+    <!-- 1) Versión principal: violeta sobre negro -->
+    <div class="tile t-dark">
+      <span class="crecio-logo" style="--logo-size:120px;">crecıó</span>
+    </div>
+    <div class="caption">Principal · violeta #7C3AED sobre negro #0D0D0D</div>
+
+    <!-- 2) Blanco sobre negro (versión monocromática) -->
+    <div class="tile t-dark">
+      <span class="crecio-logo" style="--logo-color:#FFFFFF;">crecıó</span>
+    </div>
+    <div class="caption">Monocromática · blanco sobre negro</div>
+
+    <!-- 3) Negro sobre blanco (para fondos claros) -->
+    <div class="tile t-white">
+      <span class="crecio-logo" style="--logo-color:#0D0D0D;">crecıó</span>
+    </div>
+    <div class="caption">Negativa · negro sobre blanco</div>
+
+    <!-- 4) Blanco sobre violeta -->
+    <div class="tile t-violet">
+      <span class="crecio-logo" style="--logo-color:#FFFFFF;">crecıó</span>
+    </div>
+    <div class="caption">Sobre fondo de marca · blanco sobre violeta</div>
+
+    <!-- 5) Tamaño pequeño (favicon / firma) -->
+    <div class="tile t-dark">
+      <span class="crecio-logo" style="--logo-size:40px;">crecıó</span>
+    </div>
+    <div class="caption">Tamaño reducido (firmas, encabezados)</div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fondos de marca · Creció</title>
+<style>
+  /* =====================================================================
+     FONDOS DE MARCA — CRECIÓ
+     3 estilos, todos 1640x856 (portada Facebook). Cambia .bg width/height
+     si necesitas otro tamaño (ej. 1080x1080 para post de Instagram).
+
+     CALIDAD: exporta SIEMPRE en PNG y a escala 2x o 3x.
+     Cada fondo lleva una capa de ruido sutil (.noise) que evita el
+     "bandeado" de los degradados violeta.
+
+     Para capturar uno solo, usa el selector: .bg1 , .bg2  o  .bg3
+  ===================================================================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background:#1a1a1a; display:flex; flex-direction:column; align-items:center; gap:6px; padding:30px 16px; font-family:sans-serif; }
+  .cap { color:#888; font-size:13px; font-weight:600; }
+
+  .bg {
+    width: 1640px; height: 856px;
+    background: #0D0D0D;
+    position: relative; overflow: hidden;
+  }
+
+  /* Capa de ruido anti-bandeado (común a los 3) */
+  .noise {
+    position:absolute; inset:0; z-index:5; opacity:0.05; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- FONDO 1: Glow central (limpio, premium) ---------- */
+  .bg1::before {
+    content:""; position:absolute; width:1500px; height:1500px;
+    left:50%; top:-50%; transform:translateX(-50%);
+    background: radial-gradient(circle, rgba(124,58,237,0.45) 0%, rgba(124,58,237,0) 60%);
+  }
+  .bg1::after {
+    content:""; position:absolute; width:800px; height:800px;
+    left:50%; bottom:-55%; transform:translateX(-50%);
+    background: radial-gradient(circle, rgba(168,85,247,0.18) 0%, rgba(168,85,247,0) 62%);
+  }
+
+  /* ---------- FONDO 2: Glows diagonales (dinámico) ---------- */
+  .bg2 {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(124,58,237,0.40) 0%, rgba(124,58,237,0) 38%),
+      radial-gradient(circle at 88% 82%, rgba(168,85,247,0.32) 0%, rgba(168,85,247,0) 40%),
+      #0D0D0D;
+  }
+
+  /* ---------- FONDO 3: Glow + rejilla de puntos (tech) ---------- */
+  .bg3 {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(124,58,237,0.38) 0%, rgba(124,58,237,0) 55%),
+      #0D0D0D;
+  }
+  .bg3 .grid {
+    position:absolute; inset:0; z-index:1; opacity:0.5;
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+            mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+  }
+</style>
+</head>
+<body>
+
+  <div class="cap">FONDO 1 · Glow central (selector: .bg1)</div>
+  <div class="bg bg1"><div class="noise"></div></div>
+
+  <div class="cap">FONDO 2 · Glows diagonales (selector: .bg2)</div>
+  <div class="bg bg2"><div class="noise"></div></div>
+
+  <div class="cap">FONDO 3 · Glow + rejilla tech (selector: .bg3)</div>
+  <div class="bg bg3"><div class="grid"></div><div class="noise"></div></div>
+
+</body>
+</html>

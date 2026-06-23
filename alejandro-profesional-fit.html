@@ -1,0 +1,792 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .bk { font-family: 'Inter', sans-serif; color: #1A1A2E; background: #F8F9FA; }
+
+  /* Section headers */
+  .sec-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #6E6E6E; margin-bottom: 20px; }
+  .sec-divider { border: none; border-top: 0.5px solid #D0D0D0; margin: 40px 0; }
+
+  /* Cover */
+  .cover { background: #1A1A2E; color: #F8F9FA; padding: 56px 48px 48px; position: relative; overflow: hidden; }
+  .cover-eyebrow { font-size: 10px; letter-spacing: 4px; color: #FF6B35; font-weight: 700; margin-bottom: 20px; }
+  .cover-title { font-size: 48px; font-weight: 900; line-height: 1.0; letter-spacing: -2px; margin-bottom: 6px; }
+  .cover-title span { color: #FF6B35; }
+  .cover-sub { font-size: 13px; font-weight: 400; color: #6E6E6E; letter-spacing: 1px; margin-top: 16px; }
+  .cover-accent-line { width: 48px; height: 3px; background: #FF6B35; margin: 24px 0; }
+  .cover-tagline { font-size: 14px; color: #A0A0A0; font-weight: 300; line-height: 1.6; max-width: 320px; }
+  .cover-geo { position: absolute; right: -20px; top: -20px; width: 240px; height: 240px; border: 40px solid rgba(255,107,53,0.08); border-radius: 50%; }
+  .cover-geo2 { position: absolute; right: 60px; bottom: -60px; width: 160px; height: 160px; border: 30px solid rgba(255,107,53,0.05); border-radius: 50%; }
+
+  /* Color palette */
+  .palette { display: flex; gap: 0; border-radius: 12px; overflow: hidden; }
+  .swatch { flex: 1; padding: 20px 14px 14px; }
+  .swatch-name { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+  .swatch-hex { font-size: 11px; font-family: monospace; opacity: 0.7; }
+  .swatch-role { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; opacity: 0.6; }
+  .sw1 { background: #1A1A2E; color: #F8F9FA; }
+  .sw2 { background: #FF6B35; color: #fff; }
+  .sw3 { background: #F8F9FA; color: #1A1A2E; border: 0.5px solid #E0E0E0; }
+  .sw4 { background: #4A4A4A; color: #F8F9FA; }
+  .sw5 { background: #6E6E6E; color: #F8F9FA; }
+
+  /* Typography */
+  .type-row { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 28px; }
+  .type-sample { flex: 1; }
+  .type-meta { font-size: 10px; color: #6E6E6E; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .t-display { font-size: 36px; font-weight: 900; letter-spacing: -1.5px; line-height: 1; color: #1A1A2E; }
+  .t-h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: #1A1A2E; }
+  .t-body { font-size: 14px; font-weight: 400; color: #4A4A4A; line-height: 1.7; }
+  .t-caption { font-size: 11px; font-weight: 400; color: #6E6E6E; letter-spacing: 1px; }
+  .t-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #FF6B35; text-transform: uppercase; }
+
+  /* Logo section */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .logo-box { padding: 32px 28px; border-radius: 12px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 120px; }
+  .logo-box.dark { background: #1A1A2E; }
+  .logo-box.light { background: #F8F9FA; border: 0.5px solid #E0E0E0; }
+  .logo-box.orange { background: #FF6B35; }
+  .logo-box.mono { background: #F0F0F0; }
+
+  /* Logo SVG style */
+  .logo-mark { display: flex; align-items: center; gap: 12px; }
+  .lm-icon { width: 36px; height: 36px; flex-shrink: 0; }
+  .lm-text { display: flex; flex-direction: column; }
+  .lm-name { font-size: 16px; font-weight: 900; letter-spacing: -0.5px; line-height: 1; }
+  .lm-tag { font-size: 7.5px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase; margin-top: 3px; }
+  .logo-stack { align-items: center; }
+  .logo-stack .lm-icon { width: 42px; height: 42px; margin-bottom: 10px; }
+  .logo-stack .lm-name { font-size: 18px; text-align: center; }
+  .logo-stack .lm-tag { text-align: center; }
+  .logo-caption { font-size: 9px; color: #6E6E6E; letter-spacing: 2px; text-transform: uppercase; margin-top: 12px; }
+  .logo-caption.light-cap { color: rgba(248,249,250,0.4); }
+
+  /* Submarcas */
+  .sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .sub-card { background: #1A1A2E; padding: 20px 16px; border-radius: 10px; }
+  .sub-number { font-size: 32px; font-weight: 900; color: #FF6B35; letter-spacing: -2px; line-height: 1; }
+  .sub-unit { font-size: 11px; font-weight: 700; color: #FF6B35; letter-spacing: 2px; }
+  .sub-desc { font-size: 11px; color: rgba(248,249,250,0.5); margin-top: 6px; letter-spacing: 1px; }
+  .sub-card2 { background: #F8F9FA; border: 0.5px solid #E0E0E0; padding: 20px 16px; border-radius: 10px; }
+  .sub-card2 .sub-number { color: #1A1A2E; }
+  .sub-card2 .sub-unit { color: #1A1A2E; }
+  .sub-card2 .sub-desc { color: #6E6E6E; }
+  .sub-title { font-size: 15px; font-weight: 900; color: #1A1A2E; letter-spacing: -0.5px; line-height: 1.1; }
+  .sub-title-light { color: #F8F9FA; }
+  .pill { display: inline-block; background: #FF6B35; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-top: 8px; }
+  .pill-outline { background: transparent; border: 1px solid rgba(248,249,250,0.3); color: rgba(248,249,250,0.7); }
+
+  /* Icons */
+  .icon-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .icon-box { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #F0F0F0; }
+  .icon-name { font-size: 9px; color: #6E6E6E; letter-spacing: 1px; text-align: center; }
+  .icon-box.dark { background: #1A1A2E; }
+  .icon-box.orange { background: #FF6B35; }
+
+  /* Instagram templates */
+  .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .ig-post { border-radius: 12px; overflow: hidden; position: relative; }
+  .ig-post-inner { background: #1A1A2E; aspect-ratio: 4/5; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px 18px; position: relative; overflow: hidden; }
+  .ig-geo-bg { position: absolute; right: -30px; top: -30px; width: 140px; height: 140px; border: 24px solid rgba(255,107,53,0.12); border-radius: 50%; }
+  .ig-geo-bg2 { position: absolute; left: -20px; bottom: 60px; width: 90px; height: 90px; border: 16px solid rgba(255,107,53,0.07); border-radius: 50%; }
+  .ig-tag { font-size: 8px; letter-spacing: 3px; color: #FF6B35; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+  .ig-headline { font-size: 18px; font-weight: 900; color: #F8F9FA; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 8px; }
+  .ig-sub { font-size: 10px; color: rgba(248,249,250,0.5); line-height: 1.5; }
+  .ig-accent { width: 28px; height: 2.5px; background: #FF6B35; margin: 10px 0; }
+
+  /* Story template */
+  .ig-story { border-radius: 16px; overflow: hidden; }
+  .ig-story-inner { background: #1A1A2E; aspect-ratio: 9/16; display: flex; flex-direction: column; justify-content: space-between; padding: 28px 22px 32px; position: relative; overflow: hidden; }
+  .story-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .story-logo-small { font-size: 11px; font-weight: 900; color: #F8F9FA; letter-spacing: -0.3px; }
+  .story-logo-small span { color: #FF6B35; }
+  .story-num { font-size: 52px; font-weight: 900; color: #FF6B35; letter-spacing: -4px; line-height: 1; }
+  .story-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(248,249,250,0.6); text-transform: uppercase; }
+  .story-body { font-size: 13px; font-weight: 400; color: rgba(248,249,250,0.7); line-height: 1.6; }
+  .story-cta { background: #FF6B35; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 10px 18px; border-radius: 30px; display: inline-block; text-transform: uppercase; }
+
+  /* Highlight covers */
+  .hl-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .hl-cover { width: 100%; aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .hl-label { font-size: 8px; font-weight: 700; letter-spacing: 1.5px; color: #6E6E6E; text-align: center; margin-top: 6px; text-transform: uppercase; }
+
+  /* Business card */
+  .bc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bc { border-radius: 12px; overflow: hidden; }
+  .bc-front { background: #1A1A2E; padding: 28px 24px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .bc-back { background: #FF6B35; padding: 28px 24px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; }
+  .bc-geo { position: absolute; right: -24px; top: -24px; width: 100px; height: 100px; border: 20px solid rgba(255,107,53,0.15); border-radius: 50%; }
+  .bc-name { font-size: 16px; font-weight: 900; color: #F8F9FA; letter-spacing: -0.5px; }
+  .bc-role { font-size: 9px; font-weight: 500; color: rgba(248,249,250,0.5); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 4px; }
+  .bc-contact { font-size: 10px; color: rgba(248,249,250,0.6); line-height: 1.8; }
+  .bc-contact span { color: #FF6B35; }
+  .bc-back-logo { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+  .bc-back-logo span { color: rgba(255,255,255,0.6); }
+  .bc-back-tag { font-size: 8px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+  .bc-back-url { font-size: 10px; color: rgba(255,255,255,0.8); }
+
+  /* Usage rules */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rule-card { padding: 20px; border-radius: 10px; }
+  .rule-card.do { background: #F8F9FA; border: 0.5px solid #E0E0E0; border-left: 3px solid #1A1A2E; }
+  .rule-card.dont { background: #FFF0EB; border: 0.5px solid #FFCBB8; border-left: 3px solid #FF6B35; }
+  .rule-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .rule-title.do { color: #1A1A2E; }
+  .rule-title.dont { color: #FF6B35; }
+  .rule-item { font-size: 11px; color: #4A4A4A; line-height: 1.7; display: flex; gap: 8px; }
+  .rule-item::before { content: '—'; color: #6E6E6E; flex-shrink: 0; }
+
+  /* Page padding */
+  .page { padding: 48px 40px; }
+  .page-alt { padding: 48px 40px; background: #fff; }
+</style>
+
+<div class="bk">
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-geo"></div>
+    <div class="cover-geo2"></div>
+    <div class="cover-eyebrow">Brand Kit Oficial · 2025</div>
+    <div class="cover-title">Sistema<br><span>Profesional</span><br>Fit</div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-tagline">Fitness inteligente para ejecutivos y emprendedores colombianos que valoran su tiempo.</div>
+    <div class="cover-sub" style="margin-top:32px;">Por Alejandro · Entrenador Personal</div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="page">
+    <div class="sec-label">01 — Paleta de Color Oficial</div>
+    <div class="palette">
+      <div class="swatch sw1">
+        <div class="swatch-name">Negro Potencia</div>
+        <div class="swatch-hex">#1A1A2E</div>
+        <div class="swatch-role">Primary</div>
+      </div>
+      <div class="swatch sw2">
+        <div class="swatch-name">Naranja Energía</div>
+        <div class="swatch-hex">#FF6B35</div>
+        <div class="swatch-role">Accent</div>
+      </div>
+      <div class="swatch sw3">
+        <div class="swatch-name">Blanco Limpio</div>
+        <div class="swatch-hex">#F8F9FA</div>
+        <div class="swatch-role">Secondary</div>
+      </div>
+      <div class="swatch sw4">
+        <div class="swatch-name">Gris Oscuro</div>
+        <div class="swatch-hex">#4A4A4A</div>
+        <div class="swatch-role">Body text</div>
+      </div>
+      <div class="swatch sw5">
+        <div class="swatch-name">Gris Medio</div>
+        <div class="swatch-hex">#6E6E6E</div>
+        <div class="swatch-role">Captions</div>
+      </div>
+    </div>
+
+    <!-- COLOR USAGE -->
+    <div style="margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+      <div style="padding:16px; background:#1A1A2E; border-radius:10px;">
+        <div style="font-size:9px; color:#FF6B35; letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Fondo principal</div>
+        <div style="font-size:12px; color:#F8F9FA; line-height:1.6;">Backgrounds oscuros, headers, cards premium, versión dark del logo.</div>
+      </div>
+      <div style="padding:16px; background:#FF6B35; border-radius:10px;">
+        <div style="font-size:9px; color:rgba(255,255,255,0.8); letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Acento energía</div>
+        <div style="font-size:12px; color:#fff; line-height:1.6;">CTAs, highlights, íconos activos, líneas decorativas, énfasis.</div>
+      </div>
+      <div style="padding:16px; background:#F8F9FA; border-radius:10px; border: 0.5px solid #E0E0E0;">
+        <div style="font-size:9px; color:#6E6E6E; letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Fondo neutro</div>
+        <div style="font-size:12px; color:#4A4A4A; line-height:1.6;">Backgrounds claros, versión light del logo, espacios de respiro.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="page-alt">
+    <div class="page">
+      <div class="sec-label">02 — Sistema Tipográfico · Inter</div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div class="type-meta">Display / Hero — 36px · Black 900</div>
+          <div class="t-display">45 MIN FIT</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div class="type-meta">Headline — 22px · Bold 700</div>
+          <div class="t-h1">Entrena inteligente, no más.</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div class="type-meta">Body — 14px · Regular 400</div>
+          <div class="t-body">Sistema diseñado para ejecutivos y emprendedores colombianos que no tienen tiempo que perder. Resultados reales en 45 minutos.</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;">
+        <div>
+          <div class="type-meta">Caption — 11px · Regular</div>
+          <div class="t-caption">Alejandro · Entrenador Personal Certificado</div>
+        </div>
+        <div>
+          <div class="type-meta">Label — 10px · Bold · Uppercase</div>
+          <div class="t-label">Sistema Profesional Fit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO SYSTEM -->
+  <div class="page">
+    <div class="sec-label">03 — Sistema de Logo</div>
+    <div class="logo-grid">
+      <!-- Logo horizontal dark -->
+      <div class="logo-box dark">
+        <div class="logo-mark">
+          <!-- Icon: clock + bolt merged -->
+          <svg class="lm-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" stroke="#FF6B35" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="1.5" fill="#FF6B35"/>
+            <line x1="18" y1="18" x2="18" y2="8" stroke="#F8F9FA" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="18" y1="18" x2="24" y2="22" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#FF6B35"/>
+          </svg>
+          <div class="lm-text">
+            <div class="lm-name" style="color:#F8F9FA;">Alejandro</div>
+            <div class="lm-tag" style="color:#FF6B35; letter-spacing:3.5px;">Sistema Profesional Fit</div>
+          </div>
+        </div>
+        <div class="logo-caption light-cap">Versión principal · Fondo oscuro</div>
+      </div>
+
+      <!-- Logo horizontal light -->
+      <div class="logo-box light">
+        <div class="logo-mark">
+          <svg class="lm-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" stroke="#FF6B35" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="1.5" fill="#FF6B35"/>
+            <line x1="18" y1="18" x2="18" y2="8" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="18" y1="18" x2="24" y2="22" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#FF6B35"/>
+          </svg>
+          <div class="lm-text">
+            <div class="lm-name" style="color:#1A1A2E;">Alejandro</div>
+            <div class="lm-tag" style="color:#6E6E6E; letter-spacing:3.5px;">Sistema Profesional Fit</div>
+          </div>
+        </div>
+        <div class="logo-caption">Versión fondo claro</div>
+      </div>
+
+      <!-- Logo stack (versión vertical) -->
+      <div class="logo-box dark logo-stack" style="align-items:center;">
+        <svg width="44" height="44" viewBox="0 0 36 36" fill="none" style="margin-bottom:10px;">
+          <circle cx="18" cy="18" r="16" stroke="#FF6B35" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="1.5" fill="#FF6B35"/>
+          <line x1="18" y1="18" x2="18" y2="8" stroke="#F8F9FA" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18" y1="18" x2="24" y2="22" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#FF6B35"/>
+        </svg>
+        <div style="text-align:center;">
+          <div style="font-size:18px; font-weight:900; color:#F8F9FA; letter-spacing:-0.5px;">ALEJANDRO</div>
+          <div style="font-size:7px; font-weight:700; letter-spacing:3px; color:#FF6B35; margin-top:4px; text-transform:uppercase;">Sistema Profesional Fit</div>
+        </div>
+        <div class="logo-caption light-cap" style="text-align:center; margin-top:10px;">Versión stack · Cuadrada</div>
+      </div>
+
+      <!-- Logo monocromo -->
+      <div class="logo-box mono">
+        <div class="logo-mark">
+          <svg class="lm-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="16" stroke="#1A1A2E" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="1.5" fill="#1A1A2E"/>
+            <line x1="18" y1="18" x2="18" y2="8" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="18" y1="18" x2="24" y2="22" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#1A1A2E"/>
+          </svg>
+          <div class="lm-text">
+            <div class="lm-name" style="color:#1A1A2E;">Alejandro</div>
+            <div class="lm-tag" style="color:#4A4A4A; letter-spacing:3.5px;">Sistema Profesional Fit</div>
+          </div>
+        </div>
+        <div class="logo-caption">Versión monocromática</div>
+      </div>
+    </div>
+
+    <!-- Icon solo -->
+    <div style="margin-top:20px; display:flex; gap:12px; align-items:center;">
+      <div style="width:56px; height:56px; background:#1A1A2E; border-radius:14px; display:flex; align-items:center; justify-content:center;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#FF6B35" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="1.5" fill="#FF6B35"/>
+          <line x1="18" y1="18" x2="18" y2="8" stroke="#F8F9FA" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18" y1="18" x2="24" y2="22" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#FF6B35"/>
+        </svg>
+      </div>
+      <div style="width:56px; height:56px; background:#FF6B35; border-radius:14px; display:flex; align-items:center; justify-content:center;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="1.5" fill="#fff"/>
+          <line x1="18" y1="18" x2="18" y2="8" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18" y1="18" x2="24" y2="22" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#fff"/>
+        </svg>
+      </div>
+      <div style="width:56px; height:56px; background:#F8F9FA; border-radius:14px; display:flex; align-items:center; justify-content:center; border:0.5px solid #E0E0E0;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#1A1A2E" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="1.5" fill="#1A1A2E"/>
+          <line x1="18" y1="18" x2="18" y2="8" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18" y1="18" x2="24" y2="22" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14 20L18 13L16 18H22L14 26L18 21H14V20Z" fill="#1A1A2E"/>
+        </svg>
+      </div>
+      <div style="margin-left:8px;">
+        <div style="font-size:9px; color:#6E6E6E; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Ícono solo · App / Avatar / Favicon</div>
+        <div style="font-size:11px; color:#4A4A4A;">Reloj + rayo de energía · minimalista geométrico</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMARCAS -->
+  <div class="page-alt">
+    <div class="page">
+      <div class="sec-label">04 — Submarcas & Lockups</div>
+      <div class="sub-grid">
+        <div class="sub-card">
+          <div class="sub-number">45</div>
+          <div class="sub-unit">MIN FIT</div>
+          <div class="sub-desc">Entrenamiento completo en 45 minutos</div>
+          <div class="pill pill-outline" style="margin-top:12px;">Submarca 01</div>
+        </div>
+        <div class="sub-card">
+          <div style="font-size:13px; font-weight:900; color:#F8F9FA; letter-spacing:-0.5px; line-height:1.2; margin-bottom:8px;">Rutinas<br>Inteligentes</div>
+          <div style="width:28px; height:2px; background:#FF6B35; margin-bottom:8px;"></div>
+          <div class="sub-desc">Ciencia aplicada al tiempo ejecutivo</div>
+          <div class="pill" style="margin-top:12px; font-size:8px;">Submarca 02</div>
+        </div>
+        <div class="sub-card">
+          <div style="font-size:11px; font-weight:900; color:#F8F9FA; letter-spacing:0px; line-height:1.3; margin-bottom:8px;">Para<br>Gente<br>Ocupada</div>
+          <div class="sub-desc">El sistema que respeta tu agenda</div>
+          <div class="pill pill-outline" style="margin-top:12px;">Submarca 03</div>
+        </div>
+        <!-- Lockup horizontal -->
+        <div style="background:#FF6B35; padding:20px 16px; border-radius:10px; grid-column:1/-1; display:flex; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-size:9px; color:rgba(255,255,255,0.7); letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:6px;">Lockup horizontal</div>
+            <div style="font-size:20px; font-weight:900; color:#fff; letter-spacing:-1px;">Alejandro · <span style="opacity:0.7">Sistema Profesional Fit</span></div>
+          </div>
+          <div style="font-size:9px; color:rgba(255,255,255,0.6); letter-spacing:2px; text-transform:uppercase;">Color invertido</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICONS -->
+  <div class="page">
+    <div class="sec-label">05 — Iconografía Minimalista</div>
+    <div class="icon-grid">
+      <!-- Timer -->
+      <div class="icon-item">
+        <div class="icon-box dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="12" y1="13" x2="15" y2="15"/>
+            <line x1="9" y1="3" x2="15" y2="3"/>
+          </svg>
+        </div>
+        <div class="icon-name">Timer</div>
+      </div>
+      <!-- Barbell -->
+      <div class="icon-item">
+        <div class="icon-box dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5" stroke-linecap="round">
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <rect x="2" y="9" width="3" height="6" rx="1" fill="#FF6B35" stroke="none"/>
+            <rect x="6" y="7" width="2" height="10" rx="1" fill="#FF6B35" stroke="none"/>
+            <rect x="16" y="7" width="2" height="10" rx="1" fill="#FF6B35" stroke="none"/>
+            <rect x="19" y="9" width="3" height="6" rx="1" fill="#FF6B35" stroke="none"/>
+          </svg>
+        </div>
+        <div class="icon-name">Fuerza</div>
+      </div>
+      <!-- Calendar -->
+      <div class="icon-item">
+        <div class="icon-box dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/>
+            <line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/>
+            <rect x="7" y="13" width="3" height="3" rx="0.5" fill="#FF6B35" stroke="none"/>
+          </svg>
+        </div>
+        <div class="icon-name">Rutina</div>
+      </div>
+      <!-- Lightning -->
+      <div class="icon-item">
+        <div class="icon-box orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M13 3L5 14h7l-1 7 8-11h-7l1-7z" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="icon-name">Energía</div>
+      </div>
+      <!-- Chart -->
+      <div class="icon-item">
+        <div class="icon-box dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5" stroke-linecap="round">
+            <line x1="3" y1="21" x2="21" y2="21"/>
+            <rect x="5" y="14" width="4" height="7" rx="1" fill="rgba(255,107,53,0.3)" stroke="#FF6B35"/>
+            <rect x="10" y="9" width="4" height="12" rx="1" fill="rgba(255,107,53,0.6)" stroke="#FF6B35"/>
+            <rect x="15" y="4" width="4" height="17" rx="1" fill="#FF6B35" stroke="#FF6B35"/>
+          </svg>
+        </div>
+        <div class="icon-name">Progreso</div>
+      </div>
+      <!-- Person -->
+      <div class="icon-item">
+        <div class="icon-box dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="7" r="3.5"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/>
+          </svg>
+        </div>
+        <div class="icon-name">Ejecutivo</div>
+      </div>
+      <!-- Home workout -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round">
+            <path d="M3 10l9-7 9 7"/><rect x="6" y="10" width="12" height="11" rx="1"/>
+            <rect x="10" y="15" width="4" height="6" rx="0.5"/>
+          </svg>
+        </div>
+        <div class="icon-name">En casa</div>
+      </div>
+      <!-- Hotel -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+            <line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/>
+          </svg>
+        </div>
+        <div class="icon-name">Hotel</div>
+      </div>
+      <!-- Check -->
+      <div class="icon-item">
+        <div class="icon-box orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
+            <path d="M5 12l5 5L19 7"/>
+          </svg>
+        </div>
+        <div class="icon-name">Logro</div>
+      </div>
+      <!-- FAQ -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M10 9.5a2 2 0 0 1 4 0.5c0 1.5-2 2-2 3"/>
+            <circle cx="12" cy="17" r="0.8" fill="#1A1A2E"/>
+          </svg>
+        </div>
+        <div class="icon-name">FAQ</div>
+      </div>
+      <!-- Nutrition -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 3C8 3 5 7 5 11h14c0-4-3-8-7-8z"/>
+            <path d="M5 11v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8"/>
+          </svg>
+        </div>
+        <div class="icon-name">Nutrición</div>
+      </div>
+      <!-- System -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <circle cx="17.5" cy="17.5" r="3.5" fill="#FF6B35" stroke="none"/>
+          </svg>
+        </div>
+        <div class="icon-name">Sistema</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM POSTS -->
+  <div class="page-alt">
+    <div class="page">
+      <div class="sec-label">06 — Templates de Instagram (4:5 · 1080×1350px)</div>
+      <div class="ig-grid">
+        <!-- Post 1: Quote/Tip -->
+        <div class="ig-post">
+          <div class="ig-post-inner">
+            <div class="ig-geo-bg"></div>
+            <div class="ig-geo-bg2"></div>
+            <div>
+              <div class="ig-tag">Tip del día</div>
+              <div class="ig-accent"></div>
+              <div class="ig-headline">No tienes<br>1 hora.<br>Tienes 45<br>minutos.</div>
+              <div class="ig-sub" style="margin-top:10px;">Eso es suficiente para transformar tu cuerpo y tu energía.</div>
+              <div style="margin-top:16px; font-size:8px; color:rgba(255,107,53,0.8); letter-spacing:2px; font-weight:700;">@ALEJANDRO · SPF</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 2: Stats -->
+        <div class="ig-post">
+          <div class="ig-post-inner" style="background:#FF6B35;">
+            <div style="position:absolute; right:-20px; top:-20px; width:120px; height:120px; border:20px solid rgba(255,255,255,0.15); border-radius:50%;"></div>
+            <div>
+              <div style="font-size:8px; letter-spacing:3px; color:rgba(255,255,255,0.7); font-weight:700; text-transform:uppercase; margin-bottom:8px;">Sistema</div>
+              <div style="font-size:52px; font-weight:900; color:#fff; letter-spacing:-4px; line-height:1;">3<span style="font-size:20px; vertical-align:top; margin-top:8px; display:inline-block; font-weight:700; letter-spacing:-1px;">×</span></div>
+              <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); letter-spacing:1px; margin-top:4px;">POR SEMANA</div>
+              <div style="width:28px; height:2px; background:rgba(255,255,255,0.5); margin:12px 0;"></div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.8); line-height:1.5;">Es todo lo que necesitas para ver resultados reales y sostenibles.</div>
+              <div style="margin-top:16px; font-size:8px; color:rgba(255,255,255,0.6); letter-spacing:2px; font-weight:700;">@ALEJANDRO · SPF</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 3: Before/After teaser -->
+        <div class="ig-post">
+          <div class="ig-post-inner" style="background:#0D0D1A; justify-content:space-between; padding-top:20px;">
+            <div class="ig-geo-bg"></div>
+            <div style="font-size:8px; letter-spacing:3px; color:#FF6B35; font-weight:700; text-transform:uppercase;">Transformación</div>
+            <div>
+              <div style="display:flex; gap:8px; margin-bottom:16px;">
+                <div style="flex:1; background:rgba(255,255,255,0.04); border-radius:8px; height:80px; display:flex; align-items:center; justify-content:center; border:0.5px solid rgba(255,255,255,0.1);">
+                  <div style="text-align:center;"><div style="font-size:8px; color:#6E6E6E; letter-spacing:2px;">ANTES</div></div>
+                </div>
+                <div style="flex:1; background:rgba(255,107,53,0.15); border-radius:8px; height:80px; display:flex; align-items:center; justify-content:center; border:0.5px solid rgba(255,107,53,0.3);">
+                  <div style="text-align:center;"><div style="font-size:8px; color:#FF6B35; letter-spacing:2px;">DESPUÉS</div></div>
+                </div>
+              </div>
+              <div class="ig-headline" style="font-size:16px;">12 semanas.<br>Sin gimnasio.</div>
+              <div class="ig-sub" style="margin-top:8px;">Solo 45 min · 3 veces por semana · con el sistema correcto.</div>
+              <div style="margin-top:12px; font-size:8px; color:rgba(255,107,53,0.7); letter-spacing:2px; font-weight:700;">@ALEJANDRO · SPF</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stories + Carrusel -->
+      <div style="display:grid; grid-template-columns:1fr 2fr; gap:16px; margin-top:16px;">
+        <!-- Story -->
+        <div>
+          <div style="font-size:9px; color:#6E6E6E; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Story (9:16)</div>
+          <div class="ig-story">
+            <div class="ig-story-inner">
+              <div style="position:absolute; left:-30px; top:30%; width:100px; height:100px; border:20px solid rgba(255,107,53,0.08); border-radius:50%;"></div>
+              <div class="story-top">
+                <div class="story-logo-small">A<span>•</span>SPF</div>
+                <div style="font-size:8px; color:rgba(255,255,255,0.3); letter-spacing:2px;">HOY</div>
+              </div>
+              <div>
+                <div class="story-num">45</div>
+                <div class="story-label">minutos fit</div>
+                <div style="width:24px; height:2px; background:#FF6B35; margin:12px 0;"></div>
+                <div class="story-body">Tu próximo entrenamiento empieza ahora. Sin excusas. Sin horas en el gym.</div>
+                <div class="story-cta" style="margin-top:16px;">Ver rutina →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrusel preview -->
+        <div>
+          <div style="font-size:9px; color:#6E6E6E; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Carrusel (slide 1 + 2)</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <!-- Slide 1 -->
+            <div style="background:#1A1A2E; border-radius:12px; aspect-ratio:1; display:flex; flex-direction:column; justify-content:flex-end; padding:16px; position:relative; overflow:hidden;">
+              <div style="position:absolute; right:-15px; top:-15px; width:80px; height:80px; border:15px solid rgba(255,107,53,0.1); border-radius:50%;"></div>
+              <div style="font-size:8px; color:#FF6B35; letter-spacing:2px; font-weight:700; text-transform:uppercase; margin-bottom:6px;">01 / Sistema</div>
+              <div style="font-size:15px; font-weight:900; color:#F8F9FA; letter-spacing:-0.5px; line-height:1.1;">El método<br>Profesional Fit</div>
+              <div style="font-size:8px; color:rgba(255,255,255,0.4); margin-top:8px;">Desliza →</div>
+            </div>
+            <!-- Slide 2 -->
+            <div style="background:#F8F9FA; border-radius:12px; aspect-ratio:1; display:flex; flex-direction:column; justify-content:center; padding:16px; border:0.5px solid #E0E0E0;">
+              <div style="font-size:8px; color:#FF6B35; letter-spacing:2px; font-weight:700; text-transform:uppercase; margin-bottom:10px;">02 / Base</div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div style="width:20px; height:20px; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L19 7"/></svg>
+                  </div>
+                  <div style="font-size:10px; font-weight:700; color:#1A1A2E;">45 min / sesión</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div style="width:20px; height:20px; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L19 7"/></svg>
+                  </div>
+                  <div style="font-size:10px; font-weight:700; color:#1A1A2E;">3× por semana</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div style="width:20px; height:20px; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L19 7"/></svg>
+                  </div>
+                  <div style="font-size:10px; font-weight:700; color:#1A1A2E;">Sin gym</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHT COVERS -->
+  <div class="page">
+    <div class="sec-label">07 — Highlight Covers</div>
+    <div class="hl-grid">
+      <!-- Antes/Después -->
+      <div>
+        <div class="hl-cover" style="background:#1A1A2E;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3"/>
+            <path d="M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="hl-label">Antes / Después</div>
+      </div>
+      <!-- Sistema -->
+      <div>
+        <div class="hl-cover" style="background:#FF6B35;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <div class="hl-label">Sistema</div>
+      </div>
+      <!-- FAQ -->
+      <div>
+        <div class="hl-cover" style="background:#1A1A2E;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M10 9.5a2 2 0 0 1 4 0.5c0 1.5-2 2-2 3"/>
+            <circle cx="12" cy="17" r="0.8" fill="#FF6B35"/>
+          </svg>
+        </div>
+        <div class="hl-label">FAQ</div>
+      </div>
+      <!-- Rutinas -->
+      <div>
+        <div class="hl-cover" style="background:#1A1A2E;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/>
+            <line x1="12" y1="13" x2="15" y2="15"/><line x1="9" y1="3" x2="15" y2="3"/>
+          </svg>
+        </div>
+        <div class="hl-label">Rutinas</div>
+      </div>
+      <!-- Resultados -->
+      <div>
+        <div class="hl-cover" style="background:#FF6B35;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+            <line x1="3" y1="21" x2="21" y2="21"/>
+            <rect x="5" y="14" width="4" height="7" rx="0.5" fill="rgba(255,255,255,0.4)" stroke="#fff"/>
+            <rect x="10" y="9" width="4" height="12" rx="0.5" fill="rgba(255,255,255,0.6)" stroke="#fff"/>
+            <rect x="15" y="4" width="4" height="17" rx="0.5" fill="#fff" stroke="#fff"/>
+          </svg>
+        </div>
+        <div class="hl-label">Resultados</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSINESS CARD -->
+  <div class="page-alt">
+    <div class="page">
+      <div class="sec-label">08 — Tarjeta de Presentación</div>
+      <div class="bc-wrap">
+        <div class="bc">
+          <div class="bc-front">
+            <div class="bc-geo"></div>
+            <div>
+              <div style="font-size:8px; color:#FF6B35; letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Entrenador Personal</div>
+              <div class="bc-name">Alejandro</div>
+              <div class="bc-role">Sistema Profesional Fit</div>
+            </div>
+            <div class="bc-contact">
+              <div><span>IG</span> @alejandro.spf</div>
+              <div><span>WA</span> +57 300 000 0000</div>
+              <div><span>WEB</span> sistemaprofesionalfit.co</div>
+            </div>
+          </div>
+        </div>
+        <div class="bc">
+          <div class="bc-back">
+            <div>
+              <div class="bc-back-logo">Sistema<br><span>Profesional Fit</span></div>
+              <div class="bc-back-tag" style="margin-top:8px;">Fitness inteligente · 45 min</div>
+            </div>
+            <div class="bc-back-url">sistemaprofesionalfit.co</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:9px; color:#6E6E6E; margin-top:12px; letter-spacing:1px;">90mm × 50mm · Frente (Negro) + Reverso (Naranja) · Acabado mate</div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDELINES -->
+  <div class="page">
+    <div class="sec-label">09 — Guía de Uso & Voz de Marca</div>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <div class="rule-title do">Hacer</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div class="rule-item">Alto contraste: negro sobre blanco, naranja sobre negro</div>
+          <div class="rule-item">Tipografía grande e impactante con mucho espacio negativo</div>
+          <div class="rule-item">Números grandes y directos (45, 3×, 12 semanas)</div>
+          <div class="rule-item">Tono directo, cercano, sin jerga de "gym bro"</div>
+          <div class="rule-item">Fotografía real: hombres latinos 30-45 años en contexto real</div>
+          <div class="rule-item">Consistencia en el sistema tipográfico Inter siempre</div>
+        </div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-title dont">No hacer</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div class="rule-item">No usar fondos de gradientes o texturas llamativas</div>
+          <div class="rule-item">No mezclar más de 3 colores en una pieza</div>
+          <div class="rule-item">No usar fotos de stock genéricas o "gym motivation"</div>
+          <div class="rule-item">No reducir el logo sin mantener proporciones</div>
+          <div class="rule-item">No usar el naranja como color de fondo principal en textos largos</div>
+          <div class="rule-item">No desvirtuar el tono premium con elementos "cheap" o emojis en exceso</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tono de Voz -->
+    <div style="margin-top:24px; background:#1A1A2E; border-radius:12px; padding:28px 24px;">
+      <div style="font-size:9px; color:#FF6B35; letter-spacing:3px; font-weight:700; text-transform:uppercase; margin-bottom:20px;">Voz de Marca · Palabras Clave</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <span style="background:rgba(255,107,53,0.15); color:#FF6B35; font-size:10px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Inteligente</span>
+        <span style="background:rgba(255,107,53,0.15); color:#FF6B35; font-size:10px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Eficiente</span>
+        <span style="background:rgba(255,255,255,0.06); color:#F8F9FA; font-size:10px; font-weight:500; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Sin excusas</span>
+        <span style="background:rgba(255,255,255,0.06); color:#F8F9FA; font-size:10px; font-weight:500; padding:6px 14px; border-radius:20px; letter-spacing:1px;">45 minutos</span>
+        <span style="background:rgba(255,107,53,0.15); color:#FF6B35; font-size:10px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Resultados reales</span>
+        <span style="background:rgba(255,255,255,0.06); color:#F8F9FA; font-size:10px; font-weight:500; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Sin tiempo</span>
+        <span style="background:rgba(255,107,53,0.15); color:#FF6B35; font-size:10px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Sistema</span>
+        <span style="background:rgba(255,255,255,0.06); color:#F8F9FA; font-size:10px; font-weight:500; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Premium</span>
+        <span style="background:rgba(255,107,53,0.15); color:#FF6B35; font-size:10px; font-weight:700; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Consistencia</span>
+        <span style="background:rgba(255,255,255,0.06); color:#F8F9FA; font-size:10px; font-weight:500; padding:6px 14px; border-radius:20px; letter-spacing:1px;">Ejecutivo</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="margin-top:32px; padding-top:24px; border-top:0.5px solid #E0E0E0; display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-size:10px; color:#6E6E6E; letter-spacing:1px;">Sistema Profesional Fit © 2025 · Alejandro · Brand Kit v1.0</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:6px; height:6px; background:#1A1A2E; border-radius:50%;"></div>
+        <div style="font-size:10px; font-weight:700; color:#1A1A2E; letter-spacing:1px;">Confidencial</div>
+      </div>
+    </div>
+  </div>
+
+</div>

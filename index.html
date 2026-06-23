@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creció — Brand Kits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0D0D0D;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+h1 span { color: #7C3AED; }
+.subtitle {
+  color: #71717A;
+  font-size: 1rem;
+  margin-bottom: 48px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  width: 100%;
+}
+.card {
+  background: #1A1A2E;
+  border: 1px solid #2D2D44;
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+.card:hover {
+  border-color: #7C3AED;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+}
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.card p {
+  color: #71717A;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.card .tag {
+  display: inline-block;
+  background: #7C3AED;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 16px;
+}
+footer {
+  margin-top: 60px;
+  color: #4A4A4A;
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<h1>crecı<span>ó</span></h1>
+<p class="subtitle">Brand Kits &amp; Assets Visuales</p>
+
+<div class="grid">
+
+  <a class="card" href="alejandro-profesional-fit.html">
+    <h2>Alejandro — Profesional Fit</h2>
+    <p>Entrenador personal para ejecutivos y emprendedores. Negro + Naranja. Sistema de 45 min.</p>
+    <span class="tag">Brand Kit</span>
+  </a>
+
+  <a class="card" href="lorena-contadora.html">
+    <h2>Lorena — Sistema Anti-Multas</h2>
+    <p>Contadora para independientes. Azul confianza + Verde menta. Tranquilidad fiscal.</p>
+    <span class="tag">Brand Kit (por subir)</span>
+  </a>
+
+  <a class="card" href="logo-crecio.html">
+    <h2>Logo Creció</h2>
+    <p>Componente reutilizable del logo. Montserrat ExtraBold, violeta #7C3AED.</p>
+    <span class="tag">Asset</span>
+  </a>
+
+  <a class="card" href="fondos-marca.html">
+    <h2>Fondos de Marca</h2>
+    <p>3 estilos de fondo (portada FB, post IG). Degradados violeta con ruido sutil.</p>
+    <span class="tag">Asset</span>
+  </a>
+
+  <a class="card" href="portada-facebook.html">
+    <h2>Portada Facebook</h2>
+    <p>1640x856px. Degradado violeta/negro con logo y slogan.</p>
+    <span class="tag">Asset</span>
+  </a>
+
+</div>
+
+<footer>Creció &copy; 2026 — Repo privado: crecio-cerebro</footer>
+
+</body>
+</html>
