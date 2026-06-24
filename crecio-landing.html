@@ -38,6 +38,203 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ─── PROOF BAR ─── */
+.proof-bar {
+  position: fixed;
+  top: 64px;
+  left: 0; right: 0;
+  z-index: 90;
+  background: rgba(13,13,13,0.95);
+  border-bottom: 1px solid rgba(124,58,237,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.proof-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.proof-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gris-light);
+  white-space: nowrap;
+}
+.proof-bar-item strong { color: var(--blanco); font-weight: 700; }
+
+.proof-bar-dot {
+  width: 3px; height: 3px;
+  background: var(--gris-mid);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── POR QUÉ CRECIÓ ─── */
+.porq-section {
+  background: var(--blanco);
+  padding: 100px 0;
+}
+
+.porq-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.porq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 64px;
+  align-items: center;
+}
+
+.porq-left {}
+
+.porq-story {
+  font-size: 16px;
+  color: #3F3F46;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.porq-story strong { color: var(--negro); font-weight: 700; }
+.porq-story em { color: var(--violeta); font-style: normal; font-weight: 700; }
+
+.porq-firma {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #E4E4E7;
+}
+
+.porq-avatar {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--violeta), var(--violeta-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--blanco);
+  flex-shrink: 0;
+  letter-spacing: -1px;
+}
+
+.porq-firma-text {}
+.porq-firma-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--negro);
+  letter-spacing: -0.3px;
+}
+.porq-firma-rol {
+  font-size: 12px;
+  color: #71717A;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.porq-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.porq-stat-card {
+  background: var(--negro);
+  border: 1px solid var(--gris-dark);
+  border-radius: 14px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.porq-stat-card:hover { border-color: rgba(124,58,237,0.35); }
+
+.porq-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
+}
+
+.porq-stat-icon {
+  width: 44px; height: 44px;
+  background: rgba(124,58,237,0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.porq-stat-icon svg { stroke: var(--violeta); }
+
+.porq-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--blanco);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.porq-stat-num span { color: var(--violeta); }
+
+.porq-stat-label {
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.45;
+}
+
+/* ─── PAGO CARDS ─── */
+.pago-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.pago-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--gris-dark);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.pago-card:hover { border-color: rgba(124,58,237,0.3); }
+
+.pago-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violeta);
+  margin-bottom: 6px;
+}
+
+.pago-card-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blanco);
+  line-height: 1.3;
+}
+
 /* ─── NAV ─── */
 nav {
   position: fixed;
@@ -81,7 +278,7 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 120px 48px 80px;
+  padding: 142px 48px 80px;
   max-width: 1280px;
   margin: 0 auto;
   gap: 64px;
@@ -1097,49 +1294,220 @@ footer {
   text-align: right;
 }
 
-/* ─── RESPONSIVE ─── */
+/* ─── RESPONSIVE TABLET ─── */
 @media (max-width: 900px) {
+  .proof-bar-inner { padding: 0 20px; gap: 14px; }
+  .proof-bar-item { font-size: 11px; gap: 6px; }
+  .proof-bar-dot--hide { display: none; }
+  .proof-bar-item--hide { display: none; }
+
   nav { padding: 0 20px; }
+  .nav-cta { font-size: 12px; padding: 9px 16px; }
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 100px 20px 60px;
-    gap: 48px;
+    padding: 152px 20px 56px;
+    gap: 36px;
+    min-height: auto;
   }
 
-  .hero-headline { font-size: 40px; letter-spacing: -1.5px; }
-  .hero-sub { font-size: 16px; }
+  .hero-badge { font-size: 10px; padding: 6px 12px; margin-bottom: 24px; }
+  .hero-headline { font-size: 38px; letter-spacing: -1.5px; margin-bottom: 20px; }
+  .hero-sub { font-size: 15px; margin-bottom: 32px; max-width: 100%; }
 
-  .hero-right { display: none; }
+  /* Mostrar hero-right como banner de stats en mobile */
+  .hero-right {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 
-  .section { padding: 72px 20px; }
+  .proof-card {
+    padding: 22px 20px;
+  }
 
-  .dolor-grid { grid-template-columns: 1fr; gap: 48px; }
+  .proof-stats {
+    margin: 0 -20px -22px;
+    padding: 0 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-  .valor-section { padding: 72px 0; }
+  .proof-stat { padding: 14px 8px 14px 0; }
+  .proof-stat-num { font-size: 22px; }
+  .proof-stat-label { font-size: 8px; }
+
+  .hero-mini-card { display: none; }
+
+  .section { padding: 60px 20px; }
+
+  .section-title { font-size: 30px; letter-spacing: -1px; margin-bottom: 14px; }
+  .section-sub { font-size: 15px; }
+
+  .dolor-grid { grid-template-columns: 1fr; gap: 36px; }
+  .dolor-item { padding: 20px 0; gap: 14px; }
+  .dolor-item:hover { padding-left: 0; }
+  .dolor-text h3 { font-size: 15px; }
+  .dolor-text p { font-size: 13px; }
+  .dolor-quote-block { padding: 24px 20px; }
+  .dolor-quote { font-size: 17px; }
+  .quote-mark { font-size: 52px; margin-bottom: 16px; }
+
+  .valor-section { padding: 60px 0; }
   .valor-inner { padding: 0 20px; }
-  .valor-grid { grid-template-columns: 1fr; }
+  .valor-grid { grid-template-columns: 1fr; gap: 2px; }
+  .valor-card { padding: 28px 24px; }
 
-  .steps-grid { grid-template-columns: 1fr; gap: 48px; }
+  .steps-grid { grid-template-columns: 1fr; gap: 36px; }
   .steps-visual { display: none; }
+  .step-item { gap: 14px; padding: 22px 0; }
+  .step-num { width: 38px; height: 38px; font-size: 12px; }
+  .step-content h3 { font-size: 15px; }
+  .step-content p { font-size: 13px; }
 
-  .oferta-section { padding: 72px 0; }
+  .oferta-section { padding: 60px 0; }
   .oferta-inner { padding: 0 20px; }
-  .oferta-grid { grid-template-columns: 1fr; gap: 40px; }
+  .oferta-grid { grid-template-columns: 1fr; gap: 36px; }
+  .oferta-left .section-title { font-size: 30px; }
+  .price-amount { font-size: 44px; }
+  .oferta-card { border-radius: 12px; }
+  .oferta-card-header { padding: 22px 20px 16px; }
+  .deliverables-list { padding: 16px 20px; }
+  .deliverable-item { padding: 12px 0; gap: 12px; }
+  .d-text { font-size: 13px; }
+  .dias-badge { margin: 0 20px 16px; font-size: 12px; }
+
+  .porq-section { padding: 60px 0; }
+  .porq-inner { padding: 0 20px; }
+  .porq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .porq-story { font-size: 15px; }
+  .porq-stat-card { padding: 18px 20px; gap: 14px; }
+  .porq-stat-num { font-size: 24px; }
+  .porq-stat-label { font-size: 12px; }
+
+  .pago-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pago-card { padding: 12px 10px; }
+  .pago-card-label { font-size: 9px; }
+  .pago-card-num { font-size: 12px; }
 
   .quien-grid { grid-template-columns: 1fr; }
+  .quien-card { padding: 24px 20px; gap: 14px; }
+  .quien-card h3 { font-size: 15px; }
+  .quien-card p { font-size: 13px; }
+  .quien-not { padding: 18px 20px; }
+  .quien-not p { font-size: 13px; }
+
   .faq-grid { grid-template-columns: 1fr; }
+  .faq-item { padding: 22px 20px; }
+  .faq-q { font-size: 14px; }
+  .faq-a { font-size: 13px; }
 
-  .cta-final { padding: 72px 20px; }
+  .cta-final { padding: 60px 20px; }
+  .cta-final-title { font-size: 32px; letter-spacing: -1.5px; margin-bottom: 16px; }
+  .cta-final-sub { font-size: 15px; margin-bottom: 32px; }
+  .btn-final { font-size: 15px; padding: 17px 32px; }
+  .pago-final { font-size: 12px; }
 
-  footer { padding: 40px 20px; flex-direction: column; text-align: center; }
+  footer { padding: 36px 20px; flex-direction: column; text-align: center; gap: 16px; }
   .footer-meta { text-align: center; }
+  .footer-logo { font-size: 24px; }
 }
 
-@media (max-width: 600px) {
-  .hero-headline { font-size: 34px; letter-spacing: -1px; }
-  .proof-stats { grid-template-columns: 1fr 1fr; }
-  .proof-stat:last-child { grid-column: span 2; border-top: 1px solid var(--gris-dark); border-right: none; }
+/* ─── RESPONSIVE MÓVIL ─── */
+@media (max-width: 480px) {
+  nav { height: 56px; }
+  .nav-logo { font-size: 20px; }
+  .nav-cta { font-size: 11px; padding: 8px 14px; }
+
+  .hero { padding: 84px 16px 48px; gap: 28px; }
+  .hero-badge { font-size: 9px; letter-spacing: 0.14em; padding: 5px 10px; margin-bottom: 20px; }
+  .hero-headline { font-size: 32px; letter-spacing: -1px; line-height: 1.02; margin-bottom: 16px; }
+  .hero-sub { font-size: 14px; line-height: 1.6; margin-bottom: 28px; }
+
+  .btn-primary { font-size: 14px; padding: 14px 24px; width: 100%; justify-content: center; }
+  .btn-secondary { font-size: 13px; }
+  .microcopy { font-size: 11px; }
+
+  .proof-card { padding: 18px 16px; border-radius: 12px; }
+  .proof-name { font-size: 16px; }
+  .proof-nicho { font-size: 11px; }
+  .proof-stats {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 -16px -18px;
+    padding: 0 16px;
+  }
+  .proof-stat { padding: 12px 6px 12px 0; }
+  .proof-stat-num { font-size: 20px; }
+  .proof-stat-label { font-size: 7.5px; }
+
+  .section { padding: 52px 16px; }
+  .section-eyebrow { font-size: 9px; letter-spacing: 0.18em; margin-bottom: 14px; }
+  .section-title { font-size: 26px; letter-spacing: -0.8px; margin-bottom: 12px; }
+  .section-sub { font-size: 14px; }
+
+  .dolor-grid { gap: 28px; }
+  .dolor-item { padding: 18px 0; gap: 12px; }
+  .dolor-num { font-size: 10px; width: 22px; }
+  .dolor-text h3 { font-size: 14px; margin-bottom: 4px; }
+  .dolor-text p { font-size: 12px; }
+  .dolor-quote-block { padding: 20px 16px; border-radius: 12px; }
+  .dolor-quote { font-size: 15px; letter-spacing: -0.2px; }
+  .quote-mark { font-size: 44px; margin-bottom: 12px; }
+  .dolor-attribution { font-size: 11px; }
+
+  .valor-section { padding: 52px 0; }
+  .valor-inner { padding: 0 16px; }
+  .valor-card { padding: 24px 18px; }
+  .valor-icon { width: 42px; height: 42px; border-radius: 10px; margin-bottom: 16px; }
+  .valor-card h3 { font-size: 15px; margin-bottom: 8px; }
+  .valor-card p { font-size: 13px; }
+
+  .step-item { gap: 12px; padding: 18px 0; }
+  .step-num { width: 34px; height: 34px; font-size: 11px; }
+  .step-content h3 { font-size: 14px; margin-top: 6px; }
+  .step-content p { font-size: 12px; }
+
+  .oferta-section { padding: 52px 0; }
+  .oferta-inner { padding: 0 16px; }
+  .oferta-left .section-title { font-size: 26px; }
+  .price-tag { margin-top: 24px; }
+  .price-amount { font-size: 40px; }
+  .price-currency { font-size: 17px; }
+  .price-note { font-size: 12px; }
+  .oferta-guarantee { font-size: 13px; padding: 14px 16px; gap: 10px; border-radius: 8px; }
+  .oferta-cta { font-size: 14px; padding: 15px 24px; border-radius: 8px; }
+  .pago-methods { font-size: 11px; }
+  .oferta-card-header { padding: 18px 16px 14px; }
+  .oferta-card-title { font-size: 17px; }
+  .oferta-card-sub { font-size: 12px; }
+  .deliverables-list { padding: 12px 16px; }
+  .deliverable-item { padding: 11px 0; gap: 10px; }
+  .d-check { width: 18px; height: 18px; }
+  .d-text { font-size: 12px; }
+  .d-text span { font-size: 11px; }
+  .dias-badge { margin: 0 16px 14px; font-size: 11px; padding: 10px 14px; }
+
+  .quien-grid { gap: 2px; }
+  .quien-card { padding: 20px 16px; gap: 12px; }
+  .quien-icon { width: 40px; height: 40px; border-radius: 10px; }
+  .quien-card h3 { font-size: 14px; margin-bottom: 4px; }
+  .quien-card p { font-size: 12px; }
+  .quien-not { padding: 16px; gap: 12px; border-radius: 10px; }
+  .quien-not p { font-size: 12px; }
+
+  .faq-item { padding: 18px 16px; }
+  .faq-q { font-size: 13px; gap: 8px; }
+  .faq-q-icon { width: 18px; height: 18px; font-size: 10px; flex-shrink: 0; }
+  .faq-a { font-size: 12px; padding-left: 26px; }
+
+  .cta-final { padding: 52px 16px; }
+  .cta-final-title { font-size: 28px; letter-spacing: -1px; }
+  .cta-final-sub { font-size: 14px; margin-bottom: 28px; }
+  .btn-final { font-size: 14px; padding: 15px 24px; }
+  .pago-final { font-size: 11px; }
+
+  footer { padding: 28px 16px; }
+  .footer-logo { font-size: 22px; }
+  footer p { font-size: 11px; }
 }
 
 /* ─── ANIMACIONES DE ENTRADA ─── */
@@ -1154,6 +1522,9 @@ footer {
 .hero-actions  { animation: fadeUp 0.5s 0.3s ease both; }
 .hero-right    { animation: fadeUp 0.6s 0.25s ease both; }
 
+/* Forzar hero-right visible en mobile (se ocultaba por defecto antes del refactor) */
+.hero-right { display: flex; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0ms !important; transition-duration: 0ms !important; }
 }
@@ -1166,6 +1537,31 @@ footer {
   <a href="#" class="nav-logo">crecıó</a>
   <a href="https://wa.me/573052635856?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" class="nav-cta">Pedir diagnóstico →</a>
 </nav>
+
+<!-- ─── SOCIAL PROOF BAR ─── -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-bar-item">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="var(--violeta)" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <span><strong>37+</strong> profesionales atendidos</span>
+    </div>
+    <div class="proof-bar-dot"></div>
+    <div class="proof-bar-item">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="var(--violeta)" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+      <span>Sistema listo en <strong>3 días</strong></span>
+    </div>
+    <div class="proof-bar-dot"></div>
+    <div class="proof-bar-item">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="var(--violeta)" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Garantía de <strong>30 días</strong></span>
+    </div>
+    <div class="proof-bar-dot proof-bar-dot--hide"></div>
+    <div class="proof-bar-item proof-bar-item--hide">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="var(--violeta)" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Medellín, <strong>Colombia</strong></span>
+    </div>
+  </div>
+</div>
 
 <!-- ─── HERO ─── -->
 <section style="max-width:100%; padding:0;">
@@ -1327,6 +1723,77 @@ footer {
         </div>
         <h3>IA que automatiza el sistema</h3>
         <p>Agenda automática, respuestas programadas, CRM. Mientras atiendes a tus pacientes, el sistema está trabajando para conseguirte más.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── POR QUÉ CRECIÓ ─── -->
+<div class="porq-section" id="nosotros">
+  <div class="porq-inner">
+    <div class="section-eyebrow" style="color:var(--violeta);">Por qué Creció</div>
+    <h2 class="section-title" style="color:var(--negro);">construido por<br>alguien que<br>lo vivió.</h2>
+
+    <div class="porq-grid">
+      <div class="porq-left">
+        <p class="porq-story">
+          Tengo 23 años, estudio mecatrónica y construí esta agencia <strong>desde mi cuarto, con una laptop y sin presupuesto.</strong>
+        </p>
+        <p class="porq-story">
+          Estudié a los <em>36 referentes más efectivos</em> de marketing digital, marca personal e IA. Documenté cada sistema, cada framework, cada método que funciona. El resultado es un repositorio de 45 documentos que hoy usan nuestros clientes.
+        </p>
+        <p class="porq-story">
+          No somos una agencia de "posts bonitos". Somos el único sistema en LATAM que une <strong>marca personal + marketing digital + IA</strong> específicamente para profesionales de servicios. Sin gurús, sin humo, sin métricas de vanidad.
+        </p>
+        <p class="porq-story">
+          La prueba está en que la agencia es su propio mejor caso de éxito: <strong>construida con el mismo sistema que entregamos a nuestros clientes.</strong>
+        </p>
+        <div class="porq-firma">
+          <div class="porq-avatar">JM</div>
+          <div class="porq-firma-text">
+            <div class="porq-firma-name">Juan Manuel</div>
+            <div class="porq-firma-rol">Fundador · Creció · @crecio.co</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="porq-right">
+        <div class="porq-stat-card">
+          <div class="porq-stat-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div>
+            <div class="porq-stat-num"><span>36</span>+</div>
+            <div class="porq-stat-label">Referentes estudiados a fondo — Sam Eusse, Hormozi, y los mejores de LATAM</div>
+          </div>
+        </div>
+        <div class="porq-stat-card">
+          <div class="porq-stat-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div>
+            <div class="porq-stat-num"><span>45</span></div>
+            <div class="porq-stat-label">Documentos en el repositorio del sistema — cada proceso documentado, sin improvisar</div>
+          </div>
+        </div>
+        <div class="porq-stat-card">
+          <div class="porq-stat-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="porq-stat-num"><span>37</span>+</div>
+            <div class="porq-stat-label">Profesionales atendidos en Colombia — psicólogos, coaches, odontólogos, entrenadores</div>
+          </div>
+        </div>
+        <div class="porq-stat-card">
+          <div class="porq-stat-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div>
+            <div class="porq-stat-num"><span>3</span></div>
+            <div class="porq-stat-label">Pilares integrados en un solo sistema — el único en LATAM que une los tres para este nicho</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1693,10 +2160,25 @@ footer {
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Pedir diagnóstico gratuito
       </a>
-      <p class="pago-methods">Sin costo · 15 minutos · Con un plan real al final</p>
-      <p class="pago-final" style="margin-top:8px;">
-        <strong>Métodos de pago:</strong> Nequi · 305 263 5856 &nbsp;·&nbsp; Bancolombia · 279 7035 1049 &nbsp;·&nbsp; Llave · @arizala462
-      </p>
+      <p class="pago-methods" style="margin-top:4px;">Sin costo · 15 minutos · Con un plan real al final</p>
+
+      <div style="width:100%; max-width:480px; margin-top:8px;">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gris); margin-bottom:10px; text-align:center;">Métodos de pago para el Pack</p>
+        <div class="pago-cards">
+          <div class="pago-card">
+            <div class="pago-card-label">Nequi</div>
+            <div class="pago-card-num">305 263 5856</div>
+          </div>
+          <div class="pago-card">
+            <div class="pago-card-label">Bancolombia</div>
+            <div class="pago-card-num">279 7035 1049</div>
+          </div>
+          <div class="pago-card">
+            <div class="pago-card-label">Llave</div>
+            <div class="pago-card-num">@arizala462</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
