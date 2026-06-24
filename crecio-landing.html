@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creció — Convertimos tu conocimiento en clientes</title>
+<meta name="description" content="Sistema de marca personal + marketing digital + IA para psicólogos, coaches, odontólogos y profesionales independientes en Colombia. De invisible a tener clientes predecibles.">
+<meta property="og:title" content="Creció — Convertimos tu conocimiento en clientes">
+<meta property="og:description" content="Sistema llave en mano para profesionales que merecen ser vistos. Marca personal + marketing + IA. Colombia.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --negro: #0D0D0D;
+  --violeta: #7C3AED;
+  --violeta-claro: #A855F7;
+  --violeta-dim: rgba(124,58,237,0.12);
+  --blanco: #FFFFFF;
+  --gris: #71717A;
+  --gris-dark: #27272A;
+  --gris-mid: #3F3F46;
+  --gris-light: #A1A1AA;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(13,13,13,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(124,58,237,0.12);
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: var(--violeta);
+  text-decoration: none;
+}
+
+.nav-cta {
+  background: var(--violeta);
+  color: var(--blanco);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 48px 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 64px;
+}
+
+.hero-left {}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: var(--violeta-claro);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+  margin-bottom: 36px;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--violeta);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.hero-headline {
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 0.97;
+  margin-bottom: 28px;
+  color: var(--blanco);
+}
+
+.hero-headline .accent { color: var(--violeta); }
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gris-light);
+  line-height: 1.65;
+  max-width: 440px;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--violeta);
+  color: var(--blanco);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gris-light);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gris-mid);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { color: var(--blanco); border-color: var(--blanco); }
+
+.microcopy {
+  font-size: 12px;
+  color: var(--gris);
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Hero right — proof card */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.proof-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--gris-dark);
+  border-radius: 14px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+.proof-card:hover { border-color: rgba(124,58,237,0.3); }
+
+.proof-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent);
+}
+
+.proof-glow {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.proof-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violeta);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.proof-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--blanco);
+  margin-bottom: 4px;
+}
+
+.proof-nicho {
+  font-size: 12px;
+  color: var(--gris);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.proof-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--gris-dark);
+  margin: 0 -32px -28px;
+  padding: 0 32px;
+}
+
+.proof-stat {
+  padding: 18px 0;
+  border-right: 1px solid var(--gris-dark);
+  padding-right: 16px;
+  margin-right: 16px;
+}
+.proof-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+
+.proof-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: var(--blanco);
+  margin-bottom: 3px;
+}
+.proof-stat-num span { color: var(--violeta); }
+
+.proof-stat-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris);
+  line-height: 1.3;
+}
+
+.hero-mini-card {
+  background: rgba(124,58,237,0.06);
+  border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mini-icon {
+  width: 44px; height: 44px;
+  background: rgba(124,58,237,0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mini-icon svg { stroke: var(--violeta); }
+
+.mini-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blanco);
+  line-height: 1.4;
+}
+.mini-text span { color: var(--gris); font-weight: 400; font-size: 12px; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px;
+  background: var(--gris-dark);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ─── SECCIÓN GENÉRICA ─── */
+.section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 100px 48px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--violeta);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--violeta);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-size: clamp(32px, 3.8vw, 54px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.04;
+  margin-bottom: 20px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--gris-light);
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 500px;
+}
+
+/* ─── DOLOR ─── */
+.dolor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 80px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.dolor-left {}
+
+.dolor-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dolor-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gris-dark);
+  transition: padding-left 0.25s;
+}
+.dolor-item:last-child { border-bottom: none; }
+.dolor-item:hover { padding-left: 8px; }
+
+.dolor-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--violeta);
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.dolor-text {}
+.dolor-text h3 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--blanco);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.dolor-text p {
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+.dolor-quote-block {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gris-dark);
+  border-radius: 14px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dolor-quote-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--violeta);
+  opacity: 0.6;
+}
+
+.quote-mark {
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--violeta);
+  line-height: 0.6;
+  margin-bottom: 24px;
+  opacity: 0.4;
+  font-family: Georgia, serif;
+}
+
+.dolor-quote {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--blanco);
+  line-height: 1.45;
+  margin-bottom: 28px;
+}
+
+.dolor-quote em {
+  color: var(--violeta-claro);
+  font-style: normal;
+}
+
+.dolor-attribution {
+  font-size: 12px;
+  color: var(--gris);
+  font-weight: 500;
+}
+
+/* ─── PROPUESTA DE VALOR ─── */
+.valor-section {
+  background: var(--blanco);
+  padding: 100px 0;
+}
+
+.valor-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.valor-inner .section-eyebrow { color: var(--violeta); }
+.valor-inner .section-eyebrow::after { background: var(--violeta); }
+.valor-inner .section-title { color: var(--negro); }
+.valor-inner .section-sub { color: #52525B; }
+
+.valor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+  background: #E4E4E7;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.valor-card {
+  background: var(--blanco);
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.2s;
+}
+.valor-card:hover { background: #FAFAFA; }
+
+.valor-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 2px;
+  background: var(--violeta);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+  transform-origin: left;
+}
+.valor-card:hover::after { transform: scaleX(1); }
+
+.valor-icon {
+  width: 48px; height: 48px;
+  background: rgba(124,58,237,0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.valor-icon svg { stroke: var(--violeta); }
+
+.valor-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--negro);
+  margin-bottom: 10px;
+}
+
+.valor-card p {
+  font-size: 14px;
+  color: #52525B;
+  line-height: 1.65;
+}
+
+/* ─── CÓMO FUNCIONA ─── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gris-dark);
+  position: relative;
+}
+.step-item:last-child { border-bottom: none; }
+
+.step-num-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.step-num {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(124,58,237,0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--violeta);
+  flex-shrink: 0;
+  background: rgba(124,58,237,0.06);
+}
+
+.step-line {
+  width: 1px;
+  flex: 1;
+  min-height: 16px;
+  background: linear-gradient(to bottom, rgba(124,58,237,0.3), transparent);
+  margin-top: 8px;
+}
+.step-item:last-child .step-line { display: none; }
+
+.step-content {}
+.step-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--blanco);
+  margin-bottom: 6px;
+  margin-top: 10px;
+  line-height: 1.3;
+}
+.step-content p {
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+.steps-visual {
+  position: sticky;
+  top: 100px;
+}
+
+.funnel-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gris-dark);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.funnel-header {
+  background: linear-gradient(135deg, #0D0D0D, #1a0533);
+  padding: 28px 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.funnel-glow {
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.funnel-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--violeta);
+  margin-bottom: 10px;
+}
+
+.funnel-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: var(--blanco);
+}
+
+.funnel-steps {
+  padding: 8px 0;
+}
+
+.funnel-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--gris-dark);
+  transition: background 0.2s;
+}
+.funnel-step:last-child { border-bottom: none; }
+.funnel-step:hover { background: rgba(124,58,237,0.04); }
+
+.f-icon {
+  width: 34px; height: 34px;
+  background: rgba(124,58,237,0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.f-icon svg { stroke: var(--violeta); }
+
+.f-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blanco);
+  line-height: 1.3;
+}
+.f-text span { color: var(--gris); font-weight: 400; font-size: 11px; display: block; margin-top: 1px; }
+
+.f-arrow {
+  margin-left: auto;
+  color: var(--gris-mid);
+}
+
+/* ─── OFERTA ─── */
+.oferta-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--negro) 0%, #0a0520 50%, var(--negro) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.oferta-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.oferta-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.oferta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.oferta-left {}
+.oferta-left .section-title { font-size: clamp(28px, 3vw, 44px); }
+
+.price-tag {
+  margin-top: 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.price-amount {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--blanco);
+  line-height: 1;
+}
+
+.price-currency {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--violeta);
+}
+
+.price-note {
+  font-size: 13px;
+  color: var(--gris);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.oferta-guarantee {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--blanco);
+  font-weight: 600;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.oferta-guarantee svg { stroke: var(--violeta); flex-shrink: 0; margin-top: 2px; }
+
+.oferta-cta {
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--violeta);
+  color: var(--blanco);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 18px 36px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  width: 100%;
+  justify-content: center;
+}
+.oferta-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+
+.pago-methods {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--gris);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.oferta-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.oferta-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--violeta), var(--violeta-claro));
+}
+
+.oferta-card-header {
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid var(--gris-dark);
+}
+
+.oferta-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--blanco);
+  margin-bottom: 4px;
+}
+
+.oferta-card-sub {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.deliverables-list {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.deliverable-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(63,63,70,0.5);
+}
+.deliverable-item:last-child { border-bottom: none; }
+
+.d-check {
+  width: 20px; height: 20px;
+  background: rgba(124,58,237,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.d-check svg { stroke: var(--violeta); }
+
+.d-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blanco);
+  line-height: 1.4;
+}
+.d-text span { color: var(--gris); font-weight: 400; font-size: 12px; display: block; margin-top: 2px; }
+
+.dias-badge {
+  margin: 0 32px 24px;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--violeta-claro);
+}
+.dias-badge svg { stroke: var(--violeta); flex-shrink: 0; }
+
+/* ─── PARA QUIÉN ─── */
+.quien-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 64px;
+  background: var(--gris-dark);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.quien-card {
+  background: var(--negro);
+  padding: 32px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: background 0.2s;
+}
+.quien-card:hover { background: rgba(124,58,237,0.04); }
+
+.quien-icon {
+  width: 46px; height: 46px;
+  background: rgba(124,58,237,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.quien-icon svg { stroke: var(--violeta); }
+
+.quien-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--blanco);
+  margin-bottom: 6px;
+}
+.quien-card p {
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+.quien-not {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border: 1px solid var(--gris-dark);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.quien-not svg { stroke: var(--gris); flex-shrink: 0; margin-top: 2px; }
+.quien-not p {
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+.quien-not strong { color: var(--blanco); font-weight: 600; }
+
+/* ─── FAQ ─── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 64px;
+  background: var(--gris-dark);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.faq-item {
+  background: var(--negro);
+  padding: 28px 32px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.faq-item:hover { background: rgba(124,58,237,0.04); }
+
+.faq-q {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--blanco);
+  margin-bottom: 10px;
+  line-height: 1.35;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.faq-q-icon {
+  width: 20px; height: 20px;
+  background: rgba(124,58,237,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--violeta);
+}
+
+.faq-a {
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.65;
+  padding-left: 30px;
+}
+
+.faq-a strong { color: var(--blanco); font-weight: 600; }
+
+/* ─── CTA FINAL ─── */
+.cta-final {
+  padding: 100px 48px;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.cta-glow-top {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-final-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cta-final .section-eyebrow { justify-content: center; }
+.cta-final .section-eyebrow::after { display: none; }
+
+.cta-final-title {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--blanco);
+  margin-bottom: 20px;
+}
+
+.cta-final-title .accent { color: var(--violeta); }
+
+.cta-final-sub {
+  font-size: 17px;
+  color: var(--gris-light);
+  line-height: 1.65;
+  margin-bottom: 44px;
+}
+
+.cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-final {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--violeta);
+  color: var(--blanco);
+  font-size: 17px;
+  font-weight: 700;
+  padding: 20px 44px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  width: 100%;
+  max-width: 400px;
+}
+.btn-final:hover { opacity: 0.88; transform: translateY(-2px); }
+
+.pago-final {
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.7;
+}
+
+.pago-final strong { color: var(--gris-light); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--gris-dark);
+  padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: var(--violeta);
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--gris);
+  line-height: 1.7;
+  text-align: right;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 100px 20px 60px;
+    gap: 48px;
+  }
+
+  .hero-headline { font-size: 40px; letter-spacing: -1.5px; }
+  .hero-sub { font-size: 16px; }
+
+  .hero-right { display: none; }
+
+  .section { padding: 72px 20px; }
+
+  .dolor-grid { grid-template-columns: 1fr; gap: 48px; }
+
+  .valor-section { padding: 72px 0; }
+  .valor-inner { padding: 0 20px; }
+  .valor-grid { grid-template-columns: 1fr; }
+
+  .steps-grid { grid-template-columns: 1fr; gap: 48px; }
+  .steps-visual { display: none; }
+
+  .oferta-section { padding: 72px 0; }
+  .oferta-inner { padding: 0 20px; }
+  .oferta-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .quien-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+
+  .cta-final { padding: 72px 20px; }
+
+  footer { padding: 40px 20px; flex-direction: column; text-align: center; }
+  .footer-meta { text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero-headline { font-size: 34px; letter-spacing: -1px; }
+  .proof-stats { grid-template-columns: 1fr 1fr; }
+  .proof-stat:last-child { grid-column: span 2; border-top: 1px solid var(--gris-dark); border-right: none; }
+}
+
+/* ─── ANIMACIONES DE ENTRADA ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge    { animation: fadeUp 0.5s ease both; }
+.hero-headline { animation: fadeUp 0.5s 0.1s ease both; }
+.hero-sub      { animation: fadeUp 0.5s 0.2s ease both; }
+.hero-actions  { animation: fadeUp 0.5s 0.3s ease both; }
+.hero-right    { animation: fadeUp 0.6s 0.25s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0ms !important; transition-duration: 0ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo">crecıó</a>
+  <a href="https://wa.me/573052635856?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" class="nav-cta">Pedir diagnóstico →</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section style="max-width:100%; padding:0;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Para profesionales en Colombia
+      </div>
+      <h1 class="hero-headline">
+        tu conocimiento<br>
+        merece tener<br>
+        <span class="accent">clientes.</span>
+      </h1>
+      <p class="hero-sub">
+        Sistema de marca personal + marketing digital + IA para psicólogos, coaches, odontólogos y entrenadores que son brillantes en lo suyo pero invisibles en internet.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/573052635856?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" class="btn-primary">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Quiero mi diagnóstico gratis
+        </a>
+        <a href="#como-funciona" class="btn-secondary">
+          Ver cómo funciona el sistema
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="microcopy">Sin costo · 15 minutos · Con un plan real al final</p>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="proof-card">
+        <div class="proof-glow"></div>
+        <div class="proof-label">
+          <div class="badge-dot"></div>
+          Caso documentado · 90 días
+        </div>
+        <div class="proof-name">Dra. Valentina Ríos</div>
+        <div class="proof-nicho">Psicóloga clínica · Medellín</div>
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="proof-stat-num"><span>+</span>312<span>%</span></div>
+            <div class="proof-stat-label">Alcance orgánico</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat-num">8</div>
+            <div class="proof-stat-label">Pacientes mes 1</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat-num"><span>$</span>0</div>
+            <div class="proof-stat-label">En pauta</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-mini-card">
+        <div class="mini-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="mini-text">
+          De 0 clientes digitales a agenda llena
+          <span>Sin depender del voz a voz</span>
+        </div>
+      </div>
+
+      <div class="hero-mini-card">
+        <div class="mini-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="mini-text">
+          Sistema listo en 3 días
+          <span>Marca + embudo + agenda automática</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── DOLOR ─── -->
+<div class="section" id="dolor">
+  <div class="section-eyebrow">El problema real</div>
+  <h2 class="section-title">eres bueno en lo tuyo.<br>pero nadie lo sabe.</h2>
+
+  <div class="dolor-grid">
+    <div class="dolor-left">
+      <div class="dolor-items">
+        <div class="dolor-item">
+          <div class="dolor-num">01</div>
+          <div class="dolor-text">
+            <h3>Publicas y nadie te escribe</h3>
+            <p>Subes contenido, le das like tú mismo, y el silencio. No es el algoritmo. Es que tu perfil no tiene sistema.</p>
+          </div>
+        </div>
+        <div class="dolor-item">
+          <div class="dolor-num">02</div>
+          <div class="dolor-text">
+            <h3>Dependes del voz a voz</h3>
+            <p>El voz a voz tiene fecha de vencimiento. Si mañana para, para tu negocio. Eso no es un sistema, es una ruleta.</p>
+          </div>
+        </div>
+        <div class="dolor-item">
+          <div class="dolor-num">03</div>
+          <div class="dolor-text">
+            <h3>Agencias te cobran por posts bonitos</h3>
+            <p>Te entregan plantillas genéricas que no convierten. El problema es que pagas por contenido cuando lo que necesitas son clientes.</p>
+          </div>
+        </div>
+        <div class="dolor-item">
+          <div class="dolor-num">04</div>
+          <div class="dolor-text">
+            <h3>No tienes tiempo para aprender marketing</h3>
+            <p>Estudiaste años para ser psicólogo, coach u odontólogo. No para ser community manager. No deberías tener que serlo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="dolor-quote-block">
+        <div class="quote-mark">"</div>
+        <div class="dolor-quote">
+          Tengo <em>5 años de experiencia</em> y 200 seguidores. Mis pacientes llegan por recomendación, pero cuando el flujo para, <em>yo paro.</em>
+        </div>
+        <div class="dolor-attribution">Lo que nos dicen en el primer diagnóstico. Siempre.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── PROPUESTA DE VALOR ─── -->
+<div class="valor-section" id="propuesta">
+  <div class="valor-inner">
+    <div class="section-eyebrow">Lo que hacemos</div>
+    <h2 class="section-title" style="color:var(--negro);">no son posts.<br>es un sistema.</h2>
+    <p class="section-sub">Tres pilares que trabajan juntos para que los clientes lleguen mientras tú trabajas en lo tuyo.</p>
+
+    <div class="valor-grid">
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Marca personal que vende</h3>
+        <p>Tu perfil pasa de vitrina apagada a máquina de conversión. Bio estratégica, highlights listos, link que captura datos. Todo conectado.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Contenido que construye autoridad</h3>
+        <p>Estrategia de contenido diseñada para tu nicho y tu nivel de awareness. No plantillas. Ideas que conectan con quien te necesita.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3>IA que automatiza el sistema</h3>
+        <p>Agenda automática, respuestas programadas, CRM. Mientras atiendes a tus pacientes, el sistema está trabajando para conseguirte más.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CÓMO FUNCIONA ─── -->
+<div class="section" id="como-funciona">
+  <div class="section-eyebrow">El proceso</div>
+  <h2 class="section-title">de invisible a<br>agenda llena.</h2>
+  <p class="section-sub">Un camino claro, sin improvisar. Así funciona el sistema Creció de principio a fin.</p>
+
+  <div class="steps-grid">
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h3>Diagnóstico (15 min)</h3>
+          <p>Analizamos tu perfil, tu nicho y tu oferta actual. Identificamos exactamente dónde se te están yendo los clientes potenciales. Sin venderme nada todavía.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h3>Día 1 — Tu perfil queda premium</h3>
+          <p>Bio estratégica reescrita, Linktree con 3 botones de conversión, highlights configurados. Tu Instagram ya parece el de alguien que sabe lo que hace.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h3>Día 2 — Agenda automática</h3>
+          <p>Cal.com configurado con tu disponibilidad. Tus clientes potenciales agendan solos. Tú recibes la notificación y apareces a la llamada. Nada más.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">4</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h3>Día 3 — Contenido con IA</h3>
+          <p>10 ideas de contenido diseñadas específicamente para tu nicho, tu audiencia y tu oferta. Con guiones listos para grabar. No más bloqueo creativo.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">5</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h3>El sistema trabaja mientras tú trabajas</h3>
+          <p>El contenido atrae, el embudo filtra, la agenda automatiza. Tu único trabajo es hacer lo que ya sabes hacer: atender a tus clientes con excelencia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-visual">
+      <div class="funnel-card">
+        <div class="funnel-header">
+          <div class="funnel-glow"></div>
+          <div class="funnel-eyebrow">Sistema Creció · Flujo completo</div>
+          <div class="funnel-title">De reel a cliente pagado</div>
+        </div>
+        <div class="funnel-steps">
+          <div class="funnel-step">
+            <div class="f-icon">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <div class="f-text">
+              Reel en Instagram
+              <span>Hook en 2 seg · CTA al final</span>
+            </div>
+            <div class="f-arrow">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="f-icon">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="f-text">
+              DM automático
+              <span>ManyChat · "Comenta SISTEMA"</span>
+            </div>
+            <div class="f-arrow">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="f-icon">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="f-text">
+              Analizador de perfil
+              <span>Test gratis en 2 min · CRM automático</span>
+            </div>
+            <div class="f-arrow">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="f-icon">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="f-text">
+              Diagnóstico agendado
+              <span>Cal.com · 30 minutos · Sin fricción</span>
+            </div>
+            <div class="f-arrow">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="f-icon">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <div class="f-text">
+              Cliente pagado
+              <span>Clientes reales · Facturación predecible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── OFERTA ─── -->
+<div class="oferta-section" id="oferta">
+  <div class="oferta-glow-bg"></div>
+  <div class="oferta-inner">
+    <div class="section-eyebrow">La oferta</div>
+    <div class="oferta-grid">
+      <div class="oferta-left">
+        <h2 class="section-title">pack de<br>optimización<br>estructural</h2>
+        <p class="section-sub" style="margin-top:16px;">Todo lo que necesitas para que tu perfil empiece a traer clientes. Listo en 3 días.</p>
+
+        <div class="price-tag">
+          <span class="price-currency">$</span>
+          <span class="price-amount">300K</span>
+          <span style="font-size:18px; color:var(--gris); font-weight:500;">COP</span>
+        </div>
+        <p class="price-note">Inversión única · Un solo cliente nuevo ya la recuperas y te sobra.</p>
+
+        <div class="oferta-guarantee">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Si en 30 días no ves ningún cambio medible, revisamos el sistema sin costo adicional. Sin preguntas.
+        </div>
+
+        <a href="https://wa.me/573052635856?text=Hola%2C%20quiero%20el%20Pack%20de%20Optimizaci%C3%B3n%20Estructural" target="_blank" class="oferta-cta">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Quiero este sistema ahora
+        </a>
+
+        <p class="pago-methods">
+          Nequi · 305 263 5856<br>
+          Bancolombia · 279 7035 1049<br>
+          Llave · @arizala462
+        </p>
+      </div>
+
+      <div>
+        <div class="oferta-card">
+          <div class="oferta-card-header">
+            <div class="oferta-card-title">Lo que recibes en 3 días</div>
+            <div class="oferta-card-sub">Todo entregado, configurado y listo para funcionar</div>
+          </div>
+
+          <div class="dias-badge">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Entrega completa en 72 horas hábiles
+          </div>
+
+          <div class="deliverables-list">
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                Bio premium reescrita
+                <span>Clara, para tu nicho exacto, con CTA que convierte</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                Linktree estratégico (3 botones)
+                <span>Analizador · Agenda · WhatsApp. Nada más, nada menos.</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                Agenda automática configurada
+                <span>Cal.com listo · Tus clientes agendan solos mientras duermes</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                10 ideas de contenido con IA
+                <span>Diseñadas para tu nicho, tu audiencia y tu oferta específica</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                Guiones listos para grabar
+                <span>5 Reels escritos con hook, cuerpo y CTA. Solo léelos.</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                CRM básico en Google Sheets
+                <span>Cada lead registrado, con alerta automática a tu correo</span>
+              </div>
+            </div>
+            <div class="deliverable-item">
+              <div class="d-check"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="d-text">
+                Sesión de cierre + guía de uso
+                <span>30 min para entregarte el sistema y resolver dudas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── PARA QUIÉN ─── -->
+<div class="section" id="para-quien">
+  <div class="section-eyebrow">Para quién es</div>
+  <h2 class="section-title">¿eres el profesional<br>que buscamos?</h2>
+  <p class="section-sub">Trabajamos con profesionales de servicios que ya saben lo que hacen. Solo les falta que los encuentren.</p>
+
+  <div class="quien-grid">
+    <div class="quien-card">
+      <div class="quien-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <h3>Psicólogos y terapeutas</h3>
+        <p>Con experiencia y pacientes actuales, pero dependiendo del voz a voz. Quieren llenar su agenda de forma predecible sin sacrificar su tiempo clínico.</p>
+      </div>
+    </div>
+    <div class="quien-card">
+      <div class="quien-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      </div>
+      <div>
+        <h3>Coaches certificados</h3>
+        <p>Con metodología sólida pero 0 clientes digitales. Publican, pero nadie les escribe. Ya saben que el problema no es su servicio, es su sistema.</p>
+      </div>
+    </div>
+    <div class="quien-card">
+      <div class="quien-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div>
+        <h3>Odontólogos y especialistas</h3>
+        <p>Con consultorio funcionando pero agenda sin llenar. Saben que sus pacientes están en redes pero no saben cómo llegar a ellos de forma sistemática.</p>
+      </div>
+    </div>
+    <div class="quien-card">
+      <div class="quien-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div>
+        <h3>Entrenadores y nutricionistas</h3>
+        <p>Quieren pasar del gimnasio local a tener presencia digital. Buscan clientes online sin invertir horas que ya no tienen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quien-not">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    <p>Creció <strong>no es para</strong> influencers que buscan seguidores, negocios de producto físico, o quienes no están dispuestos a aparecer en cámara al menos ocasionalmente. El sistema necesita una persona detrás de la marca.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── FAQ ─── -->
+<div class="section" id="faq">
+  <div class="section-eyebrow">Preguntas frecuentes</div>
+  <h2 class="section-title">lo que todos<br>quieren saber.</h2>
+
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        No soy bueno con la tecnologia. ¿Puedo hacer esto?
+      </div>
+      <div class="faq-a">Configuramos todo por ti. No necesitas saber nada de tecnología. <strong>Tu trabajo es aparecer y hacer lo que ya sabes hacer.</strong> El resto lo manejamos nosotros.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        ¿Cuánto tiempo me toma al día?
+      </div>
+      <div class="faq-a">El sistema está diseñado para que inviertas <strong>máximo 1 hora al día</strong> en contenido. Las herramientas hacen el resto automáticamente: agenda, respuestas, seguimiento.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        ¿En cuánto tiempo veo resultados?
+      </div>
+      <div class="faq-a">El sistema queda listo en 3 días. <strong>Los primeros mensajes de prospectos llegan en la primera semana</strong> cuando el contenido empieza a circular. Los primeros clientes, entre semana 2 y 4.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        ¿Y si no me convence después del diagnóstico?
+      </div>
+      <div class="faq-a">El diagnóstico es gratuito y sin ningún compromiso. Si al final no es para ti, <strong>te vas con un plan claro de qué mejorar</strong> y sin deber nada. Eso sí es valor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        ¿Funciona sin tener seguidores?
+      </div>
+      <div class="faq-a">Sí. El sistema combina contenido orgánico con prospección activa. <strong>Puedes conseguir tu primer cliente digital aunque tengas 200 seguidores.</strong> Los números en el perfil importan menos que el sistema detrás.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-icon">?</div>
+        ¿Necesito aparecer en cámara todo el tiempo?
+      </div>
+      <div class="faq-a">Los Reels más efectivos sí necesitan tu cara, pero <strong>con grabar 8 Reels cada 2 semanas en 2 horas es suficiente.</strong> Enseñamos cómo hacerlo sin que se convierta en un segundo trabajo.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── CTA FINAL ─── -->
+<div class="cta-final">
+  <div class="cta-glow-top"></div>
+  <div class="cta-final-inner">
+    <div class="section-eyebrow">El primer paso</div>
+    <h2 class="cta-final-title">
+      cada mes sin sistema<br>
+      te cuesta <span class="accent">clientes.</span>
+    </h2>
+    <p class="cta-final-sub">
+      Un psicólogo cobra $130K por sesión. Si con el Pack consigues un solo paciente nuevo este mes, ya lo recuperaste. Y el sistema sigue trabajando mañana.
+    </p>
+    <div class="cta-stack">
+      <a href="https://wa.me/573052635856?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito%20de%20Creci%C3%B3" target="_blank" class="btn-final">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Pedir diagnóstico gratuito
+      </a>
+      <p class="pago-methods">Sin costo · 15 minutos · Con un plan real al final</p>
+      <p class="pago-final" style="margin-top:8px;">
+        <strong>Métodos de pago:</strong> Nequi · 305 263 5856 &nbsp;·&nbsp; Bancolombia · 279 7035 1049 &nbsp;·&nbsp; Llave · @arizala462
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<div class="divider"></div>
+<footer>
+  <div>
+    <div class="footer-logo">crecıó</div>
+    <p style="font-size:12px; color:var(--gris); margin-top:6px;">convertimos tu conocimiento en clientes</p>
+  </div>
+  <div class="footer-meta">
+    <p><strong>@crecio.co</strong> · Colombia · LATAM</p>
+    <p>Marca personal + Marketing digital + IA</p>
+    <p style="margin-top:4px; font-size:11px; color:var(--gris-mid);">2025 · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+</body>
+</html>
