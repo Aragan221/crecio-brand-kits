@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creció — Brand Kits</title>
+<title>Creció — Assets Visuales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -28,12 +28,25 @@ h1 span { color: #7C3AED; }
 .subtitle {
   color: #71717A;
   font-size: 1rem;
-  margin-bottom: 48px;
+  margin-bottom: 16px;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7C3AED;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
+  border-bottom: 1px solid rgba(124,58,237,0.2);
+  padding-bottom: 8px;
 }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 20px;
   max-width: 900px;
   width: 100%;
 }
@@ -41,10 +54,13 @@ h1 span { color: #7C3AED; }
   background: #1A1A2E;
   border: 1px solid #2D2D44;
   border-radius: 14px;
-  padding: 32px 24px;
+  padding: 28px 24px;
   text-decoration: none;
   color: #fff;
   transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .card:hover {
   border-color: #7C3AED;
@@ -52,72 +68,103 @@ h1 span { color: #7C3AED; }
   box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
 }
 .card h2 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 8px;
 }
 .card p {
   color: #71717A;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   line-height: 1.5;
 }
 .card .tag {
   display: inline-block;
-  background: #7C3AED;
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 700;
   padding: 4px 10px;
   border-radius: 20px;
-  margin-top: 16px;
+  margin-top: 8px;
+  width: fit-content;
 }
+.tag-landing { background: #7C3AED; color: #fff; }
+.tag-brandkit { background: rgba(124,58,237,0.15); color: #A855F7; border: 1px solid rgba(124,58,237,0.3); }
+.tag-asset { background: rgba(113,113,122,0.15); color: #71717A; border: 1px solid rgba(113,113,122,0.3); }
 footer {
   margin-top: 60px;
   color: #4A4A4A;
   font-size: 0.75rem;
+  text-align: center;
+}
+footer a { color: #7C3AED; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  .grid { grid-template-columns: 1fr; }
+  body { padding: 40px 16px; }
 }
 </style>
 </head>
 <body>
 
 <h1>crecı<span>ó</span></h1>
-<p class="subtitle">Brand Kits &amp; Assets Visuales</p>
+<p class="subtitle">Assets Visuales &amp; Landing Pages</p>
 
+<!-- LANDING PAGES -->
+<div class="section-label">Landing Pages</div>
 <div class="grid">
+  <a class="card" href="crecio-landing.html">
+    <h2>Landing Creció (Premium)</h2>
+    <p>Página de venta principal. Pack $300K. Diseñada con skills Taste + Landing Page Pro. CSS puro, responsive.</p>
+    <span class="tag tag-landing">Landing Page</span>
+  </a>
+</div>
+
+<!-- BRAND KITS -->
+<div class="section-label">Brand Kits</div>
+<div class="grid">
+  <a class="card" href="crecio-brandkit.html">
+    <h2>Creció — Brand Kit</h2>
+    <p>Brand kit completo de la agencia. Negro + violeta. 10 secciones: logo, paleta, tipografía, IG, tarjeta, guía de uso.</p>
+    <span class="tag tag-brandkit">Brand Kit</span>
+  </a>
 
   <a class="card" href="alejandro-profesional-fit.html">
     <h2>Alejandro — Profesional Fit</h2>
-    <p>Entrenador personal para ejecutivos y emprendedores. Negro + Naranja. Sistema de 45 min.</p>
-    <span class="tag">Brand Kit</span>
+    <p>Entrenador personal para ejecutivos. Negro + naranja. Sistema de 45 min.</p>
+    <span class="tag tag-brandkit">Brand Kit</span>
   </a>
 
   <a class="card" href="lorena-contadora.html">
     <h2>Lorena — Sistema Anti-Multas</h2>
-    <p>Contadora para independientes. Azul confianza + Verde menta. Tranquilidad fiscal.</p>
-    <span class="tag">Brand Kit (por subir)</span>
+    <p>Contadora para independientes. Azul confianza + verde menta.</p>
+    <span class="tag tag-brandkit">Brand Kit</span>
   </a>
+</div>
 
+<!-- ASSETS DE MARCA -->
+<div class="section-label">Assets de Marca</div>
+<div class="grid">
   <a class="card" href="logo-crecio.html">
     <h2>Logo Creció</h2>
-    <p>Componente reutilizable del logo. Montserrat ExtraBold, violeta #7C3AED.</p>
-    <span class="tag">Asset</span>
+    <p>Componente reutilizable del logo. Montserrat ExtraBold, violeta #7C3AED, sin punto en la i.</p>
+    <span class="tag tag-asset">Asset</span>
   </a>
 
   <a class="card" href="fondos-marca.html">
     <h2>Fondos de Marca</h2>
     <p>3 estilos de fondo (portada FB, post IG). Degradados violeta con ruido sutil.</p>
-    <span class="tag">Asset</span>
+    <span class="tag tag-asset">Asset</span>
   </a>
 
   <a class="card" href="portada-facebook.html">
     <h2>Portada Facebook</h2>
     <p>1640x856px. Degradado violeta/negro con logo y slogan.</p>
-    <span class="tag">Asset</span>
+    <span class="tag tag-asset">Asset</span>
   </a>
-
 </div>
 
-<footer>Creció &copy; 2026 — Repo privado: crecio-cerebro</footer>
+<footer>
+  Creció &copy; 2026 — <a href="https://github.com/Aragan221/crecio-cerebro">Cerebro (privado)</a> · <a href="https://github.com/Aragan221/crecio-brand-kits">Repo público</a>
+</footer>
 
 </body>
 </html>
