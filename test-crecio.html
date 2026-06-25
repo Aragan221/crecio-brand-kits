@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Diagnóstico Gratuito de Perfil — Crecıó">
+<meta property="og:description" content="Descubre en 3 minutos qué le falta a tu Instagram para conseguir clientes de forma constante.">
+<meta property="og:image" content="https://crecio.netlify.app/og-preview.png">
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Diagnóstico Gratuito de Perfil — Crecıó">
+<meta property="twitter:description" content="Descubre en 3 minutos qué le falta a tu Instagram para conseguir clientes de forma constante.">
+<meta name="theme-color" content="#7C3AED">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',sans-serif;background:#0D0D0D;color:#fff;min-height:100dvh;overflow-x:hidden}
+.app{max-width:680px;margin:0 auto;position:relative}
+.app::before{content:'';position:fixed;top:-120px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,rgba(124,58,237,0.13) 0%,transparent 70%);pointer-events:none;z-index:0}
+.app::after{content:'';position:fixed;bottom:-80px;left:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(147,51,234,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+.screen{display:none;padding:40px 28px 48px;position:relative;z-index:1;opacity:0;transform:translateY(18px);transition:opacity .45s cubic-bezier(.4,0,.2,1),transform .45s cubic-bezier(.4,0,.2,1)}
+.screen.active{display:block}
+.screen.visible{opacity:1;transform:translateY(0)}
+.screen.exit{opacity:0;transform:translateY(-14px);transition:opacity .25s ease,transform .25s ease}
+
+.logo{font-size:26px;font-weight:800;color:#7C3AED;letter-spacing:-0.3px;margin-bottom:6px}
+.handle-tag{font-size:12px;color:#52525B;font-weight:700;letter-spacing:1px;margin-bottom:28px}
+.top-banner{background:linear-gradient(90deg,#7C3AED,#9333EA);padding:5px 0;text-align:center}
+.top-banner span{font-size:11px;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#A855F7;margin-bottom:20px}
+.cover-title{font-size:40px;font-weight:800;line-height:1.2;color:#fff;margin-bottom:24px;letter-spacing:-0.3px}
+.cover-title .hl{background:#7C3AED;padding:2px 12px;border-radius:6px;display:inline}
+.hr{width:70px;height:3px;background:linear-gradient(90deg,#7C3AED,#9333EA);border-radius:2px;margin:28px 0}
+.cover-sub{font-size:17px;color:#71717A;line-height:1.6;margin-bottom:24px}
+.cover-stat{background:#18181B;border-radius:12px;padding:20px 24px;margin-bottom:16px;border-left:4px solid #7C3AED}
+.cover-stat p{font-size:15px;color:#A1A1AA;line-height:1.6}
+.cover-stat strong{color:#fff}
+
+/* Social proof dot pulse */
+.social-proof{text-align:center;font-size:13px;color:#52525B;margin-bottom:28px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.social-proof span.count{color:#A855F7}
+.pulse-dot{width:8px;height:8px;background:#7C3AED;border-radius:50%;flex-shrink:0;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7C3AED;margin-bottom:8px}
+.form-group input,.form-group select{width:100%;background:#18181B;border:1.5px solid #27272A;border-radius:8px;padding:14px 16px;font-family:'Montserrat',sans-serif;font-size:15px;color:#fff;outline:none;transition:border .2s;min-height:48px}
+.form-group input:focus,.form-group select:focus{border-color:#7C3AED}
+.form-group input::placeholder{color:#52525B}
+.form-group select option{background:#18181B}
+.form-microcopy{font-size:11px;color:#3F3F46;margin-top:6px;line-height:1.5;font-weight:600}
+.form-trust{text-align:center;font-size:11px;color:#3F3F46;margin-top:12px;font-weight:600;letter-spacing:.3px}
+
+.progress-wrap{margin-bottom:28px}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#52525B}
+.progress-count{font-size:12px;font-weight:800;color:#7C3AED}
+.progress-bar-wrap{background:#27272A;border-radius:99px;height:4px}
+.progress-bar{height:4px;background:linear-gradient(90deg,#7C3AED,#9333EA);border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.section-title{font-size:26px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:8px;letter-spacing:-0.3px}
+.section-sub{font-size:14px;color:#71717A;margin-bottom:28px;line-height:1.5}
+
+/* Check items — min 44px touch */
+.check-item{background:#18181B;border:1.5px solid #27272A;border-radius:14px;padding:22px;margin-bottom:12px;cursor:pointer;transition:border .2s,background .25s,transform .15s;display:flex;align-items:flex-start;gap:16px;position:relative;overflow:hidden;min-height:44px}
+.check-item:hover{border-color:#7C3AED;transform:translateY(-1px)}
+.check-item:active{transform:scale(0.99)}
+.check-item.checked{border-color:#7C3AED;background:linear-gradient(135deg,#1C1035 0%,#150d2b 100%)}
+.check-item.checked::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7C3AED,#9333EA)}
+.check-box{width:28px;height:28px;border:2.5px solid #3F3F46;border-radius:6px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.check-item.checked .check-box{background:linear-gradient(135deg,#7C3AED,#9333EA);border-color:#7C3AED;transform:scale(1.08)}
+.check-mark{display:none;color:#fff}
+.check-item.checked .check-mark{display:flex}
+.check-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;transition:color .2s}
+.check-item.checked .check-title{color:#C4B5FD}
+.check-why{font-size:13px;color:#71717A;line-height:1.5}
+
+/* Buttons — min 48px high */
+.btn{width:100%;padding:16px;border:none;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:all .2s;margin-top:8px;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:linear-gradient(135deg,#7C3AED,#9333EA);color:#fff;box-shadow:0 6px 24px rgba(124,58,237,0.3)}
+.btn-primary:hover{opacity:.92;box-shadow:0 8px 30px rgba(124,58,237,0.4);transform:translateY(-1px)}
+.btn-secondary{background:#18181B;color:#A1A1AA;border:1.5px solid #27272A;box-shadow:none}
+.btn-wpp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 6px 24px rgba(37,211,102,0.25);margin-top:12px}
+.btn-wpp:hover{opacity:.92;transform:translateY(-1px)}
+.btn-share{background:#18181B;color:#25D366;border:1.5px solid #25D366;margin-top:12px}
+.btn-share:hover{background:#0f2a1a}
+
+.loading-screen{display:none;position:fixed;inset:0;background:#0D0D0D;z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.loading-screen.show{display:flex}
+.loader-ring{width:56px;height:56px;border:3px solid #27272A;border-top:3px solid #7C3AED;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-steps{display:flex;flex-direction:column;align-items:center;gap:8px}
+.loader-step{font-size:13px;font-weight:700;color:#52525B;letter-spacing:1px;transition:color .4s}
+.loader-step.active{color:#A855F7}
+.loader-step.done{color:#10B981}
+
+.score-badge{text-align:center;padding:32px 0 16px}
+.score-num{font-size:96px;font-weight:800;line-height:1;background:linear-gradient(135deg,#7C3AED,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.score-total{font-size:24px;color:#52525B;font-weight:800}
+.score-level{display:inline-block;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-top:12px}
+.level-base{background:#1A1A1A;color:#EF4444;border:1.5px solid #EF4444}
+.level-mid{background:#1A1A1A;color:#F59E0B;border:1.5px solid #F59E0B}
+.level-top{background:#1A1A1A;color:#10B981;border:1.5px solid #10B981}
+.score-title{font-size:26px;font-weight:800;color:#fff;text-align:center;margin:14px 0 8px;line-height:1.3;letter-spacing:-0.3px}
+.score-desc{font-size:15px;color:#71717A;text-align:center;line-height:1.6;margin-bottom:8px}
+.score-time{text-align:center;font-size:12px;color:#3F3F46;font-weight:700;margin-bottom:24px}
+.nicho-msg{background:#18181B;border-radius:10px;padding:16px 20px;margin-bottom:24px;border-left:3px solid #A855F7;font-size:14px;color:#A1A1AA;line-height:1.6}
+.nicho-msg strong{color:#fff}
+
+.tier-box{border-radius:12px;padding:20px 24px;margin-bottom:24px;border:1.5px solid #7C3AED;background:linear-gradient(135deg,#1C1035,#150d2b)}
+.tier-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7C3AED;margin-bottom:6px}
+.tier-name{font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.3px}
+.tier-desc{font-size:13px;color:#71717A;line-height:1.5}
+
+.reco-list{margin-bottom:24px}
+.reco-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #18181B}
+.reco-dot{width:8px;height:8px;border-radius:50%;background:#EF4444;flex-shrink:0;margin-top:6px}
+.reco-dot.ok{background:#10B981}
+.reco-text{font-size:14px;color:#A1A1AA;line-height:1.5}
+.reco-text strong{color:#fff}
+
+/* CTA box — subtle on dark */
+.cta-box{background:rgba(124,58,237,0.08);border:1.5px solid rgba(124,58,237,0.3);border-radius:16px;padding:36px 28px;text-align:center;margin-bottom:12px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.6),transparent);pointer-events:none}
+.cta-box h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3;position:relative;z-index:1;letter-spacing:-0.3px}
+.cta-box p{font-size:14px;color:#71717A;margin-bottom:24px;line-height:1.6;position:relative;z-index:1}
+.btn-cta-main{background:linear-gradient(135deg,#7C3AED,#9333EA);color:#fff;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;padding:16px 24px;border:none;border-radius:10px;cursor:pointer;width:100%;transition:all .2s;position:relative;z-index:1;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 24px rgba(124,58,237,0.3)}
+.btn-cta-main:hover{opacity:.92;transform:translateY(-1px);box-shadow:0 8px 30px rgba(124,58,237,0.4)}
+.btn-cta-main:active{transform:scale(0.98)}
+.cta-handle{font-size:12px;color:#52525B;margin-top:14px;position:relative;z-index:1}
+.name-display{color:#A855F7}
+
+/* MODAL PLANES */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:#111;border:1.5px solid #27272A;border-radius:20px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:32px 28px}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.modal-title{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.modal-close{background:none;border:none;color:#52525B;cursor:pointer;line-height:1;padding:4px;transition:color .2s;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{color:#fff}
+.plan-card{background:#18181B;border:1.5px solid #27272A;border-radius:12px;padding:22px;margin-bottom:14px;transition:border .2s}
+.plan-card:hover{border-color:#7C3AED}
+.plan-tag{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7C3AED;margin-bottom:6px}
+.plan-name{font-size:18px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.3px}
+.plan-items{list-style:none;padding:0}
+.plan-items li{font-size:13px;color:#A1A1AA;padding:5px 0;border-bottom:1px solid #27272A;line-height:1.5;display:flex;align-items:flex-start;gap:6px}
+.plan-items li:last-child{border-bottom:none}
+.plan-arrow{color:#7C3AED;font-weight:800;flex-shrink:0}
+
+/* Responsive — mobile first */
+@media(max-width:480px){
+  .screen{padding:28px 18px 40px}
+  .cover-title{font-size:32px}
+  .score-num{font-size:72px}
+  .cta-box{padding:28px 20px}
+  .cta-box h3{font-size:19px}
+  .btn{font-size:15px}
+}
+@media(max-width:380px){
+  .screen{padding:20px 14px 36px}
+  .cover-title{font-size:27px;margin-bottom:16px}
+  .hr{margin:18px 0}
+  .cover-sub{font-size:15px}
+  .section-title{font-size:22px}
+  .score-num{font-size:64px}
+  .cta-box h3{font-size:17px}
+  .btn{font-size:14px;padding:14px}
+  .check-item{padding:16px}
+  .logo{font-size:22px}
+}
+
+/* Cover fit on small screens */
+@media(max-height:700px) and (max-width:480px){
+  #s0 .cover-title{font-size:27px}
+  #s0 .cover-sub{font-size:14px;margin-bottom:16px}
+  #s0 .hr{margin:16px 0}
+  #s0 .cover-stat{padding:14px 16px;margin-bottom:12px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="loading-screen" id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-steps">
+    <div class="loader-step" id="ls1">Revisando tu perfil...</div>
+    <div class="loader-step" id="ls2">Calculando tu nivel...</div>
+    <div class="loader-step" id="ls3">Preparando tu mapa de acción...</div>
+  </div>
+</div>
+
+<!-- MODAL PLANES -->
+<div class="modal-overlay" id="modal-planes">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Planes Crecıó</div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-tag">Tier 1</div>
+      <div class="plan-name">Arranca</div>
+      <ul class="plan-items">
+        <li><span class="plan-arrow">&#8594;</span>Diagnóstico de marca (llamada 30 min + PDF)</li>
+        <li><span class="plan-arrow">&#8594;</span>Optimización completa del perfil Instagram</li>
+        <li><span class="plan-arrow">&#8594;</span>8 piezas de contenido por mes</li>
+        <li><span class="plan-arrow">&#8594;</span>WhatsApp Business configurado</li>
+        <li><span class="plan-arrow">&#8594;</span>Reporte mensual de resultados</li>
+        <li><span class="plan-arrow">&#8594;</span>Bono: guía de contenido de tu nicho</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="plan-tag">Tier 2</div>
+      <div class="plan-name">Crece</div>
+      <ul class="plan-items">
+        <li><span class="plan-arrow">&#8594;</span>Todo lo del Tier 1</li>
+        <li><span class="plan-arrow">&#8594;</span>16 piezas por mes + Reels</li>
+        <li><span class="plan-arrow">&#8594;</span>Meta Ads con pauta incluida</li>
+        <li><span class="plan-arrow">&#8594;</span>Bot de WhatsApp básico</li>
+        <li><span class="plan-arrow">&#8594;</span>Agendamiento automático (Cal.com)</li>
+        <li><span class="plan-arrow">&#8594;</span>Bonos: plantillas Canva + banco de 30 ideas</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="plan-tag">Tier 3</div>
+      <div class="plan-name">Escala</div>
+      <ul class="plan-items">
+        <li><span class="plan-arrow">&#8594;</span>Todo el Tier 2</li>
+        <li><span class="plan-arrow">&#8594;</span>24 piezas por mes + TikTok</li>
+        <li><span class="plan-arrow">&#8594;</span>CRM + seguimiento de leads</li>
+        <li><span class="plan-arrow">&#8594;</span>Sesión estratégica mensual</li>
+        <li><span class="plan-arrow">&#8594;</span>Dashboard de métricas personalizado</li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" onclick="openCal();closeModal()">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agendar llamada y conocer precios
+    </button>
+  </div>
+</div>
+
+<!-- S0: COVER -->
+<div class="screen active" id="s0">
+  <div class="top-banner"><span>Diagnóstico Gratuito · Crecıó</span></div>
+  <div style="padding:32px 0 0">
+    <div class="logo">crecıó</div>
+    <div class="handle-tag">@crecio.co</div>
+    <div class="eyebrow">Diagnóstico de perfil</div>
+    <div class="cover-title">¿Tu Instagram está<br><span class="hl">ahuyentando clientes</span><br>sin que lo sepas?</div>
+    <div class="hr"></div>
+    <div class="cover-sub">Responde 10 preguntas y descubre exactamente qué le falta a tu perfil para conseguir clientes de forma constante.</div>
+    <div class="cover-stat">
+      <p>La mayoría de profesionales tiene presencia digital. <strong>Menos del 12%</strong> tiene un sistema que realmente consiga clientes.</p>
+    </div>
+    <div class="social-proof">
+      <span class="pulse-dot"></span>
+      <span class="count" id="contador">+47</span> profesionales ya conocen su nivel
+    </div>
+    <button class="btn btn-primary" onclick="go(1)">
+      Iniciar diagnóstico gratis
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <p style="text-align:center;font-size:12px;color:#52525B;margin-top:14px">Toma 3 minutos &middot; Sin registro</p>
+  </div>
+</div>
+
+<!-- S1: DATOS -->
+<div class="screen" id="s1">
+  <div class="logo">crecıó</div>
+  <div class="handle-tag">@crecio.co</div>
+  <div style="font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#7C3AED;margin-bottom:8px">Antes de empezar</div>
+  <div class="section-title">Cuéntanos de ti</div>
+  <div class="section-sub">Para personalizar tu diagnóstico necesitamos algunos datos.</div>
+  <div class="form-group">
+    <label>Tu nombre</label>
+    <input type="text" id="inp-name" placeholder="Ej: Sergio García">
+  </div>
+  <div class="form-group">
+    <label>Tu profesión / nicho</label>
+    <select id="inp-nicho">
+      <option value="">Selecciona...</option>
+      <option>Psicólogo / Terapeuta</option>
+      <option>Coach / Mentor</option>
+      <option>Nutricionista / Dietista</option>
+      <option>Abogado</option>
+      <option>Odontólogo</option>
+      <option>Médico / Especialista</option>
+      <option>Otro profesional independiente</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Handle de Instagram (sin @)</label>
+    <input type="text" id="inp-handle" placeholder="Ej: sergio.psicologo">
+    <p class="form-microcopy">Solo para personalizar tu diagnóstico. No accedemos a tu cuenta.</p>
+  </div>
+  <button class="btn btn-primary" onclick="goForm()">
+    Continuar
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+  <p class="form-trust">Tus datos son confidenciales y no se comparten con terceros.</p>
+</div>
+
+<!-- S2: SECCIÓN 1 -->
+<div class="screen" id="s2">
+  <div class="logo">crecıó</div><div class="handle-tag">@crecio.co</div>
+  <div class="progress-wrap">
+    <div class="progress-top"><span class="progress-label">Sección 01 · Presencia Básica</span><span class="progress-count">1 — 4 de 10</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:25%"></div></div>
+  </div>
+  <div class="section-title">¿Tienes las bases<br>bien puestas?</div>
+  <div class="section-sub">Sin esto, todo lo demás es construir sobre arena.</div>
+  <div id="checks-s2"></div>
+  <button class="btn btn-primary" onclick="go(3)">
+    Continuar
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</div>
+
+<!-- S3: SECCIÓN 2 -->
+<div class="screen" id="s3">
+  <div class="logo">crecıó</div><div class="handle-tag">@crecio.co</div>
+  <div class="progress-wrap">
+    <div class="progress-top"><span class="progress-label">Sección 02 · Contenido Estratégico</span><span class="progress-count">5 — 7 de 10</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:55%"></div></div>
+  </div>
+  <div class="section-title">¿Tu contenido<br>trabaja para ti?</div>
+  <div class="section-sub">Publicar no es lo mismo que tener estrategia.</div>
+  <div id="checks-s3"></div>
+  <button class="btn btn-primary" onclick="go(4)">
+    Continuar
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</div>
+
+<!-- S4: SECCIÓN 3 -->
+<div class="screen" id="s4">
+  <div class="logo">crecıó</div><div class="handle-tag">@crecio.co</div>
+  <div class="progress-wrap">
+    <div class="progress-top"><span class="progress-label">Sección 03 · Sistema de Conversión</span><span class="progress-count">8 — 10 de 10</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:80%"></div></div>
+  </div>
+  <div class="section-title">¿Conviertes<br>seguidores en clientes?</div>
+  <div class="section-sub">Ahí se gana o se pierde todo.</div>
+  <div id="checks-s4"></div>
+  <button class="btn btn-primary" onclick="showLoading()">
+    Ver mi diagnóstico
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</div>
+
+<!-- S5: RESULTADO -->
+<div class="screen" id="s5">
+  <div class="logo">crecıó</div><div class="handle-tag">@crecio.co</div>
+  <div style="font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#7C3AED;margin-bottom:4px">Tu diagnóstico, <span class="name-display" id="res-name"></span></div>
+  <div class="score-badge">
+    <div><span class="score-num" id="res-score">0</span><span class="score-total">/10</span></div>
+    <div id="res-level-badge"></div>
+  </div>
+  <div class="score-title" id="res-title"></div>
+  <div class="score-desc" id="res-desc"></div>
+  <div class="score-time" id="res-time"></div>
+  <div class="nicho-msg" id="res-nicho-msg"></div>
+  <div class="tier-box" id="res-tier"></div>
+  <div class="reco-list" id="res-recos"></div>
+
+  <!-- CTA #1 — principal (agenda llamada) -->
+  <div class="cta-box">
+    <h3>Un diagnóstico no cambia nada. Un sistema sí.</h3>
+    <p>En 30 minutos te mostramos exactamente qué construir primero para conseguir clientes de forma constante.</p>
+    <button class="btn-cta-main" onclick="openCal()">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agenda tu llamada gratis
+    </button>
+    <div class="cta-handle">cal.com/crecio.co/diagnostico &middot; @crecio.co</div>
+  </div>
+
+  <!-- CTA #2 — WhatsApp -->
+  <button class="btn btn-wpp" onclick="openWpp()">
+    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Escríbenos por WhatsApp
+  </button>
+
+  <!-- CTA #3 — Compartir -->
+  <button class="btn btn-share" onclick="compartir()">
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    Compartir mi resultado
+  </button>
+
+  <!-- CTA #4 — Secundarios -->
+  <button class="btn btn-secondary" onclick="openModal()" style="margin-top:12px">Ver planes de Crecıó</button>
+  <button class="btn btn-secondary" onclick="restart()" style="margin-top:8px">Hacer otro diagnóstico</button>
+</div>
+
+</div>
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwzAgNndEsyx0IZHisIzlyeRO5Vj0XhyvDyEQTn76zzNc5bMUeRChfO3YtHSUTSjmClgA/exec';
+const WPP='https://wa.me/573052635856?text=Hola%20Creci%C3%B3%2C%20acabo%20de%20hacer%20el%20diagn%C3%B3stico%20y%20tengo%20una%20duda.';
+
+const POINTS=[
+  {s:2,id:'p1',title:'Perfil profesional separado del personal',why:'Un cliente que ve fotos de familia o memes no entiende qué haces. El perfil profesional le dice al algoritmo y al cliente que vas en serio.'},
+  {s:2,id:'p2',title:'Tu bio explica en 3 segundos qué haces y para quién',why:'Tienes 3 segundos antes de que un visitante se vaya. "Psicólogo Mg." no convierte. "Ayudo a adultos jóvenes con ansiedad · Consultas virtuales" sí.'},
+  {s:2,id:'p3',title:'Link en bio que lleva a una acción concreta',why:'Instagram solo te da un link. Si no existe o lleva a una página genérica, pierdes el 100% de los interesados.'},
+  {s:2,id:'p4',title:'Foto de perfil profesional, visible en 40px',why:'Tu foto se ve en un círculo de 40px. Si es oscura, grupal o un logo ilegible, nadie te reconoce.'},
+  {s:3,id:'p5',title:'Publicas mínimo 3 veces por semana de forma consistente',why:'El último post hace 3 meses le dice al cliente que no estás activo. La consistencia construye confianza.'},
+  {s:3,id:'p6',title:'Tu contenido educa, conecta o entretiene — no solo promociona',why:'Si el 80% de tu contenido es "agenda tu cita", tu audiencia te ignora. Regla: 80% valor, 20% promoción.'},
+  {s:3,id:'p7',title:'Tienes un sistema para planificar tu contenido con anticipación',why:'El contenido improvisado se nota y no convierte. Con planificación aseguras piezas que educan, conectan y convierten.'},
+  {s:4,id:'p8',title:'WhatsApp Business con mensaje de bienvenida automático',why:'WhatsApp tiene 95% de tasa de apertura en Colombia. Sin mensaje automático, el prospecto se enfría.'},
+  {s:4,id:'p9',title:'Sistema de agendamiento automático activo',why:'"¿Cuándo tienes disponibilidad?" mata conversiones. Un link de agendamiento permite reservar en segundos.'},
+  {s:4,id:'p10',title:'Mides cuántos leads llegan y cuántos se convierten',why:'Si no mides, no puedes mejorar. Con CPL y tasa de conversión puedes tomar decisiones inteligentes.'},
+];
+
+const NICHO_MSG={
+  'Psicólogo / Terapeuta':'Como psicólogo, tu mayor activo es la confianza. Un perfil claro y contenido educativo sobre salud mental posiciona tu expertise antes de la primera sesión.',
+  'Coach / Mentor':'Como coach, tu historia personal es tu mejor contenido. Las personas no contratan coaches — contratan transformaciones. Muestra resultados reales.',
+  'Nutricionista / Dietista':'Como nutricionista, el contenido visual de resultados y recetas genera el mayor engagement. Un sistema claro convierte curiosos en pacientes.',
+  'Abogado':'Como abogado, la claridad vence a la credibilidad. Explicar temas legales complejos en lenguaje simple te diferencia del 95% de tu competencia.',
+  'Odontólogo':'Como odontólogo, las fotos de antes/después bien presentadas son el contenido de mayor conversión. La prueba social visual es tu mejor argumento.',
+  'Médico / Especialista':'Como médico, la autoridad ya la tienes — el reto es hacerla accesible. Contenido educativo simple genera más confianza que los títulos.',
+  'Otro profesional independiente':'Tu diferenciador más poderoso es la especialización. Cuanto más específico seas sobre a quién ayudas y con qué problema, más fácil es que te encuentren.',
+};
+
+const TIERS=[
+  {name:'Tier 1 — Arranca',desc:'Diagnóstico de marca, optimización de perfil, 8 piezas/mes, WhatsApp Business configurado y reporte mensual. El punto de partida para construir bien desde cero.'},
+  {name:'Tier 2 — Crece',desc:'Todo el Tier 1 más 16 piezas/mes, Reels, Meta Ads con pauta incluida, bot de WhatsApp y agendamiento automático. Para quien ya tiene la base y quiere más clientes.'},
+  {name:'Tier 3 — Escala',desc:'Todo el Tier 2 más 24 piezas/mes, TikTok, CRM, sesión estratégica mensual y dashboard de métricas. Para maximizar y automatizar el sistema completo.'},
+];
+
+const CHECK_SVG=`<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+const state={checked:{},name:'',nicho:'',handle:''};
+let current=0, startTime=0, finalScore=0, finalNivel='';
+
+function renderChecks(){
+  [2,3,4].forEach(s=>{
+    const el=document.getElementById('checks-s'+s);
+    el.innerHTML='';
+    POINTS.filter(p=>p.s===s).forEach(p=>{
+      const div=document.createElement('div');
+      div.className='check-item'+(state.checked[p.id]?' checked':'');
+      div.id='ci-'+p.id;
+      div.innerHTML=`<div class="check-box"><span class="check-mark">${CHECK_SVG}</span></div><div class="check-content"><div class="check-title">${p.title}</div><div class="check-why">${p.why}</div></div>`;
+      div.onclick=()=>toggle(p.id);
+      el.appendChild(div);
+    });
+  });
+}
+
+function toggle(id){
+  state.checked[id]=!state.checked[id];
+  const el=document.getElementById('ci-'+id);
+  el.classList.toggle('checked',state.checked[id]);
+  if(state.checked[id]){el.style.transform='scale(1.01)';setTimeout(()=>el.style.transform='',150);}
+}
+
+function go(n){
+  const cur=document.getElementById('s'+current);
+  cur.classList.add('exit');
+  setTimeout(()=>{
+    cur.classList.remove('active','exit','visible');
+    const next=document.getElementById('s'+n);
+    next.classList.add('active');
+    setTimeout(()=>next.classList.add('visible'),20);
+    current=n;
+    window.scrollTo({top:0,behavior:'smooth'});
+  },260);
+}
+
+function goForm(){
+  const n=document.getElementById('inp-name').value.trim();
+  const ni=document.getElementById('inp-nicho').value;
+  const h=document.getElementById('inp-handle').value.trim();
+  if(!n||!ni||!h){alert('Por favor completa todos los campos.');return;}
+  state.name=n;state.nicho=ni;state.handle=h;
+  startTime=Date.now();
+  renderChecks();
+  go(2);
+}
+
+function showLoading(){
+  const loader=document.getElementById('loader');
+  const steps=[document.getElementById('ls1'),document.getElementById('ls2'),document.getElementById('ls3')];
+  loader.classList.add('show');
+  steps[0].classList.add('active');
+  setTimeout(()=>{steps[0].classList.remove('active');steps[0].classList.add('done');steps[1].classList.add('active');},700);
+  setTimeout(()=>{steps[1].classList.remove('active');steps[1].classList.add('done');steps[2].classList.add('active');},1400);
+  setTimeout(()=>{
+    loader.classList.remove('show');
+    steps.forEach(s=>s.classList.remove('active','done'));
+    buildResult();
+    go(5);
+  },2200);
+}
+
+function buildResult(){
+  const score=Object.values(state.checked).filter(Boolean).length;
+  const fallos=POINTS.filter(p=>!state.checked[p.id]).map(p=>p.title);
+  finalScore=score;
+  enviarDatos(score,fallos);
+
+  const secs=Math.round((Date.now()-startTime)/1000);
+  const mins=Math.floor(secs/60), s=secs%60;
+  document.getElementById('res-time').textContent=`Lo completaste en ${mins > 0 ? mins+'min ' : ''}${s}seg`;
+
+  document.getElementById('res-score').textContent=score;
+  document.getElementById('res-name').textContent=state.name.split(' ')[0];
+
+  let badge,title,desc,tierIdx;
+  if(score<=3){
+    badge='<span class="score-level level-base">Nivel: Base</span>';
+    title='Tu presencia digital está en el punto de partida.';
+    desc='No es mala noticia — es el mejor momento para construir bien. La mayoría con agenda llena hoy empezó exactamente aquí.';
+    tierIdx=0;finalNivel='Base';
+  } else if(score<=6){
+    badge='<span class="score-level level-mid">Nivel: En Construcción</span>';
+    title='Tienes la base. Faltan las piezas que convierten.';
+    desc='Con los ajustes correctos, los resultados cambian en menos de 60 días. No empiezas de cero — optimizas.';
+    tierIdx=1;finalNivel='En Construcción';
+  } else {
+    badge='<span class="score-level level-top">Nivel: Listo para Escalar</span>';
+    title='Estás por encima del 90% de profesionales en Colombia.';
+    desc='La pregunta ya no es si puedes conseguir clientes, sino cuántos y a qué velocidad.';
+    tierIdx=2;finalNivel='Listo para Escalar';
+  }
+
+  document.getElementById('res-level-badge').innerHTML=badge;
+  document.getElementById('res-title').textContent=title;
+  document.getElementById('res-desc').textContent=desc;
+  document.getElementById('res-nicho-msg').innerHTML=`<strong>${state.nicho}:</strong> ${NICHO_MSG[state.nicho]||NICHO_MSG['Otro profesional independiente']}`;
+
+  const t=TIERS[tierIdx];
+  document.getElementById('res-tier').innerHTML=`<div class="tier-label">Plan recomendado para ti</div><div class="tier-name">${t.name}</div><div class="tier-desc">${t.desc}</div>`;
+
+  const recos=document.getElementById('res-recos');
+  recos.innerHTML='<div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Tu mapa de acción</div>';
+  POINTS.forEach(p=>{
+    const ok=!!state.checked[p.id];
+    const div=document.createElement('div');
+    div.className='reco-item';
+    div.innerHTML=`<div class="reco-dot${ok?' ok':''}"></div><div class="reco-text"><strong>${p.title}</strong>${!ok?' — Pendiente de implementar':' — Ya lo tienes'}</div>`;
+    recos.appendChild(div);
+  });
+}
+
+function compartir(){
+  const txt=`Acabo de hacer el diagnóstico de perfil de Crecıó y saqué ${finalScore}/10 — Nivel: ${finalNivel}\n\n¿Cuánto sacarías tú?\n👉 ${window.location.href}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
+
+function enviarDatos(score,fallos){
+  const params=new URLSearchParams({nombre:state.name,nicho:state.nicho,handle:state.handle,score,fallos:fallos.join(', ')});
+  fetch(SCRIPT_URL+'?'+params.toString(),{mode:'no-cors'}).catch(()=>{});
+}
+
+function openCal(){window.open('https://cal.com/crecio.co/diagnostico','_blank')}
+function openWpp(){window.open(WPP,'_blank')}
+function openModal(){document.getElementById('modal-planes').classList.add('show')}
+function closeModal(){document.getElementById('modal-planes').classList.remove('show')}
+document.getElementById('modal-planes').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+function restart(){
+  state.checked={};state.name='';state.nicho='';state.handle='';
+  document.getElementById('inp-name').value='';
+  document.getElementById('inp-nicho').value='';
+  document.getElementById('inp-handle').value='';
+  current=0;
+  document.getElementById('s5').classList.remove('active','visible');
+  const s0=document.getElementById('s0');
+  s0.classList.add('active');
+  setTimeout(()=>s0.classList.add('visible'),20);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('s0').classList.add('visible'),50);
+});
+</script>
+</body>
+</html>
