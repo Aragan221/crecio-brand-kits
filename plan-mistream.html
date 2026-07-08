@@ -64,6 +64,16 @@
     font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);
     border:1px solid var(--gold-dim);padding:7px 14px;border-radius:2px;
   }
+  .badge-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .copys-jump-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;
+    color:var(--bg);background:var(--gold);
+    border:1px solid var(--gold);padding:7px 14px;border-radius:2px;
+    font-family:inherit;cursor:pointer;transition:all 0.2s ease;
+  }
+  .copys-jump-btn:hover{background:#e8b526;box-shadow:0 0 14px var(--gold-glow);}
+  .copys-jump-btn svg{width:12px;height:12px;flex-shrink:0;}
 
   h1{
     font-size:clamp(30px,4.8vw,50px);font-weight:800;letter-spacing:-0.02em;line-height:1.05;max-width:760px;
@@ -262,6 +272,113 @@
   .team-card .tc-fill{height:100%;background:var(--gold);transition:width 0.4s ease;}
   .team-card .tc-lbl{font-size:9.5px;color:var(--text-dim);margin-top:6px;font-variant-numeric:tabular-nums;}
 
+  /* ---------- COPYS SECTION ---------- */
+  .copys-block{margin-bottom:36px;}
+  .copys-block-label{
+    font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  }
+  .copy-card{
+    background:var(--surface);border:1px solid var(--gold-dim);border-radius:4px;
+    padding:22px 22px 20px;transition:border-color 0.25s ease;
+  }
+  .copy-card:hover{border-color:rgba(212,160,23,0.35);}
+  .copy-pre{
+    font-family:'Montserrat',sans-serif;font-size:13.5px;line-height:1.85;
+    color:var(--text);white-space:pre-wrap;word-break:break-word;
+  }
+  .copy-pre .cat{color:var(--gold);font-weight:700;}
+
+  .price-list-title{
+    font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--gold);
+    margin-bottom:14px;
+  }
+  .price-rows{display:flex;flex-direction:column;gap:2px;margin-bottom:6px;}
+  .price-row{
+    display:flex;align-items:center;gap:13px;
+    padding:10px 4px;
+    border-bottom:1px solid rgba(212,160,23,0.07);
+    opacity:0;transform:translateX(-6px);
+    animation:rowIn 0.45s ease forwards;
+  }
+  .price-row:last-child{border-bottom:none;}
+  @keyframes rowIn{to{opacity:1;transform:translateX(0);}}
+  .price-emoji{
+    font-size:16px;width:30px;height:30px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(212,160,23,0.08);border:1px solid var(--gold-dim);border-radius:50%;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .price-row:hover .price-emoji{transform:scale(1.12) rotate(-4deg);border-color:rgba(212,160,23,0.5);}
+  .price-info{flex:1;min-width:0;}
+  .price-name{font-size:13.5px;font-weight:600;color:var(--text);}
+  .price-detail{font-size:11px;color:var(--text-dim);margin-top:1px;}
+  .price-tag{
+    display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:0.04em;
+    color:var(--gold);background:rgba(212,160,23,0.1);border:1px solid var(--gold-dim);
+    padding:2px 8px;border-radius:10px;margin-top:4px;
+  }
+  .price-value{
+    font-size:15px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;
+    white-space:nowrap;flex-shrink:0;
+  }
+  .price-outro{
+    font-size:12.5px;color:var(--text-dim);margin-top:12px;padding-top:12px;
+    border-top:1px dashed var(--gold-dim);
+  }
+  .copy-btn{
+    margin-top:16px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:transparent;border:1px solid var(--gold-dim);color:var(--gold);
+    font-family:inherit;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    padding:11px 20px;border-radius:2px;cursor:pointer;transition:all 0.2s ease;
+    min-height:40px;
+  }
+  .copy-btn:hover{background:var(--gold-dim);border-color:var(--gold);}
+  .copy-btn.copied{color:var(--success);border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);}
+  .copy-btn svg{width:13px;height:13px;flex-shrink:0;}
+
+  .template-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  @media(max-width:800px){.template-grid{grid-template-columns:1fr;}}
+
+  .field-group{margin-bottom:16px;}
+  .field-label{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);
+    margin-bottom:7px;display:block;
+  }
+  .field-input, .field-select{
+    width:100%;background:var(--bg);border:1px solid var(--gold-dim);
+    color:var(--text);font-family:inherit;font-size:14px;padding:12px 14px;
+    border-radius:3px;transition:border-color 0.2s ease;
+  }
+  .field-input:focus, .field-select:focus{outline:none;border-color:var(--gold);}
+  .field-select{appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23D4A017' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;
+  }
+
+  .preview-panel{
+    background:var(--bg);border:1px solid var(--gold-dim);border-radius:4px;
+    padding:20px 20px 18px;
+  }
+  .preview-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;}
+  .preview-text{
+    font-size:13px;line-height:1.85;color:var(--text);white-space:pre-wrap;word-break:break-word;
+  }
+
+  .quick-grid{display:flex;flex-direction:column;gap:10px;}
+  .quick-row{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    background:var(--surface);border:1px solid var(--gold-dim);border-radius:4px;
+    padding:16px 18px;transition:border-color 0.25s ease;
+  }
+  .quick-row:hover{border-color:rgba(212,160,23,0.35);}
+  .quick-row .qr-text{font-size:13.5px;color:var(--text);flex:1;min-width:180px;}
+  .payment-fields{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;
+  }
+  @media(max-width:560px){.payment-fields{grid-template-columns:1fr;}}
+
   /* ---------- RULES ---------- */
   .rules-panel{
     background:var(--surface);border:1px solid var(--gold-dim);border-radius:4px;
@@ -319,7 +436,13 @@
           <div class="brand-sub">Operación de reventa</div>
         </div>
       </div>
-      <div class="date-badge" id="today-badge">3 — 31 Julio 2026</div>
+      <div class="badge-row">
+        <div class="date-badge" id="today-badge">3 — 31 Julio 2026</div>
+        <button class="copys-jump-btn" id="jump-copys">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Copys
+        </button>
+      </div>
     </div>
 
     <h1>Plan de <span class="gold">30 días</span><br><span class="thin">tarea por tarea.</span></h1>
@@ -573,9 +696,76 @@ const RULES = [
   "Contenido &gt; perfección. <strong>Publicar</strong> es más importante que editar perfecto — el algoritmo premia volumen.",
 ];
 
+// ============ COPYS DATA ============
+const STREAMING_ITEMS = [
+  {emoji:"🔴", name:"Netflix", price:"$15.000"},
+  {emoji:"🏰", name:"Disney+", price:"$10.000"},
+  {emoji:"🎭", name:"Max", price:"$10.000"},
+  {emoji:"📦", name:"Amazon Prime", price:"$10.000"},
+  {emoji:"⭐", name:"Paramount+", price:"$12.000"},
+  {emoji:"🍥📺🎞️📡", name:"Crunchyroll / Vix / Plex / IPTV", price:"$10.000"},
+];
+
+const MUSICA_ITEMS = [
+  {emoji:"🎧", name:"Spotify Premium", price:"$14.000"},
+  {emoji:"▶️", name:"YouTube Premium", price:"$14.000"},
+  {emoji:"🎨", name:"Canva Pro", price:"$14.000"},
+];
+
+const COMBO_ITEMS = [
+  {emoji:"🏰🎭", name:"Streaming básico", detail:"Disney + Max", price:"$15.000"},
+  {emoji:"🏰🎭📦", name:"Streaming triple", detail:"Disney + Max + Prime", price:"$20.000"},
+  {emoji:"🎧▶️", name:"Música + Video", detail:"Spotify + YouTube", price:"$20.000"},
+  {emoji:"🔴🎧", name:"Netflix + Música", detail:"Netflix + Spotify", price:"$24.000"},
+  {emoji:"🎧▶️🎨", name:"Todo audio", detail:"Spotify + YouTube + Canva", price:"$28.000", tag:"⚡ Ahorro"},
+  {emoji:"👨‍👩‍👧‍👦", name:"Familiar", detail:"Netflix + Disney + Max + Prime", price:"$30.000", tag:"🔥 Más vendido"},
+  {emoji:"👑", name:"El completo", detail:"Netflix + Disney + Max + Spotify", price:"$32.000", tag:"👑 Premium"},
+];
+
+function buildWhatsAppList(title, items, withDetail){
+  const lines = items.map(it=>{
+    const name = withDetail && it.detail ? `${it.name} (${it.detail})` : it.name;
+    const tag = it.tag ? `  ${it.tag}` : '';
+    return `${it.emoji} ${name} — ${it.price}${tag}`;
+  });
+  return `${title}\n${lines.join('\n')}`;
+}
+
+const INDIVIDUAL_PRICES_TEXT =
+  buildWhatsAppList("🎬 STREAMING", STREAMING_ITEMS) +
+  "\n\n" +
+  buildWhatsAppList("🎵 MÚSICA Y MÁS", MUSICA_ITEMS) +
+  "\n\n✨ ¿Cuál te gustaría activar hoy?";
+
+const COMBOS_TEXT =
+  buildWhatsAppList("💰 COMBOS", COMBO_ITEMS, true) +
+  "\n\n⚡ Arma el tuyo y ahorra más";
+
+const PRICE_TEXT = `${INDIVIDUAL_PRICES_TEXT}\n\n${COMBOS_TEXT}`;
+
+const PLATFORMS = [
+  "Netflix","Disney+","Max","Amazon Prime","Paramount+",
+  "Crunchyroll","Vix","Plex","IPTV","Spotify Premium","YouTube Premium","Canva Pro"
+];
+
+const PLATFORM_EMOJI = {
+  "Netflix":"🔴","Disney+":"🏰","Max":"🎭","Amazon Prime":"📦","Paramount+":"⭐",
+  "Crunchyroll":"🍥","Vix":"📺","Plex":"🎞️","IPTV":"📡",
+  "Spotify Premium":"🎧","YouTube Premium":"▶️","Canva Pro":"🎨"
+};
+
+const QUICK_PHRASES = [
+  "¿Todo bien con la pantalla? 😊 Si necesitas algo más, aquí estoy 🙌",
+  "Listo, ¿con cuál nos vamos? 🙌",
+  "Apenas me confirmes te paso los datos de pago ⚡",
+  "✓ ¡Pago recibido! Te activo en menos de 1 hora ⚡",
+  "¿Le sumamos otra plataforma? Te armo combo a tu medida 🎯",
+];
+
 // ============ IDs for tasks ============
 // task id format: t-{weekId}-{personSlug}-{taskIndex}
 function slug(s){ return s.toLowerCase().replace(/\s+/g,'-'); }
+
 
 // ============ STORAGE ============
 const TASKS_KEY = "mistream_tasks_v2";
@@ -595,10 +785,37 @@ function saveSales(n){ try{ localStorage.setItem(SALES_KEY, String(n)); }catch(e
 let salesCount = loadSales();
 
 function loadActiveTab(){
-  try{ const raw = localStorage.getItem(TAB_KEY); return raw ? parseInt(raw,10) : 1; }catch(e){ return 1; }
+  try{
+    const raw = localStorage.getItem(TAB_KEY);
+    if(!raw) return 1;
+    if(raw === 'copys') return 'copys';
+    const n = parseInt(raw,10);
+    return isNaN(n) ? 1 : n;
+  }catch(e){ return 1; }
 }
 function saveActiveTab(id){ try{ localStorage.setItem(TAB_KEY, String(id)); }catch(e){} }
 let activeWeek = loadActiveTab();
+
+const TEMPLATE_KEY = "mistream_template_v2";
+const PAYMENT_KEY = "mistream_payment_v2";
+
+function loadTemplateFields(){
+  try{
+    const raw = localStorage.getItem(TEMPLATE_KEY);
+    return raw ? JSON.parse(raw) : {plataforma:PLATFORMS[0], correo:"", contrasena:"", perfil:""};
+  }catch(e){ return {plataforma:PLATFORMS[0], correo:"", contrasena:"", perfil:""}; }
+}
+function saveTemplateFields(f){ try{ localStorage.setItem(TEMPLATE_KEY, JSON.stringify(f)); }catch(e){} }
+let templateFields = loadTemplateFields();
+
+function loadPaymentFields(){
+  try{
+    const raw = localStorage.getItem(PAYMENT_KEY);
+    return raw ? JSON.parse(raw) : {nequi:"305 263 5856", bancolombia:"279 7035 1049"};
+  }catch(e){ return {nequi:"305 263 5856", bancolombia:"279 7035 1049"}; }
+}
+function savePaymentFields(f){ try{ localStorage.setItem(PAYMENT_KEY, JSON.stringify(f)); }catch(e){} }
+let paymentFields = loadPaymentFields();
 
 // ============ helpers to enumerate all tasks ============
 function allTaskIds(){
@@ -633,6 +850,292 @@ function chipSvg(){
   </svg>`;
 }
 
+// ============ CLIPBOARD HELPER ============
+function copyToClipboard(text, btnEl){
+  const restore = () => {
+    setTimeout(()=>{
+      btnEl.classList.remove('copied');
+      btnEl.innerHTML = btnEl.dataset.originalLabel;
+    }, 1600);
+  };
+  const markCopied = () => {
+    if(!btnEl.dataset.originalLabel) btnEl.dataset.originalLabel = btnEl.innerHTML;
+    btnEl.classList.add('copied');
+    btnEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg> Copiado`;
+    restore();
+  };
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(markCopied).catch(()=>{
+      fallbackCopy(text); markCopied();
+    });
+  } else {
+    fallbackCopy(text); markCopied();
+  }
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+// ============ BUILD DELIVERY MESSAGE ============
+function buildDeliveryMessage(short){
+  const f = templateFields;
+  const plat = f.plataforma || "[PLATAFORMA]";
+  const emoji = PLATFORM_EMOJI[f.plataforma] || "🎬";
+  const correo = f.correo || "[correo]";
+  const pass = f.contrasena || "[contraseña]";
+  const perfil = f.perfil || "[perfil]";
+
+  if(short){
+    return `${emoji} ${plat} · Perfil Privado
+━━━━━━━━━━━━━━━━━━━━━
+📧 Correo: ${correo}
+🔑 Contraseña: ${pass}
+👤 Tu perfil: ${perfil}`;
+  }
+
+  return `✓ ¡Tu pantalla está lista!
+━━━━━━━━━━━━━━━━━━━━━
+${emoji} ${plat} · Perfil Privado
+━━━━━━━━━━━━━━━━━━━━━
+📧 Correo: ${correo}
+🔑 Contraseña: ${pass}
+👤 Tu perfil: ${perfil}
+━━━━━━━━━━━━━━━━━━━━━
+📌 Indicaciones:
+1. Inicia sesión con estos datos
+2. Selecciona tu perfil asignado
+3. NO cambies contraseña ni perfil
+4. Si algo falla → me escribes
+
+📅 Vigencia: 1 mes desde hoy
+¡Que lo disfrutes! 🙌`;
+}
+
+function buildPaymentMessage(){
+  const nequi = paymentFields.nequi || "[número Nequi]";
+  const banco = paymentFields.bancolombia || "[cuenta Bancolombia]";
+  return `💳 Nequi: ${nequi} · 🏦 Bancolombia: ${banco}`;
+}
+
+// ============ BUILD COPYS PANEL ============
+function buildPriceRowsHtml(items, withDetail, delayOffset){
+  return items.map((it,i)=>`
+    <div class="price-row" style="animation-delay:${(delayOffset+i)*45}ms;">
+      <div class="price-emoji">${it.emoji}</div>
+      <div class="price-info">
+        <div class="price-name">${it.name}</div>
+        ${withDetail && it.detail ? `<div class="price-detail">${it.detail}</div>` : ''}
+        ${it.tag ? `<span class="price-tag">${it.tag}</span>` : ''}
+      </div>
+      <div class="price-value">${it.price}</div>
+    </div>
+  `).join('');
+}
+
+function buildCopysPanel(){
+  const panel = document.createElement('div');
+  panel.className = 'week-panel' + (activeWeek==='copys' ? ' active':'');
+  panel.dataset.week = 'copys';
+
+  const platformOptions = PLATFORMS.map(p=>`<option value="${p}" ${templateFields.plataforma===p?'selected':''}>${PLATFORM_EMOJI[p]||''} ${p}</option>`).join('');
+
+  const quickButtonsHtml = QUICK_PHRASES.map((phrase,i)=>`
+    <div class="quick-row">
+      <div class="qr-text">${phrase}</div>
+      <button class="copy-btn" data-quick-copy="${i}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+        Copiar
+      </button>
+    </div>
+  `).join('');
+
+  panel.innerHTML = `
+    <div class="week-intro">
+      <div><div class="week-title">Copys</div></div>
+      <div class="week-goal-tag">Listos para pegar en WhatsApp</div>
+    </div>
+
+    <div class="copys-block">
+      <div class="copys-block-label">Precios individuales</div>
+      <div class="copy-card">
+        <div class="price-list-title">🎬 Streaming</div>
+        <div class="price-rows">${buildPriceRowsHtml(STREAMING_ITEMS, false, 0)}</div>
+        <div class="price-list-title" style="margin-top:18px;">🎵 Música y más</div>
+        <div class="price-rows">${buildPriceRowsHtml(MUSICA_ITEMS, false, STREAMING_ITEMS.length)}</div>
+        <div class="price-outro">✨ ¿Cuál te gustaría activar hoy?</div>
+        <button class="copy-btn" id="copy-individual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+          Copiar
+        </button>
+      </div>
+    </div>
+
+    <div class="copys-block">
+      <div class="copys-block-label">Combos</div>
+      <div class="copy-card">
+        <div class="price-list-title">💰 Combos</div>
+        <div class="price-rows">${buildPriceRowsHtml(COMBO_ITEMS, true, 0)}</div>
+        <div class="price-outro">⚡ Arma el tuyo y ahorra más</div>
+        <button class="copy-btn" id="copy-combos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+          Copiar
+        </button>
+      </div>
+    </div>
+
+    <div class="copys-block">
+      <div class="copys-block-label">Plantilla de entrega</div>
+      <div class="copy-card">
+        <div class="template-grid">
+          <div>
+            <div class="field-group">
+              <label class="field-label">Plataforma</label>
+              <select class="field-select" id="tf-plataforma">${platformOptions}</select>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Correo</label>
+              <input class="field-input" id="tf-correo" type="text" placeholder="correo@ejemplo.com" value="${templateFields.correo || ''}">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Contraseña</label>
+              <input class="field-input" id="tf-contrasena" type="text" placeholder="Contraseña" value="${templateFields.contrasena || ''}">
+            </div>
+            <div class="field-group" style="margin-bottom:0;">
+              <label class="field-label">Perfil</label>
+              <input class="field-input" id="tf-perfil" type="text" placeholder="Ej: Perfil 2" value="${templateFields.perfil || ''}">
+            </div>
+          </div>
+          <div>
+            <div class="preview-panel">
+              <div class="preview-label">Vista previa</div>
+              <div class="preview-text" id="tf-preview">${buildDeliveryMessage()}</div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+              <button class="copy-btn" id="copy-template" style="flex:1;justify-content:center;min-width:160px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+                Copiar
+              </button>
+              <button class="copy-btn" id="copy-template-short" style="flex:1;justify-content:center;min-width:160px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+                Copiar versión corta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copys-block">
+      <div class="copys-block-label">Copys rápidos</div>
+      <div class="quick-grid">
+        <div class="quick-row">
+          <div class="qr-text">Lista de precios completa (individuales + combos)</div>
+          <button class="copy-btn" id="copy-full-list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar
+          </button>
+        </div>
+        <div class="quick-row">
+          <div class="qr-text">Lista de combos</div>
+          <button class="copy-btn" id="copy-combos-quick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar
+          </button>
+        </div>
+        ${quickButtonsHtml}
+        <div class="quick-row" style="flex-direction:column;align-items:stretch;">
+          <div class="qr-text" style="margin-bottom:12px;">Datos de pago (Nequi + Bancolombia)</div>
+          <div class="payment-fields">
+            <div class="field-group" style="margin-bottom:0;">
+              <label class="field-label">Nequi</label>
+              <input class="field-input" id="pf-nequi" type="text" placeholder="305 263 5856" value="${paymentFields.nequi || ''}">
+            </div>
+            <div class="field-group" style="margin-bottom:0;">
+              <label class="field-label">Bancolombia</label>
+              <input class="field-input" id="pf-bancolombia" type="text" placeholder="279 7035 1049" value="${paymentFields.bancolombia || ''}">
+            </div>
+          </div>
+          <button class="copy-btn" id="copy-payment" style="align-self:flex-start;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  return panel;
+}
+
+function bindCopysEvents(){
+  const individualBtn = document.getElementById('copy-individual');
+  if(individualBtn) individualBtn.addEventListener('click', ()=> copyToClipboard(INDIVIDUAL_PRICES_TEXT, individualBtn));
+
+  const combosBtn = document.getElementById('copy-combos');
+  if(combosBtn) combosBtn.addEventListener('click', ()=> copyToClipboard(COMBOS_TEXT, combosBtn));
+
+  const fullListBtn = document.getElementById('copy-full-list');
+  if(fullListBtn) fullListBtn.addEventListener('click', ()=> copyToClipboard(PRICE_TEXT, fullListBtn));
+
+  const combosQuickBtn = document.getElementById('copy-combos-quick');
+  if(combosQuickBtn) combosQuickBtn.addEventListener('click', ()=> copyToClipboard(COMBOS_TEXT, combosQuickBtn));
+
+  const plat = document.getElementById('tf-plataforma');
+  const correo = document.getElementById('tf-correo');
+  const pass = document.getElementById('tf-contrasena');
+  const perfil = document.getElementById('tf-perfil');
+  const preview = document.getElementById('tf-preview');
+  const copyTplBtn = document.getElementById('copy-template');
+  const copyTplShortBtn = document.getElementById('copy-template-short');
+
+  function refreshPreview(){
+    templateFields = {
+      plataforma: plat ? plat.value : templateFields.plataforma,
+      correo: correo ? correo.value : templateFields.correo,
+      contrasena: pass ? pass.value : templateFields.contrasena,
+      perfil: perfil ? perfil.value : templateFields.perfil,
+    };
+    saveTemplateFields(templateFields);
+    if(preview) preview.textContent = buildDeliveryMessage();
+  }
+  [plat, correo, pass, perfil].forEach(el=>{
+    if(el) el.addEventListener('input', refreshPreview);
+    if(el) el.addEventListener('change', refreshPreview);
+  });
+  if(copyTplBtn) copyTplBtn.addEventListener('click', ()=> copyToClipboard(buildDeliveryMessage(), copyTplBtn));
+  if(copyTplShortBtn) copyTplShortBtn.addEventListener('click', ()=> copyToClipboard(buildDeliveryMessage(true), copyTplShortBtn));
+
+  document.querySelectorAll('[data-quick-copy]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const idx = parseInt(btn.getAttribute('data-quick-copy'),10);
+      copyToClipboard(QUICK_PHRASES[idx], btn);
+    });
+  });
+
+  const nequi = document.getElementById('pf-nequi');
+  const banco = document.getElementById('pf-bancolombia');
+  const payBtn = document.getElementById('copy-payment');
+  function refreshPayment(){
+    paymentFields = {
+      nequi: nequi ? nequi.value : paymentFields.nequi,
+      bancolombia: banco ? banco.value : paymentFields.bancolombia,
+    };
+    savePaymentFields(paymentFields);
+  }
+  [nequi, banco].forEach(el=>{
+    if(el) el.addEventListener('input', refreshPayment);
+  });
+  if(payBtn) payBtn.addEventListener('click', ()=> copyToClipboard(buildPaymentMessage(), payBtn));
+}
+
 // ============ RENDER TABS ============
 const tabsEl = document.getElementById('tabs');
 function renderTabs(){
@@ -651,6 +1154,17 @@ function renderTabs(){
     });
     tabsEl.appendChild(btn);
   });
+
+  const copysBtn = document.createElement('button');
+  copysBtn.className = 'tab-btn' + (activeWeek==='copys' ? ' active':'');
+  copysBtn.innerHTML = `▪ Copys<span class="tt-dates">precios · plantillas</span>`;
+  copysBtn.addEventListener('click', ()=>{
+    activeWeek = 'copys';
+    saveActiveTab(activeWeek);
+    renderTabs();
+    renderPanels();
+  });
+  tabsEl.appendChild(copysBtn);
 }
 
 // ============ RENDER WEEK PANELS ============
@@ -732,7 +1246,10 @@ function renderPanels(){
     panelsEl.appendChild(panel);
   });
 
+  panelsEl.appendChild(buildCopysPanel());
+
   bindPanelEvents();
+  bindCopysEvents();
 }
 
 function bindPanelEvents(){
@@ -811,6 +1328,7 @@ function renderTabsBadgesOnly(){
   const btns = tabsEl.querySelectorAll('.tab-btn');
   btns.forEach((btn,idx)=>{
     const w = WEEKS[idx];
+    if(!w) return; // skip the Copys tab, which has no week data
     const ids = weekTaskIds(w.id);
     const done = ids.filter(id=>taskState[id]).length;
     const badge = btn.querySelector('.tt-badge');
@@ -871,11 +1389,24 @@ document.getElementById('sales-minus').addEventListener('click', ()=>{
 
 // ============ RESET BUTTONS ============
 document.getElementById('reset-week').addEventListener('click', ()=>{
+  if(activeWeek === 'copys'){
+    alert('Estás en la pestaña Copys — cambia a una semana para reiniciarla.');
+    return;
+  }
   if(!confirm(`¿Reiniciar todas las tareas de la Semana ${activeWeek}?`)) return;
   weekTaskIds(activeWeek).forEach(id=> delete taskState[id]);
   saveTasks(taskState);
   renderPanels();
   updateAllCounters();
+});
+
+// ============ HEADER JUMP TO COPYS ============
+document.getElementById('jump-copys').addEventListener('click', ()=>{
+  activeWeek = 'copys';
+  saveActiveTab(activeWeek);
+  renderTabs();
+  renderPanels();
+  document.getElementById('tabs').scrollIntoView({behavior:'smooth', block:'start'});
 });
 document.getElementById('reset-all').addEventListener('click', ()=>{
   if(!confirm('¿Reiniciar TODO el progreso del plan? Esto no se puede deshacer.')) return;
