@@ -140,20 +140,34 @@
   }
 
   /* ---------- TABS ---------- */
+  .tabs-wrap{position:relative;margin-bottom:32px;}
+  .tabs-wrap::before,.tabs-wrap::after{
+    content:"";position:absolute;top:0;bottom:1px;width:26px;pointer-events:none;z-index:2;
+    transition:opacity 0.2s ease;
+  }
+  .tabs-wrap::before{left:0;background:linear-gradient(90deg, var(--bg) 10%, transparent 100%);}
+  .tabs-wrap::after{right:0;background:linear-gradient(270deg, var(--bg) 10%, transparent 100%);}
+  .tabs-wrap.at-start::before{opacity:0;}
+  .tabs-wrap.at-end::after{opacity:0;}
+
   .tabs{
     display:flex;
-    gap:8px;
+    gap:6px;
     border-bottom:1px solid var(--gold-dim);
-    margin-bottom:32px;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
   }
+  .tabs::-webkit-scrollbar{display:none;height:0;}
   .tab-btn{
     background:transparent;border:none;font-family:inherit;
     color:var(--text-dim);cursor:pointer;
-    padding:14px 20px 16px;
+    padding:14px 18px 16px;
     font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-    position:relative;white-space:nowrap;
+    position:relative;white-space:nowrap;flex-shrink:0;
+    scroll-snap-align:start;
     transition:color 0.2s ease;
   }
   .tab-btn .tt-dates{display:block;font-size:9px;font-weight:500;letter-spacing:0.06em;color:var(--text-dim);margin-top:3px;opacity:0.7;}
@@ -167,6 +181,25 @@
   .tab-btn .tt-badge{
     display:inline-block;margin-left:6px;font-size:9px;color:var(--success);
     font-variant-numeric:tabular-nums;
+  }
+  .tabs-swipe-hint{
+    position:absolute;right:2px;top:12px;
+    display:flex;align-items:center;gap:3px;
+    pointer-events:none;z-index:3;
+    color:var(--gold);opacity:0;
+    transition:opacity 0.4s ease;
+  }
+  .tabs-swipe-hint.show{opacity:0.8;animation:hintNudge 1.3s ease-in-out infinite;}
+  .tabs-swipe-hint svg{width:13px;height:13px;}
+  @keyframes hintNudge{
+    0%,100%{transform:translateX(0);}
+    50%{transform:translateX(4px);}
+  }
+
+  @media(max-width:480px){
+    .tab-btn{padding:12px 14px 14px;font-size:10.5px;}
+    .tab-btn .tt-dates{font-size:8.5px;}
+    .tabs{gap:4px;}
   }
 
   /* week panel */
@@ -373,11 +406,71 @@
     padding:16px 18px;transition:border-color 0.25s ease;
   }
   .quick-row:hover{border-color:rgba(212,160,23,0.35);}
-  .quick-row .qr-text{font-size:13.5px;color:var(--text);flex:1;min-width:180px;}
+  .quick-row .qr-text{font-size:13.5px;color:var(--text);flex:1;min-width:180px;white-space:pre-wrap;line-height:1.6;}
   .payment-fields{
     display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;
   }
   @media(max-width:560px){.payment-fields{grid-template-columns:1fr;}}
+
+  /* ---------- PARSER ---------- */
+  .parser-textarea{
+    width:100%;min-height:150px;resize:vertical;
+    background:var(--bg);border:1px solid var(--gold-dim);color:var(--text);
+    font-family:'Montserrat',sans-serif;font-size:13.5px;line-height:1.6;
+    padding:14px 16px;border-radius:3px;transition:border-color 0.2s ease;
+  }
+  .parser-textarea:focus{outline:none;border-color:var(--gold);}
+  .parser-textarea::placeholder{color:var(--text-dim);}
+  .detected-row{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;
+  }
+  .detected-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;color:var(--text);
+    background:var(--surface-2);border:1px solid var(--gold-dim);
+    padding:6px 12px;border-radius:20px;
+  }
+  .detected-chip .dc-label{color:var(--text-dim);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;}
+  .detected-chip.empty{color:var(--text-dim);border-style:dashed;}
+  .parser-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px;}
+  @media(max-width:800px){.parser-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FLOW (Flujo de venta) ---------- */
+  .flow-list{display:flex;flex-direction:column;gap:12px;}
+  .flow-step{
+    background:var(--surface);border:1px solid var(--gold-dim);border-radius:4px;
+    padding:20px 22px;transition:border-color 0.25s ease;
+  }
+  .flow-step.done{border-color:rgba(16,185,129,0.35);}
+  .flow-step:hover{border-color:rgba(212,160,23,0.35);}
+  .flow-step-head{display:flex;align-items:flex-start;gap:14px;}
+  .flow-check{
+    width:20px;height:20px;flex-shrink:0;margin-top:2px;
+    border:1.4px solid var(--gold-dim);border-radius:50%;
+    cursor:pointer;position:relative;transition:all 0.2s ease;background:transparent;
+  }
+  .flow-check:hover{border-color:var(--gold);}
+  .flow-check.checked{background:var(--success);border-color:var(--success);}
+  .flow-check.checked::after{
+    content:"";position:absolute;left:6px;top:2px;width:5px;height:9px;
+    border-right:2px solid #0A0E1A;border-bottom:2px solid #0A0E1A;transform:rotate(45deg);
+  }
+  .flow-step-body{flex:1;min-width:0;}
+  .flow-step-num{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .flow-step-title{font-size:15px;font-weight:700;color:var(--text);margin-top:2px;}
+  .flow-step.done .flow-step-title{color:var(--text-dim);}
+  .flow-step-text{
+    font-size:13px;color:var(--text-dim);white-space:pre-wrap;line-height:1.6;
+    margin-top:10px;padding:12px 14px;background:var(--bg);border:1px solid var(--gold-dim);border-radius:3px;
+  }
+  .flow-step-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .flow-link-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:var(--bg);border:1px solid var(--gold);
+    font-family:inherit;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    padding:11px 20px;border-radius:2px;cursor:pointer;transition:all 0.2s ease;
+  }
+  .flow-link-btn:hover{background:#e8b526;}
 
   /* ---------- RULES ---------- */
   .rules-panel{
@@ -488,7 +581,12 @@
 
   <div class="section-label"><span class="txt">Línea de tiempo</span><div class="line"></div></div>
 
-  <div class="tabs" id="tabs"></div>
+  <div class="tabs-wrap at-start" id="tabs-wrap">
+    <div class="tabs" id="tabs"></div>
+    <div class="tabs-swipe-hint" id="tabs-swipe-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+    </div>
+  </div>
 
   <div id="week-panels"></div>
 
@@ -756,14 +854,29 @@ const PLATFORM_EMOJI = {
 
 const QUICK_PHRASES = [
   "Hola, buenas tardes 👋 Hablas con Juan Manuel",
-  "¿Todo bien con la pantalla? 😊 Si necesitas algo más, aquí estoy 🙌",
-  "Listo, ¿con cuál nos vamos? 🙌",
-  "Apenas me confirmes te paso los datos de pago ⚡",
-  "Para activarte me envías el comprobante acá:\n💳 Nequi: 305 263 5856\n🏦 Bancolombia: 279 7035 1049\n\nApenas me llegue te activo en menos de 1 hora ⚡",
-  "✅ ¡Pago recibido! Te activo en menos de 1 hora ⚡",
-  "¿Le sumamos otra plataforma? Te armo combo a tu medida 🎯",
   "Hola, tenemos todas las plataformas disponibles. Si te interesa alguna me escribes 😊",
   "Perfil privado, solo tuyo. Activación en menos de 1 hora y si algo falla te lo solucionamos 👌🏽",
+  "Listo, ¿con cuál nos vamos? 🙌",
+  "Apenas me confirmes te paso los datos de pago ⚡",
+  () => buildPaymentStepMessage(),
+  "✓ ¡Pago recibido! Te activo en menos de 1 hora ⚡",
+  "¿Todo bien con la pantalla? 😊 Si necesitas algo más, aquí estoy 🙌",
+  "¿Le sumamos otra plataforma? Te armo combo a tu medida 🎯",
+];
+
+function resolvePhrase(item){
+  return typeof item === 'function' ? item() : item;
+}
+
+const FLOW_STEPS = [
+  {id:1, title:"Saludo", text:"Hola, buenas tardes 👋 Hablas con Juan Manuel"},
+  {id:2, title:"Catálogo", type:"catalog"},
+  {id:3, title:"Confirmar qué quiere", text:"Listo, ¿con cuál nos vamos? 🙌"},
+  {id:4, title:"Datos de pago", text: () => buildPaymentStepMessage()},
+  {id:5, title:"Confirmar pago recibido", text:"✓ ¡Pago recibido! Te activo en menos de 1 hora ⚡"},
+  {id:6, title:"Entrega", type:"link"},
+  {id:7, title:"Seguimiento (24h después)", text:"¿Todo bien con la pantalla? 😊 Si necesitas algo más, aquí estoy 🙌"},
+  {id:8, title:"Upsell (opcional)", text:"¿Le sumamos otra plataforma? Te armo combo a tu medida 🎯"},
 ];
 
 // ============ IDs for tasks ============
@@ -792,7 +905,7 @@ function loadActiveTab(){
   try{
     const raw = localStorage.getItem(TAB_KEY);
     if(!raw) return 1;
-    if(raw === 'copys') return 'copys';
+    if(raw === 'copys' || raw === 'flujo') return raw;
     const n = parseInt(raw,10);
     return isNaN(n) ? 1 : n;
   }catch(e){ return 1; }
@@ -820,6 +933,32 @@ function loadPaymentFields(){
 }
 function savePaymentFields(f){ try{ localStorage.setItem(PAYMENT_KEY, JSON.stringify(f)); }catch(e){} }
 let paymentFields = loadPaymentFields();
+
+// ---- Parser de entrega del proveedor ----
+const PARSER_KEY = "mistream_parser_v1";
+function loadParserState(){
+  try{
+    const raw = localStorage.getItem(PARSER_KEY);
+    return raw ? JSON.parse(raw) : {raw:'', correo:'', clave:'', perfil:'', plataforma:''};
+  }catch(e){ return {raw:'', correo:'', clave:'', perfil:'', plataforma:''}; }
+}
+function saveParserState(s){ try{ localStorage.setItem(PARSER_KEY, JSON.stringify(s)); }catch(e){} }
+let parserState = loadParserState();
+
+const PARSER_PLATFORMS = ["Netflix","Disney+","Max","Amazon Prime","Paramount+","Crunchyroll","Vix","Plex","IPTV","Spotify","YouTube","Canva"];
+const PARSER_PLATFORM_EMOJI = {
+  "Netflix":"●","Disney+":"🏰","Max":"🎭","Amazon Prime":"📦","Paramount+":"·",
+  "Crunchyroll":"🍥","Vix":"📺","Plex":"🎞️","IPTV":"📡",
+  "Spotify":"🎧","YouTube":"▶️","Canva":"🎨"
+};
+
+// ---- Flujo de venta ----
+const FLOW_KEY = "mistream_flow_v1";
+function loadFlowState(){
+  try{ const raw = localStorage.getItem(FLOW_KEY); return raw ? JSON.parse(raw) : {}; }catch(e){ return {}; }
+}
+function saveFlowState(s){ try{ localStorage.setItem(FLOW_KEY, JSON.stringify(s)); }catch(e){} }
+let flowState = loadFlowState();
 
 // ============ helpers to enumerate all tasks ============
 function allTaskIds(){
@@ -929,6 +1068,103 @@ function buildPaymentMessage(){
   return `💳 Nequi: ${nequi} · 🏦 Bancolombia: ${banco}`;
 }
 
+function buildPaymentStepMessage(){
+  const nequi = paymentFields.nequi || "[número Nequi]";
+  const banco = paymentFields.bancolombia || "[cuenta Bancolombia]";
+  return `Para activarte me envías el comprobante acá:
+💳 Nequi: ${nequi}
+🏦 Bancolombia: ${banco}
+
+Apenas me llegue te activo en menos de 1 hora ⚡`;
+}
+
+// ============ PARSER: mensaje del proveedor ============
+function parseProviderMessage(text){
+  const result = {correo:'', clave:'', perfil:'', plataforma:''};
+  if(!text || !text.trim()) return result;
+
+  const lines = text.split(/\r?\n/);
+  const emailLine = lines.find(l=>l.includes('@'));
+  if(emailLine){
+    const emailMatch = emailLine.match(/[^\s:]+@[^\s:]+/);
+    if(emailMatch){
+      result.correo = emailMatch[0].trim();
+      const idx = emailLine.indexOf(emailMatch[0]);
+      let rest = emailLine.slice(idx + emailMatch[0].length);
+      rest = rest.replace(/^[\t: ]+/, '').trim();
+      if(rest) result.clave = rest;
+    }
+  }
+
+  const profileMatch = text.match(/P\s?([1-5])\b/i);
+  if(profileMatch) result.perfil = 'P' + profileMatch[1];
+
+  const platformTests = [
+    [/netflix/i, "Netflix"],
+    [/disney/i, "Disney+"],
+    [/paramount/i, "Paramount+"],
+    [/crunchyroll/i, "Crunchyroll"],
+    [/plex/i, "Plex"],
+    [/iptv/i, "IPTV"],
+    [/spotify/i, "Spotify"],
+    [/youtube/i, "YouTube"],
+    [/canva/i, "Canva"],
+    [/vix/i, "Vix"],
+    [/amazon/i, "Amazon Prime"],
+    [/\bmax\b/i, "Max"],
+  ];
+  for(const [re, name] of platformTests){
+    if(re.test(text)){ result.plataforma = name; break; }
+  }
+
+  return result;
+}
+
+function buildParserLong(f){
+  const emoji = PARSER_PLATFORM_EMOJI[f.plataforma] || '🎬';
+  const plat = f.plataforma || '[PLATAFORMA]';
+  const perfil = f.perfil || '[P#]';
+  const correo = f.correo || '[correo]';
+  const clave = f.clave || '[clave]';
+  return `✓ ¡Tu pantalla está lista!
+
+${emoji} ${plat} · Perfil Privado
+
+📧 Correo:
+${correo}
+
+🔑 Contraseña:
+${clave}
+
+👤 Tu perfil:
+${perfil}
+
+📌 Indicaciones:
+1. Abre ${plat} e inicia sesión
+2. Selecciona el perfil ${perfil} (es el tuyo)
+3. NO cambies contraseña ni perfil
+4. Si algo falla → me escribes
+
+📅 Vigencia: 1 mes desde hoy
+
+¡Que lo disfrutes! 🙌`;
+}
+
+function buildParserShort(f){
+  const emoji = PARSER_PLATFORM_EMOJI[f.plataforma] || '🎬';
+  const plat = f.plataforma || '[Plataforma]';
+  const perfil = f.perfil || '[P#]';
+  const correo = f.correo || '[correo]';
+  const clave = f.clave || '[clave]';
+  return `✓ Listo, aquí va:
+
+${emoji} ${plat} · ${perfil}
+📧 ${correo}
+🔑 ${clave}
+
+Cualquier cosa me escribes +`;
+}
+
 // ============ BUILD COPYS PANEL ============
 function buildPriceRowsHtml(items, withDetail, delayOffset){
   return items.map((it,i)=>`
@@ -951,9 +1187,12 @@ function buildCopysPanel(){
 
   const platformOptions = PLATFORMS.map(p=>`<option value="${p}" ${templateFields.plataforma===p?'selected':''}>${PLATFORM_EMOJI[p]||''} ${p}</option>`).join('');
 
+  const parserPlatformOptions = PARSER_PLATFORMS.map(p=>`<option value="${p}" ${parserState.plataforma===p?'selected':''}>${PARSER_PLATFORM_EMOJI[p]||''} ${p}</option>`).join('')
+    + `<option value="" ${!parserState.plataforma?'selected':''}>Sin detectar</option>`;
+
   const quickButtonsHtml = QUICK_PHRASES.map((phrase,i)=>`
     <div class="quick-row">
-      <div class="qr-text">${phrase}</div>
+      <div class="qr-text">${resolvePhrase(phrase)}</div>
       <button class="copy-btn" data-quick-copy="${i}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
         Copiar
@@ -965,6 +1204,42 @@ function buildCopysPanel(){
     <div class="week-intro">
       <div><div class="week-title">Copys</div></div>
       <div class="week-goal-tag">Listos para pegar en WhatsApp</div>
+    </div>
+
+    <div class="copys-block" id="parser-section">
+      <div class="copys-block-label">🔄 Parsear entrega del proveedor</div>
+      <div class="copy-card">
+        <textarea class="parser-textarea" id="parser-input" placeholder="Pega aquí el mensaje del proveedor...">${parserState.raw || ''}</textarea>
+        <div class="detected-row">
+          <div class="detected-chip ${parserState.correo?'':'empty'}"><span class="dc-label">Correo</span>${parserState.correo || 'sin detectar'}</div>
+          <div class="detected-chip ${parserState.clave?'':'empty'}"><span class="dc-label">Clave</span>${parserState.clave || 'sin detectar'}</div>
+          <div class="detected-chip ${parserState.perfil?'':'empty'}"><span class="dc-label">Perfil</span>${parserState.perfil || 'sin detectar'}</div>
+        </div>
+        <div class="parser-grid">
+          <div>
+            <div class="field-group" style="margin-top:16px;">
+              <label class="field-label">Plataforma (corrige si hace falta)</label>
+              <select class="field-select" id="parser-plataforma">${parserPlatformOptions}</select>
+            </div>
+          </div>
+          <div>
+            <div class="preview-panel">
+              <div class="preview-label">Vista previa</div>
+              <div class="preview-text" id="parser-preview">${buildParserLong(parserState)}</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+          <button class="copy-btn" id="copy-parser-long" style="flex:1;justify-content:center;min-width:160px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar versión larga
+          </button>
+          <button class="copy-btn" id="copy-parser-short" style="flex:1;justify-content:center;min-width:160px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar versión corta
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="copys-block">
@@ -1080,6 +1355,47 @@ function buildCopysPanel(){
 }
 
 function bindCopysEvents(){
+  // ---- Parser de entrega del proveedor ----
+  const parserInput = document.getElementById('parser-input');
+  const parserPlat = document.getElementById('parser-plataforma');
+  const parserPreview = document.getElementById('parser-preview');
+  const copyParserLongBtn = document.getElementById('copy-parser-long');
+  const copyParserShortBtn = document.getElementById('copy-parser-short');
+
+  function refreshDetectedChips(){
+    const row = document.querySelector('.detected-row');
+    if(!row) return;
+    row.innerHTML = `
+      <div class="detected-chip ${parserState.correo?'':'empty'}"><span class="dc-label">Correo</span>${parserState.correo || 'sin detectar'}</div>
+      <div class="detected-chip ${parserState.clave?'':'empty'}"><span class="dc-label">Clave</span>${parserState.clave || 'sin detectar'}</div>
+      <div class="detected-chip ${parserState.perfil?'':'empty'}"><span class="dc-label">Perfil</span>${parserState.perfil || 'sin detectar'}</div>
+    `;
+  }
+
+  function refreshParserPreview(){
+    if(parserPreview) parserPreview.textContent = buildParserLong(parserState);
+  }
+
+  if(parserInput){
+    parserInput.addEventListener('input', ()=>{
+      const parsed = parseProviderMessage(parserInput.value);
+      parserState = { raw: parserInput.value, ...parsed };
+      saveParserState(parserState);
+      if(parserPlat) parserPlat.value = parserState.plataforma || '';
+      refreshDetectedChips();
+      refreshParserPreview();
+    });
+  }
+  if(parserPlat){
+    parserPlat.addEventListener('change', ()=>{
+      parserState.plataforma = parserPlat.value;
+      saveParserState(parserState);
+      refreshParserPreview();
+    });
+  }
+  if(copyParserLongBtn) copyParserLongBtn.addEventListener('click', ()=> copyToClipboard(buildParserLong(parserState), copyParserLongBtn));
+  if(copyParserShortBtn) copyParserShortBtn.addEventListener('click', ()=> copyToClipboard(buildParserShort(parserState), copyParserShortBtn));
+
   const individualBtn = document.getElementById('copy-individual');
   if(individualBtn) individualBtn.addEventListener('click', ()=> copyToClipboard(INDIVIDUAL_PRICES_TEXT, individualBtn));
 
@@ -1120,7 +1436,7 @@ function bindCopysEvents(){
   document.querySelectorAll('[data-quick-copy]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const idx = parseInt(btn.getAttribute('data-quick-copy'),10);
-      copyToClipboard(QUICK_PHRASES[idx], btn);
+      copyToClipboard(resolvePhrase(QUICK_PHRASES[idx]), btn);
     });
   });
 
@@ -1140,6 +1456,153 @@ function bindCopysEvents(){
   if(payBtn) payBtn.addEventListener('click', ()=> copyToClipboard(buildPaymentMessage(), payBtn));
 }
 
+// ============ BUILD FLOW PANEL (Flujo de venta) ============
+function buildFlowPanel(){
+  const panel = document.createElement('div');
+  panel.className = 'week-panel' + (activeWeek==='flujo' ? ' active':'');
+  panel.dataset.week = 'flujo';
+
+  const doneCount = FLOW_STEPS.filter(s=>flowState[s.id]).length;
+  const pct = Math.round((doneCount/FLOW_STEPS.length)*100);
+
+  const stepsHtml = FLOW_STEPS.map(step=>{
+    const done = !!flowState[step.id];
+
+    let bodyHtml = '';
+    if(step.type === 'catalog'){
+      bodyHtml = `
+        <div class="flow-step-text">${INDIVIDUAL_PRICES_TEXT}</div>
+        <div class="flow-step-actions">
+          <button class="copy-btn" data-flow-copy-catalog="precios">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar precios
+          </button>
+          <button class="copy-btn" data-flow-copy-catalog="combos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar combos
+          </button>
+        </div>
+      `;
+    } else if(step.type === 'link'){
+      bodyHtml = `
+        <div class="flow-step-text">Usa el parseador para generar el mensaje de entrega a partir de lo que te mande el proveedor.</div>
+        <div class="flow-step-actions">
+          <button class="flow-link-btn" data-flow-goto-parser="1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Ir al parseador →
+          </button>
+        </div>
+      `;
+    } else {
+      bodyHtml = `
+        <div class="flow-step-text">${resolvePhrase(step.text)}</div>
+        <div class="flow-step-actions">
+          <button class="copy-btn" data-flow-copy="${step.id}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            Copiar
+          </button>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="flow-step ${done?'done':''}" data-flow-step="${step.id}">
+        <div class="flow-step-head">
+          <div class="flow-check ${done?'checked':''}" data-flow-toggle="${step.id}"></div>
+          <div class="flow-step-body">
+            <div class="flow-step-num">Paso ${step.id}</div>
+            <div class="flow-step-title">${step.title}</div>
+            ${bodyHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="week-intro">
+      <div><div class="week-title">Flujo de venta</div></div>
+      <div class="week-goal-tag">8 pasos, saludo → upsell</div>
+    </div>
+    <div class="week-progress-wrap">
+      <div class="progress-label-row">
+        <span>Progreso del flujo</span>
+        <span class="gold" id="flow-pct">${pct}%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="flow-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="flow-list">${stepsHtml}</div>
+    <div class="reset-row">
+      <button class="reset-btn" id="reset-flow">Reset flujo</button>
+    </div>
+  `;
+
+  return panel;
+}
+
+function bindFlowEvents(){
+  panelsEl.querySelectorAll('[data-flow-toggle]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const id = el.getAttribute('data-flow-toggle');
+      flowState[id] = !flowState[id];
+      saveFlowState(flowState);
+
+      const step = panelsEl.querySelector(`.flow-step[data-flow-step="${id}"]`);
+      const done = !!flowState[id];
+      step.classList.toggle('done', done);
+      el.classList.toggle('checked', done);
+
+      const doneCount = FLOW_STEPS.filter(s=>flowState[s.id]).length;
+      const pct = Math.round((doneCount/FLOW_STEPS.length)*100);
+      const fill = document.getElementById('flow-fill');
+      const pctLbl = document.getElementById('flow-pct');
+      if(fill) fill.style.width = pct + '%';
+      if(pctLbl) pctLbl.textContent = pct + '%';
+      renderTabsBadgesOnly();
+    });
+  });
+
+  panelsEl.querySelectorAll('[data-flow-copy]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = parseInt(btn.getAttribute('data-flow-copy'),10);
+      const step = FLOW_STEPS.find(s=>s.id===id);
+      if(step) copyToClipboard(resolvePhrase(step.text), btn);
+    });
+  });
+
+  panelsEl.querySelectorAll('[data-flow-copy-catalog]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const kind = btn.getAttribute('data-flow-copy-catalog');
+      copyToClipboard(kind==='combos' ? COMBOS_TEXT : INDIVIDUAL_PRICES_TEXT, btn);
+    });
+  });
+
+  const gotoParserBtn = panelsEl.querySelector('[data-flow-goto-parser]');
+  if(gotoParserBtn){
+    gotoParserBtn.addEventListener('click', ()=>{
+      activeWeek = 'copys';
+      saveActiveTab(activeWeek);
+      renderTabs();
+      renderPanels();
+      setTimeout(()=>{
+        const section = document.getElementById('parser-section');
+        if(section) section.scrollIntoView({behavior:'smooth', block:'start'});
+      }, 60);
+    });
+  }
+
+  const resetFlowBtn = document.getElementById('reset-flow');
+  if(resetFlowBtn){
+    resetFlowBtn.addEventListener('click', ()=>{
+      if(!confirm('¿Reiniciar el flujo de venta completo?')) return;
+      flowState = {};
+      saveFlowState(flowState);
+      renderPanels();
+      renderTabsBadgesOnly();
+    });
+  }
+}
+
 // ============ RENDER TABS ============
 const tabsEl = document.getElementById('tabs');
 function renderTabs(){
@@ -1149,6 +1612,7 @@ function renderTabs(){
     const done = ids.filter(id=>taskState[id]).length;
     const btn = document.createElement('button');
     btn.className = 'tab-btn' + (w.id===activeWeek ? ' active':'');
+    btn.dataset.tabId = w.id;
     btn.innerHTML = `Semana ${w.id}<span class="tt-dates">${w.dates}</span><span class="tt-badge">${done}/${ids.length}</span>`;
     btn.addEventListener('click', ()=>{
       activeWeek = w.id;
@@ -1161,6 +1625,7 @@ function renderTabs(){
 
   const copysBtn = document.createElement('button');
   copysBtn.className = 'tab-btn' + (activeWeek==='copys' ? ' active':'');
+  copysBtn.dataset.tabId = 'copys';
   copysBtn.innerHTML = `▪ Copys<span class="tt-dates">precios · plantillas</span>`;
   copysBtn.addEventListener('click', ()=>{
     activeWeek = 'copys';
@@ -1169,7 +1634,22 @@ function renderTabs(){
     renderPanels();
   });
   tabsEl.appendChild(copysBtn);
+
+  const flowIds = FLOW_STEPS.map(s=>s.id);
+  const flowDone = flowIds.filter(id=>flowState[id]).length;
+  const flowBtn = document.createElement('button');
+  flowBtn.className = 'tab-btn' + (activeWeek==='flujo' ? ' active':'');
+  flowBtn.dataset.tabId = 'flujo';
+  flowBtn.innerHTML = `▪ Flujo de venta<span class="tt-dates">paso a paso</span><span class="tt-badge">${flowDone}/${flowIds.length}</span>`;
+  flowBtn.addEventListener('click', ()=>{
+    activeWeek = 'flujo';
+    saveActiveTab(activeWeek);
+    renderTabs();
+    renderPanels();
+  });
+  tabsEl.appendChild(flowBtn);
 }
+
 
 // ============ RENDER WEEK PANELS ============
 const panelsEl = document.getElementById('week-panels');
@@ -1251,9 +1731,11 @@ function renderPanels(){
   });
 
   panelsEl.appendChild(buildCopysPanel());
+  panelsEl.appendChild(buildFlowPanel());
 
   bindPanelEvents();
   bindCopysEvents();
+  bindFlowEvents();
 }
 
 function bindPanelEvents(){
@@ -1330,13 +1812,26 @@ function updateAllCounters(){
 
 function renderTabsBadgesOnly(){
   const btns = tabsEl.querySelectorAll('.tab-btn');
-  btns.forEach((btn,idx)=>{
-    const w = WEEKS[idx];
-    if(!w) return; // skip the Copys tab, which has no week data
+  btns.forEach(btn=>{
+    const tabId = btn.dataset.tabId;
+    const badge = btn.querySelector('.tt-badge');
+    if(!badge) return;
+
+    if(tabId === 'copys'){
+      return; // Copys tab has no completion badge
+    }
+    if(tabId === 'flujo'){
+      const flowIds = FLOW_STEPS.map(s=>s.id);
+      const done = flowIds.filter(id=>flowState[id]).length;
+      badge.textContent = `${done}/${flowIds.length}`;
+      return;
+    }
+    const weekId = parseInt(tabId,10);
+    const w = WEEKS.find(w=>w.id===weekId);
+    if(!w) return;
     const ids = weekTaskIds(w.id);
     const done = ids.filter(id=>taskState[id]).length;
-    const badge = btn.querySelector('.tt-badge');
-    if(badge) badge.textContent = `${done}/${ids.length}`;
+    badge.textContent = `${done}/${ids.length}`;
   });
 }
 
@@ -1393,8 +1888,8 @@ document.getElementById('sales-minus').addEventListener('click', ()=>{
 
 // ============ RESET BUTTONS ============
 document.getElementById('reset-week').addEventListener('click', ()=>{
-  if(activeWeek === 'copys'){
-    alert('Estás en la pestaña Copys — cambia a una semana para reiniciarla.');
+  if(typeof activeWeek !== 'number'){
+    alert('Cambia a una semana para reiniciarla — esta pestaña no tiene tareas semanales.');
     return;
   }
   if(!confirm(`¿Reiniciar todas las tareas de la Semana ${activeWeek}?`)) return;
@@ -1416,6 +1911,8 @@ document.getElementById('reset-all').addEventListener('click', ()=>{
   if(!confirm('¿Reiniciar TODO el progreso del plan? Esto no se puede deshacer.')) return;
   taskState = {};
   saveTasks(taskState);
+  flowState = {};
+  saveFlowState(flowState);
   salesCount = 0;
   saveSales(salesCount);
   renderSales();
@@ -1443,6 +1940,42 @@ document.getElementById('reset-all').addEventListener('click', ()=>{
   }
 })();
 
+// ============ TABS: fade edges + swipe hint (mobile UX) ============
+const HINT_SEEN_KEY = "mistream_tabs_hint_seen_v1";
+function setupTabsSwipeUX(){
+  const wrap = document.getElementById('tabs-wrap');
+  const hint = document.getElementById('tabs-swipe-hint');
+  if(!wrap || !tabsEl) return;
+
+  function updateEdges(){
+    const atStart = tabsEl.scrollLeft <= 2;
+    const atEnd = tabsEl.scrollLeft >= (tabsEl.scrollWidth - tabsEl.clientWidth - 2);
+    wrap.classList.toggle('at-start', atStart);
+    wrap.classList.toggle('at-end', atEnd);
+  }
+
+  function dismissHint(){
+    if(hint) hint.classList.remove('show');
+    try{ localStorage.setItem(HINT_SEEN_KEY, '1'); }catch(e){}
+    tabsEl.removeEventListener('scroll', dismissHintOnce);
+  }
+  function dismissHintOnce(){ dismissHint(); }
+
+  updateEdges();
+  tabsEl.addEventListener('scroll', updateEdges);
+  window.addEventListener('resize', updateEdges);
+
+  const hasOverflow = tabsEl.scrollWidth > tabsEl.clientWidth + 4;
+  let alreadySeen = false;
+  try{ alreadySeen = localStorage.getItem(HINT_SEEN_KEY) === '1'; }catch(e){}
+
+  if(hasOverflow && !alreadySeen && hint){
+    hint.classList.add('show');
+    tabsEl.addEventListener('scroll', dismissHintOnce);
+    setTimeout(dismissHint, 4000);
+  }
+}
+
 // ============ INIT ============
 renderTabs();
 renderPanels();
@@ -1450,6 +1983,7 @@ renderTeamGrid();
 renderRules();
 renderSales();
 updateAllCounters();
+setupTabsSwipeUX();
 </script>
 
 </body>
